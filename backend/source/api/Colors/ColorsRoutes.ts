@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import { ColorsController } from "../controllers/ColorsController";
+import { ColorsController } from "./ColorsController";
 import DI from "../DependencyInjector";
 
 export class ColorsRoutes {

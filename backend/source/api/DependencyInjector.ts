@@ -1,5 +1,5 @@
 import { Container } from "inversify";
-import { ColorsController } from "./controllers/ColorsController";
+import { ColorsController } from "./Colors/ColorsController";
 
 export enum InjectionTypes {
     ColorsController = 'ColorsController'

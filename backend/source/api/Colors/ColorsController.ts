@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { injectable } from "inversify";
 
-@injectable();
+@injectable()
 export class ColorsController {
 
     constructor() { }

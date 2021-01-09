@@ -10,14 +10,6 @@ export class Color{
 
     public Paints: Array<Paint>;
     
-    constructor(hex: Hexadecimal, paints: Array<Paint>) {
-        this.HexadecimalCode = hex;
-        this.RGBCode = hex.ToRGB();
-        this.CielabCode = hex.ToCielab();
-
-        this.Paints = paints;
-    }
-
     public Distance(color: Color): number {
         return this.CielabCode.CalculateCie94Distance(color.CielabCode);
     }

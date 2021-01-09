@@ -35,7 +35,28 @@ export class Cielab {
     }
 
     public CalculateCie94Distance(color: Cielab): number {
-        throw new Error('not implemented');
+        const deltaL: number = this.Lightness - color.Lightness;
+        const C1: number = Math.sqrt(Math.pow(this.aAxisValue, 2) + Math.pow(color.aAxisValue, 2));
+        const C2: number = Math.sqrt(Math.pow(this.bAxisValue, 2) + Math.pow(color.bAxisValue, 2));
+        const deltaC: number = C1 - C2;
+        const deltaA: number = this.aAxisValue - color.aAxisValue;
+        const deltaB: number = this.bAxisValue - color.bAxisValue;
+        const deltaH: number = Math.sqrt(Math.pow(deltaA, 2) + Math.pow(deltaB, 2) + Math.pow(deltaC, 2));
+        
+        const kSubL: number = 1;
+        const kSubC: number = 1;
+        const kSubH: number = 1;
+        const K1 = 0.045;
+        const K2 = 0.015;
+        const sSubL: number = 1;
+        const sSubC: number = 1 + K1*C1;
+        const sSubH: number = 1 + K2*C1;
+        
+        const deltaEDeltaLQuotient: number = deltaL/(kSubL*sSubL);
+        const deltaEDeltaCQuotient: number = deltaC/(kSubC*sSubC);
+        const deltaEDeltaHQuotient: number = deltaH/(kSubH*sSubH);
+        const deltaE: number = Math.sqrt(Math.pow(deltaEDeltaLQuotient, 2) + Math.pow(deltaEDeltaCQuotient, 2) + Math.pow(deltaEDeltaHQuotient, 2));
+        return deltaE;
     }
 
 }

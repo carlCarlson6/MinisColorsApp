@@ -1,6 +1,6 @@
-import { Cielab } from "./Cielab";
-import { Hexadecimal } from "./Hexadecimal";
-import { RGB } from "./RGB";
+import { Cielab } from "../valueObjects/Cielab";
+import { Hexadecimal } from "../valueObjects/Hexadecimal";
+import { RGB } from "../valueObjects/RGB";
 
 export class Color {
     public HexadecimalCode: Hexadecimal;

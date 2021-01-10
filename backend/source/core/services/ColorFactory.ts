@@ -1,7 +1,7 @@
-import { Cielab } from "../entities/Cielab";
+import { Cielab } from "../valueObjects/Cielab";
 import { Color } from "../entities/Color";
-import { Hexadecimal } from "../entities/Hexadecimal";
-import { RGB } from "../entities/RGB";
+import { Hexadecimal } from "../valueObjects/Hexadecimal";
+import { RGB } from "../valueObjects/RGB";
 
 export class ColorFactory {
     

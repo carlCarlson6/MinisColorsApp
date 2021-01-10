@@ -5,9 +5,10 @@ export class Paint {
     public Name: String;
     public Color: Color;
 
-    constructor(companyName: String, paintName: String) {
+    constructor(companyName: String, paintName: String, color: Color) {
         this.Company = companyName;
         this.Name = paintName;
+        this.Color = color;
     }
 
 } 

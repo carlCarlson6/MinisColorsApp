@@ -1,11 +1,11 @@
 import { Container } from "inversify";
-import { ColorsController } from "./Colors/ColorsController";
+import { PaintsController } from "./paints/PaintsController";
 
 export enum InjectionTypes {
-    ColorsController = 'ColorsController'
+    PaintsController = 'PaintsController'
 }
 
 const container: Container = new Container();
-container.bind<ColorsController>('ColorsController').to(ColorsController);
+container.bind<PaintsController>(InjectionTypes.PaintsController).to(PaintsController);
 
 export default container;

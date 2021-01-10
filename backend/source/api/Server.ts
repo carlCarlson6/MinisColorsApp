@@ -18,7 +18,7 @@ export class Server {
 
     private ApplyMiddleware() {
         this.app.use(express.json());
-        this.app.use(morgan('dev'));
+        this.app.use(() => morgan('dev'));
     }
 
     private AddRoutes() {

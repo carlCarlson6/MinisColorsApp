@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { injectable } from "inversify";
 
 @injectable()
-export class ColorsController {
+export class PaintsController {
 
     constructor() { }
 

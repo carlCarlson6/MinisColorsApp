@@ -1,12 +1,12 @@
 import { Request, Response, Router } from "express";
-import { ColorsController } from "./ColorsController";
+import { PaintsController } from "./PaintsController";
 import DI from "../DependencyInjector";
 
-export class ColorsRoutes {
+export class PaintsRoutes {
     public router = Router()
-    public path = 'api/colors'
+    public path = 'api/paint'
 
-    private controller: ColorsController = DI.get<ColorsController>('NewsController')
+    private controller: PaintsController = DI.get<PaintsController>('NewsController')
 
     private Get = (request: Request, response: Response) => this.controller.Get(request, response);
     private GetAll = (request: Request, response: Response) => this.controller.GetAll(request, response);
@@ -16,7 +16,7 @@ export class ColorsRoutes {
     }
 
     private DeclareRoutes(): void {
-        this.router.get('/:color', this.Get);
+        this.router.get('/:paint', this.Get);
         this.router.get('', this.GetAll);
     }
 

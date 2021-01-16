@@ -10,7 +10,7 @@ export class GetPaintsByColor {
     }
 
     public async Execute(color: Color): Promise<Array<Paint>> {
-        const paints: Array<Paint> = await this.Repository.Read(color);
+        const paints: Array<Paint> = await this.Repository.ReadByColor(color);
         return paints;
     }
 

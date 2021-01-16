@@ -4,7 +4,8 @@ import { Paint } from "../entities/Paint";
 export interface IPaintsRepository {
     Create(paint: Paint): Promise<number>; 
     ReadAll(): Promise<Array<Paint>>
-    Read(color: Color): Promise<Array<Paint>>
+    ReadByColor(color: Color): Promise<Array<Paint>>
+    ReadByName(name: String): Promise<Paint>
     Update(paint: Paint): Promise<number>
     Delete(paint: Paint): Promise<number>
 }

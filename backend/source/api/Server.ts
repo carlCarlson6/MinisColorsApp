@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import express, {Express} from 'express';
 import morgan from 'morgan';
+import { PaintsRoutes } from './paints/PaintsRoutes';
 
 export class Server {
     private app: Express;
@@ -22,7 +23,8 @@ export class Server {
     }
 
     private AddRoutes() {
-        throw new Error('Method not implemented.');
+        const paintsRoutes: PaintsRoutes = new PaintsRoutes();
+        this.app.use(paintsRoutes.path, paintsRoutes.router);
     }
     
     public Start() {

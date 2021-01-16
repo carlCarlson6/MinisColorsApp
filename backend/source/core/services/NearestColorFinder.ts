@@ -1,7 +1,7 @@
  import { Color } from "../entities/Color";
 import { IColorsRepository } from "./IColorsRepository";
 
-export class FindNearestColor {
+export class NearestColorFinder {
 
     constructor(private Repository: IColorsRepository) {}
 

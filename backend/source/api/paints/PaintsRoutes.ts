@@ -6,8 +6,8 @@ import { GetByNearestColorController } from "./controllers/GetByNearestColor";
 import { GetController } from "./controllers/GetController";
 
 export class PaintsRoutes {
-    public router = Router()
-    public path = 'api/paint'
+    public router = Router();
+    public path: string = '/api/paints';
 
     private getController: GetController = DI.get<GetController>('GetController');
     private getAllController: GetAllController = DI.get<GetAllController>('GetAllController');
@@ -25,7 +25,7 @@ export class PaintsRoutes {
 
     private DeclareRoutes(): void {
         this.router.get('/:paintName', this.Get);
-        this.router.get('', this.GetAll);
+        this.router.get('/', this.GetAll);
         this.router.get('/color/:hexCode', this.GetByColor);
         this.router.get('/color/:hexCode/nearest', this.GetByNearestColor);
     }

@@ -8,7 +8,7 @@ export class Server {
 
     constructor() {
         this.app = express();
-        this.Config()
+        this.Config();
     }
 
     private Config() {
@@ -19,7 +19,6 @@ export class Server {
 
     private ApplyMiddleware() {
         this.app.use(express.json());
-        this.app.use(() => morgan('dev'));
     }
 
     private AddRoutes() {

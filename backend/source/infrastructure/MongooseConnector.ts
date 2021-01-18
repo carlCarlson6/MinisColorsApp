@@ -14,8 +14,6 @@ export class MongooseConnector {
                 useUnifiedTopology: true,
                 useFindAndModify: false
             });
-    
-            console.log('connected to db')
         } 
         catch(error) {
             console.log(error);

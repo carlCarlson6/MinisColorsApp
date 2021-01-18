@@ -1,9 +1,14 @@
- import { Color } from "../entities/Color";
+import { inject, injectable } from "inversify";
+import { Color } from "../entities/Color";
 import { IColorsRepository } from "./IColorsRepository";
 
+@injectable()
 export class NearestColorFinder {
+    private Repository: IColorsRepository;
 
-    constructor(private Repository: IColorsRepository) {}
+    constructor(@inject('IColorsRepository') repository: IColorsRepository) {
+        this.Repository = repository;
+    }
 
     public async FindNearest(refColor: Color): Promise<Color> {
         const colors: Array<Color> = await this.FindTopNear(refColor, 0);

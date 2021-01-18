@@ -10,9 +10,8 @@ export class NearestColorFinder {
         return colors[0];
     }
 
-    public async FindTopNear(refColor: Color, top: number): Promise<Array<Color>>
-    {
-        const colors: Array<Color> = await this.OrderColors(refColor);
+    public async FindTopNear(refColor: Color, top: number): Promise<Array<Color>> {
+        const colors: Array<Color> = await this.GetColorsOrderedByDistance(refColor);
 
         if(top == colors.length)
         {
@@ -22,7 +21,7 @@ export class NearestColorFinder {
         }
     }
 
-    public async OrderColors(refColor: Color): Promise<Array<Color>> {
+    public async GetColorsOrderedByDistance(refColor: Color): Promise<Array<Color>> {
         const allColors: Array<Color> = await this.Repository.ReadAll();
 
         const colorDistances: Array<{distance: number, color: Color}> = allColors.map(color => {

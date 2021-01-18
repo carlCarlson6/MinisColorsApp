@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { injectable } from "inversify";
+import { inject, injectable } from "inversify";
 import { GetPaintsByColor } from "../../../app/GetPaintsByColor";
 import { Color } from "../../../core/entities/Color";
 import { Paint } from "../../../core/entities/Paint";
@@ -10,7 +10,7 @@ export class GetByColorController {
     private getPaintsByColor: GetPaintsByColor;
     private factory: ColorFactory;
 
-    constructor(getPaintsByColor: GetPaintsByColor) {
+    constructor(@inject('GetPaintsByColor') getPaintsByColor: GetPaintsByColor) {
         this.getPaintsByColor = getPaintsByColor;
         this.factory = new ColorFactory();
     }

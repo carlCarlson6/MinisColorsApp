@@ -2,7 +2,7 @@
   "name": "miniscolorsappbackend",
   "version": "1.0.0",
   "description": "backend server",
-  "main": "./build/source/index.js",
+  "main": "./build/index.js",
   "scripts": {
     "dev:build": "tsc --watch",
     "dev:start": "nodemon .",

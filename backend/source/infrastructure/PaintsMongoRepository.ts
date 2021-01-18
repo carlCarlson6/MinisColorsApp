@@ -1,9 +1,11 @@
+import { injectable } from "inversify";
 import { Color } from "../core/entities/Color";
 import { Paint } from "../core/entities/Paint";
 import { IPaintsRepository } from "../core/services/IPaintsRepository";
 import { PaintMongooseModel } from "./models/PaintMongooseModel";
 import { MongooseConnector } from "./MongooseConnector";
 
+@injectable()
 export class PaintsMongoRepository implements IPaintsRepository {
     private dbConnector: MongooseConnector = new MongooseConnector();
 

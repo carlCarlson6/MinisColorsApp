@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { injectable } from "inversify";
+import { injectable, inject } from "inversify";
 import { GetAllPaints } from "../../../app/GetAllPaints";
 import { Paint } from "../../../core/entities/Paint";
 
@@ -7,7 +7,7 @@ import { Paint } from "../../../core/entities/Paint";
 export class GetAllController {
     private getAll: GetAllPaints;
 
-    constructor(getAllPaints: GetAllPaints) {
+    constructor(@inject('GetAllPaints') getAllPaints: GetAllPaints) {
         this.getAll = getAllPaints;
     }
     

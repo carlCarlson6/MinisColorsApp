@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { injectable } from "inversify";
+import { inject, injectable } from "inversify";
 import { GetNearestPaintByColor } from "../../../app/GetNearestPaintByColor";
 import { Color } from "../../../core/entities/Color";
 import { Paint } from "../../../core/entities/Paint";
@@ -10,7 +10,7 @@ export class GetByNearestColorController {
     private getNearest: GetNearestPaintByColor;
     private factory: ColorFactory;
 
-    constructor(getNearestPaintByColor: GetNearestPaintByColor) {
+    constructor(@inject('GetNearestPaintByColor') getNearestPaintByColor: GetNearestPaintByColor) {
         this.getNearest = getNearestPaintByColor;
         this.factory = new ColorFactory();
     }

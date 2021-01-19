@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export class MongooseConnector {
+export class MongooseDbConnector {
     private connectiorStr: string;
 
     constructor() {

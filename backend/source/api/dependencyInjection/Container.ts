@@ -10,7 +10,7 @@ import { ColorsMongoRepository } from "../../infrastructure/ColorsMongoRepositor
 import { PaintsMongoRepository } from "../../infrastructure/PaintsMongoRepository";
 import { GetAllController } from "../paints/controllers/GetAllController";
 import { GetByColorController } from "../paints/controllers/GetByColorController";
-import { GetByNearestColorController } from "../paints/controllers/GetByNearestColor";
+import { GetByNearestColorController } from "../paints/controllers/GetByNearestColorController";
 import { GetController } from "../paints/controllers/GetController";
 import { InjectionTypes } from "./InjectionTypes";
 

@@ -2,7 +2,7 @@ import { Request, Response, Router } from "express";
 import DI from "../dependencyInjection/Container";
 import { GetAllController } from "./controllers/GetAllController";
 import { GetByColorController } from "./controllers/GetByColorController";
-import { GetByNearestColorController } from "./controllers/GetByNearestColor";
+import { GetByNearestColorController } from "./controllers/GetByNearestColorController";
 import { GetController } from "./controllers/GetController";
 
 export class PaintsRoutes {

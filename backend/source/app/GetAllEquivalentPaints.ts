@@ -11,7 +11,13 @@ export class GetAllEquivalentPaints {
     }
 
     public async Execute(paintName: String): Promise<Array<Paint>> {
-        const paint: Paint = await this.repository.ReadByName(paintName);
+        const paints: Array<Paint> = await this.repository.ReadByName(paintName);
+        if(paints.length == 0) {
+            return [];
+        }
+
+        const paint: Paint = paints[0];
+
         const equivalentPaints: Array<Paint> = await this.repository.ReadByColor(paint.Color);
         return equivalentPaints;
     }

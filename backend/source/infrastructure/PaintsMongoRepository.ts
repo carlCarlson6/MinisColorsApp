@@ -2,57 +2,51 @@ import { injectable } from "inversify";
 import { Document } from "mongoose";
 import { Color } from "../core/entities/Color";
 import { Paint } from "../core/entities/Paint";
-import { ColorFactory } from "../core/services/ColorFactory";
 import { IPaintsRepository } from "../core/services/IPaintsRepository";
 import { PaintMongooseModel } from "./models/PaintMongooseModel";
-import { MongooseConnector } from "./MongooseConnector";
+import { MongooseDbConnector } from "./common/MongooseDbConnector";
+import { PaintsBuilder } from "./common/PaintsBuilder";
 
 @injectable()
 export class PaintsMongoRepository implements IPaintsRepository {
-    private dbConnector: MongooseConnector = new MongooseConnector();
+    private dbConnector: MongooseDbConnector = new MongooseDbConnector();
+    private paintsBuilder: PaintsBuilder = new PaintsBuilder();
 
-    async ReadAll(): Promise<Array<Paint>> {
-        let allPaints: Array<Paint> = [];
+    public async ReadAll(): Promise<Array<Paint>> {
         await this.dbConnector.Connect();
-
         const documents: Array<Document> = await PaintMongooseModel.find();
-        documents.forEach(doc => {
-            for(var key in doc.toJSON()) {
-                if(doc.toJSON().hasOwnProperty(key)) {
-                    if(key == 'HexCode' || key == '_id' || doc.get(key) == '') {
-                        continue;
-                    }
-                    const paint: Paint = new Paint(key, doc.get(key), new ColorFactory().BuildFromHexadecial(doc.get('HexCode')));
-                    allPaints.push(paint);
-                }
-            }
-        });
         await this.dbConnector.Disconnect();
 
+        const allPaints: Array<Paint> = this.paintsBuilder.BuildPaintsFromMongooseDocuments(documents);
         return allPaints;
     }
     
-    async ReadByColor(color: Color): Promise<Paint[]> {
+    public async ReadByColor(color: Color): Promise<Array<Paint>> {
         await this.dbConnector.Connect();
-
+        const documents: Array<Document> = await PaintMongooseModel.find({HexCode: color.HexadecimalCode.Value});
         await this.dbConnector.Disconnect();
-        throw new Error("Method not implemented.");
+        
+        const paintsWithColor: Array<Paint> = this.paintsBuilder.BuildPaintsFromMongooseDocuments(documents);
+        return paintsWithColor;
     }
     
-    async ReadByName(name: String): Promise<Paint> {
-        await this.dbConnector.Connect();
+    public async ReadByName(name: String): Promise<Array<Paint>> {
+        const allPaints: Array<Paint> = await this.ReadAll();
+        const paintsByName: Array<Paint> = allPaints.filter(paint => paint.Name == name);
+        if(paintsByName.length == 0) {
+            return [];
+        }
 
-        await this.dbConnector.Disconnect();
-        throw new Error("Method not implemented.");
+        return paintsByName;
     }
 
-    Create(paint: Paint): Promise<number> {
+    public async Create(paint: Paint): Promise<number> {
         throw new Error("Method not implemented.");
     }
-    Update(paint: Paint): Promise<number> {
+    public async Update(paint: Paint): Promise<number> {
         throw new Error("Method not implemented.");
     }
-    Delete(paint: Paint): Promise<number> {
+    public async Delete(paint: Paint): Promise<number> {
         throw new Error("Method not implemented.");
     }
 

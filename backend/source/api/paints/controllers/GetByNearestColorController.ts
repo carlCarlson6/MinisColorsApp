@@ -4,6 +4,7 @@ import { GetNearestPaintByColor } from "../../../app/GetNearestPaintByColor";
 import { Color } from "../../../core/entities/Color";
 import { Paint } from "../../../core/entities/Paint";
 import { ColorFactory } from "../../../core/services/ColorFactory";
+import { PaintDto } from "../messages/PaintDto";
 
 @injectable()
 export class GetByNearestColorController {
@@ -16,12 +17,15 @@ export class GetByNearestColorController {
     }
 
     public async GetByNearestColor(request: Request, response: Response): Promise<Response<any>> {
-        const hexCode: String = request.params.hexCode;
+        const hexCode: string = request.params.hexCode;
+        console.log(hexCode);
         const color: Color = this.factory.BuildFromHexadecial(hexCode);
+        console.log(color);
 
         const paints: Array<Paint> = await this.getNearest.Execute(color);
-
-        response.status(200).send(paints);
+        
+        const paintsResponse: Array<PaintDto> = paints.map(paint => ({ Company: paint.Company, Name: paint.Name, HexColorCode: paint.Color.HexadecimalCode.Value })) 
+        response.status(200).send(paintsResponse);
         return response;
     }
     

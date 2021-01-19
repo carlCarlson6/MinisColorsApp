@@ -4,6 +4,7 @@ import { GetPaintsByColor } from "../../../app/GetPaintsByColor";
 import { Color } from "../../../core/entities/Color";
 import { Paint } from "../../../core/entities/Paint";
 import { ColorFactory } from "../../../core/services/ColorFactory";
+import { PaintDto } from "../messages/PaintDto";
 
 @injectable()
 export class GetByColorController {
@@ -16,12 +17,13 @@ export class GetByColorController {
     }
 
     public async GetByColor(request: Request, response: Response): Promise<Response<any>> {
-        const hexCode: String = request.params.hexCode;
+        const hexCode: string = request.params.hexCode;
         const color: Color = this.factory.BuildFromHexadecial(hexCode);
         
         const paints: Array<Paint> = await this.getPaintsByColor.Execute(color);
+        const paintsResponse: Array<PaintDto> = paints.map(paint => ({ Company: paint.Company, Name: paint.Name, HexColorCode: paint.Color.HexadecimalCode.Value })) 
 
-        response.status(200).send(paints);
+        response.status(200).send(paintsResponse);
         return response;
     }
     

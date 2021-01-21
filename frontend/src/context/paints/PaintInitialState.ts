@@ -1,6 +1,6 @@
-import { IPaintState } from "../../models/PaintState";
+import { PaintState } from "../../models/PaintState";
 
-export const paintInitialState: IPaintState = {
+export const paintInitialState: PaintState = {
     fetchingData: false,
     paints: []
 }

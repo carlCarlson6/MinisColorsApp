@@ -22,4 +22,4 @@ const PaintContextState = (props: any) => {
 
 }
 
-export default PaintContext
+export default PaintContextState

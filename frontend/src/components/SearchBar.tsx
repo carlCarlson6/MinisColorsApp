@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import PaintContext from '../context/paints/PaintContext';
 import { PaintController } from '../controllers/PaintController';
 
 const SearchBar: React.FC = (): JSX.Element => {
-    const [searchInput, searchInputSetter] = useState<string>('');
-    const controller: PaintController = useContext(PaintContext);
+    const [searchInput, searchInputSetter] = React.useState<string>('');
+    const controller: PaintController = React.useContext(PaintContext);
     
     return (
         <div className="input-group">

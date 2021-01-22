@@ -1,34 +1,31 @@
 import { Dispatch } from "react";
-import { PaintAction } from "../context/paints/PaintAction";
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 import { Paint } from "../models/Paint";
+import { Action } from "../models/Action";
+import { paintTypes } from "../context/paints/PaintTypes";
 
 export class PaintService {
-    private dispatcher: Dispatch<PaintAction>;
+    private dispatcher: Dispatch<Action>;
     private httpClient: AxiosInstance;
     
-    constructor(dispatch: Dispatch<PaintAction>, backendUrl: string) {
+    constructor(dispatch: Dispatch<Action>, backendUrl: string) {
         this.dispatcher = dispatch;
-        this.httpClient = axios.create({baseURL: backendUrl, headers: {'Access-Control-Allow-Origin': '*'}})
+        this.httpClient = axios.create({baseURL: backendUrl})
     }
 
     public async SearchByName(paintName: string): Promise<void> {
-        console.log('click on search', paintName);
-        
-        let paints: Array<Paint>
+        this.dispatcher({ payload: [], type: paintTypes.StartRequestPaintByName })
         try {
-            const response: AxiosResponse<Array<Paint>> = await this.httpClient.get<Array<Paint>>('/paints/'+paintName);
-            
+            const response: AxiosResponse<Array<Paint>> = await this.httpClient.get<Array<Paint>>('/paints/'+paintName, { headers: {'Access-Control-Allow-Origin': '*'} });
             if(!response) {
-                console.log(response);
-                return;
+                throw new Error("someting went wrong with the request");
             }
 
-            paints = response.data;
-            console.log(paints)
+            const paints: Array<Paint> = response.data;
+            this.dispatcher({ payload: paints, type: paintTypes.OkRequestPaintByName });
         }
         catch(error) {
-            console.log(error.message);
+            this.dispatcher({ payload: [], type: paintTypes.KoRequestPaintByName })
         }
     }
 

@@ -1,8 +1,7 @@
 import 'reflect-metadata';
 import express, {Express} from 'express';
-import morgan from 'morgan';
 import { PaintsRoutes } from './paints/PaintsRoutes';
-import cors from 'cors';
+import { corsMiddlware } from './middlewares/Cors';
 
 export class Server {
     private app: Express;
@@ -20,23 +19,7 @@ export class Server {
 
     private ApplyMiddleware() {
         this.app.use(express.json());
-
-        const options: cors.CorsOptions = {
-            allowedHeaders: [
-              'Origin',
-              'X-Requested-With',
-              'Content-Type',
-              'Accept',
-              'X-Access-Token',
-            ],
-            credentials: true,
-            methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-            origin: 'http://localhost:3000/',
-            preflightContinue: false,
-          };
-
-        const corsMiddlware = cors({credentials: true, origin:'http://localhost:3000/'});
-        this.app.use(cors({origin:'http://localhost:3000/'}));
+        this.app.use(corsMiddlware);
     }
 
     private AddRoutes() {

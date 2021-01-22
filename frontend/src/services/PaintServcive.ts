@@ -9,23 +9,27 @@ export class PaintService {
     
     constructor(dispatch: Dispatch<PaintAction>, backendUrl: string) {
         this.dispatcher = dispatch;
-        console.log(backendUrl);
-        this.httpClient = axios.create({baseURL: backendUrl})
+        this.httpClient = axios.create({baseURL: backendUrl, headers: {'Access-Control-Allow-Origin': '*'}})
     }
 
     public async SearchByName(paintName: string): Promise<void> {
         console.log('click on search', paintName);
         
-        const response: AxiosResponse<Array<Paint>> = await this.httpClient.get<Array<Paint>>('/paints/'+paintName);
+        let paints: Array<Paint>
+        try {
+            const response: AxiosResponse<Array<Paint>> = await this.httpClient.get<Array<Paint>>('/paints/'+paintName);
+            
+            if(!response) {
+                console.log(response);
+                return;
+            }
 
-        if(!response) {
-            console.log(response);
-            return;
+            paints = response.data;
+            console.log(paints)
         }
-
-        const paints: Array<Paint> = response.data;
-
-        console.log(paints);
+        catch(error) {
+            console.log(error.message);
+        }
     }
 
 }

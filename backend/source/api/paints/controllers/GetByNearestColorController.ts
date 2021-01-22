@@ -18,9 +18,7 @@ export class GetByNearestColorController {
 
     public async GetByNearestColor(request: Request, response: Response): Promise<Response<any>> {
         const hexCode: string = request.params.hexCode;
-        console.log(hexCode);
         const color: Color = this.factory.BuildFromHexadecial(hexCode);
-        console.log(color);
 
         const paints: Array<Paint> = await this.getNearest.Execute(color);
         

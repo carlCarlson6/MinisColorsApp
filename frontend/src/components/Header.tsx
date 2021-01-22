@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import img from '../images/paint_logo-04.jpg';
 
 const Header: React.FC = (): JSX.Element => {

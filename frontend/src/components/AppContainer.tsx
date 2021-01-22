@@ -11,11 +11,12 @@ const AppContainer: React.FC = (): JSX.Element => {
 
     return (
         <div id="main-app-container" className="container">
+            
             <SearchBar />
             <ColorPicker />
 
             { controller.State.fetchingData ? <Spinner /> : null }
-            { (controller.State.lastRequestOk && controller.State.paints.length == 0) ? <SearchResults paints={controller.State.paints}/> : null }
+            { (controller.State.lastRequestOk && controller.State.paints.length !== 0) ? <SearchResults paints={controller.State.paints}/> : null }
 
         </div>
     );

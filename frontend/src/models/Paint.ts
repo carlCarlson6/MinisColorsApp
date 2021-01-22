@@ -1,5 +1,5 @@
 export interface Paint {
-    Company: String;
-    Name: String;
-    HexColorCode: String;
+    Company: string;
+    Name: string;
+    HexColorCode: string;
 }

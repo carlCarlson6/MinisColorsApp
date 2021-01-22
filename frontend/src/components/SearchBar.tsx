@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PaintContext from '../context/paints/PaintContext';
 import { PaintController } from '../controllers/PaintController';
 

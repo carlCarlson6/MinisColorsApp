@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { paintInitialState } from './PaintInitialState';
 import { paintReducer } from "./PaintContextReducer";
 import { PaintService } from '../../services/PaintServcive';

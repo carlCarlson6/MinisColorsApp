@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Paint } from '../models/Paint';
 
 const SearchResults: React.FC<{ paints: Array<Paint> }> = ({ paints }): JSX.Element => {

@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import express, {Express} from 'express';
 import { PaintsRoutes } from './paints/PaintsRoutes';
-import { corsMiddlware } from './middlewares/Cors';
+import cors from 'cors';
 
 export class Server {
     private app: Express;
@@ -19,7 +19,7 @@ export class Server {
 
     private ApplyMiddleware() {
         this.app.use(express.json());
-        this.app.use(corsMiddlware);
+        this.app.use(cors());
     }
 
     private AddRoutes() {

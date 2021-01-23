@@ -1,6 +1,8 @@
 import { inject, injectable } from "inversify";
+import { Color } from "../core/entities/Color";
 import { Paint } from "../core/entities/Paint";
 import { IPaintsRepository } from "../core/services/IPaintsRepository";
+import { PaintName } from "../core/valueObjects/PaintName";
 
 @injectable()
 export class GetAllEquivalentPaints {
@@ -10,15 +12,31 @@ export class GetAllEquivalentPaints {
         this.repository = paintsRepository;
     }
 
-    public async Execute(paintName: String): Promise<Array<Paint>> {
+    public async Execute(paintName: PaintName): Promise<Array<Paint>> {
         const paints: Array<Paint> = await this.repository.ReadByName(paintName);
         if(paints.length == 0) {
             return [];
         }
+        
+        const uniqueColors: Array<Color> = this.GetUniqueColors(paints);
+        const equivalentPaints: Array<Paint> = await this.GetAllPaintByColor(uniqueColors);
 
-        const paint: Paint = paints[0];
+        return equivalentPaints;
+    }
 
-        const equivalentPaints: Array<Paint> = await this.repository.ReadByColor(paint.Color);
+    private GetUniqueColors(paints: Array<Paint>) {
+        const uniqueColors = paints.map(paint => paint.Color).filter((value, index, self) => {return self.findIndex(v => v.HexadecimalCode.Value == value.HexadecimalCode.Value) == index})
+        return uniqueColors
+    }
+
+    private async GetAllPaintByColor(colors: Array<Color>): Promise<Array<Paint>> {
+        let equivalentPaints: Array<Paint> = []; 
+        for (let i = 0; i < colors.length; i++) {
+            const color: Color = colors[i];
+            const colorPaints: Array<Paint> = await this.repository.ReadByColor(color);
+            colorPaints.forEach(paint => equivalentPaints.push(paint));
+        }
+
         return equivalentPaints;
     }
 

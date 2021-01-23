@@ -2,6 +2,8 @@ import { Document } from "mongoose";
 import { Color } from "../../core/entities/Color";
 import { Paint } from "../../core/entities/Paint";
 import { ColorFactory } from "../../core/services/ColorFactory";
+import { CompanyName } from "../../core/valueObjects/CompanyName";
+import { PaintName } from "../../core/valueObjects/PaintName";
 
 export class PaintsBuilder {
     private colorFactory: ColorFactory = new ColorFactory();
@@ -25,11 +27,11 @@ export class PaintsBuilder {
     }
 
     public BuildPaintFromMongooseDocument(companyName: string, document: Document): Paint {
-        const paintName: string = document.get(companyName);
-        const hexCode: string = document.get('HexCode');
-        const paintColor: Color = this.colorFactory.BuildFromHexadecial(hexCode);
+        const companyNameObjt = new CompanyName(companyName);
+        const paintName: PaintName = new PaintName(document.get(companyName));
+        const paintColor: Color = this.colorFactory.BuildFromHexadecial(document.get('HexCode'));
 
-        return new Paint(companyName, paintName, paintColor);;
+        return new Paint(companyNameObjt, paintName, paintColor);;
     }
 
 }

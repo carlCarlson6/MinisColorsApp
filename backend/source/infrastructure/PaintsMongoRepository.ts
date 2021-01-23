@@ -6,6 +6,7 @@ import { IPaintsRepository } from "../core/services/IPaintsRepository";
 import { PaintMongooseModel } from "./models/PaintMongooseModel";
 import { MongooseDbConnector } from "./common/MongooseDbConnector";
 import { PaintsBuilder } from "./common/PaintsBuilder";
+import { PaintName } from "../core/valueObjects/PaintName";
 
 @injectable()
 export class PaintsMongoRepository implements IPaintsRepository {
@@ -30,9 +31,9 @@ export class PaintsMongoRepository implements IPaintsRepository {
         return paintsWithColor;
     }
     
-    public async ReadByName(name: String): Promise<Array<Paint>> {
+    public async ReadByName(name: PaintName): Promise<Array<Paint>> {
         const allPaints: Array<Paint> = await this.ReadAll();
-        const paintsByName: Array<Paint> = allPaints.filter(paint => paint.Name == name);
+        const paintsByName: Array<Paint> = allPaints.filter(paint => paint.Name.toLowerCase().includes(name.Value.toLowerCase()));
         if(paintsByName.length == 0) {
             return [];
         }

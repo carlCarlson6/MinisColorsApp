@@ -1,9 +1,12 @@
 import { Server } from "./api/Server";
+import dotenv from 'dotenv';
 
 const bootstrap = async () => {
-    console.log('stating the server');
+    dotenv.config({path:'dev.env'});
+    
     const server: Server = new Server();
     server.Start(); 
 }
 
+console.log('stating the server');
 bootstrap();

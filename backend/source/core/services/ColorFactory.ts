@@ -5,7 +5,7 @@ import { RGB } from "../valueObjects/RGB";
 
 export class ColorFactory {
     
-    public BuildFromHexadecial(hexCode: String): Color {
+    public BuildFromHexadecial(hexCode: string): Color {
         const hex: Hexadecimal = new Hexadecimal(hexCode);
         const color: Color = new Color();
         

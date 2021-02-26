@@ -24,7 +24,7 @@ export class RGB {
     }
 
     public ToHex(): Hexadecimal {
-        const hexValue: String = "" + this.ComponentToHex(this.Red) + this.ComponentToHex(this.Green) + this.ComponentToHex(this.Blue)
+        const hexValue: string = "" + this.ComponentToHex(this.Red) + this.ComponentToHex(this.Green) + this.ComponentToHex(this.Blue)
         return new Hexadecimal(hexValue);
     }
 

@@ -1,13 +1,14 @@
 import 'reflect-metadata';
 import express, {Express} from 'express';
-import morgan from 'morgan';
+import { PaintsRoutes } from './paints/PaintsRoutes';
+import cors from 'cors';
 
 export class Server {
     private app: Express;
 
     constructor() {
         this.app = express();
-        this.Config()
+        this.Config();
     }
 
     private Config() {
@@ -18,11 +19,12 @@ export class Server {
 
     private ApplyMiddleware() {
         this.app.use(express.json());
-        this.app.use(() => morgan('dev'));
+        this.app.use(cors());
     }
 
     private AddRoutes() {
-        throw new Error('Method not implemented.');
+        const paintsRoutes: PaintsRoutes = new PaintsRoutes();
+        this.app.use(paintsRoutes.path, paintsRoutes.router);
     }
     
     public Start() {

@@ -8,7 +8,7 @@ namespace Core.Domain.Entities
         public RGB RGBCode { get; }
         public Cielab CielabCode { get; }
 
-        public float Distance(Color color) => this.CielabCode.CalculateCie94Distance(color.CielabCode);
+        public double Distance(Color color) => this.CielabCode.CalculateCie94Distance(color.CielabCode);
 
     }
 }

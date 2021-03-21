@@ -6,6 +6,8 @@ build
 
 dev.env
 
+.DS_Store
+
 ### Node ###
 # Logs
 logs

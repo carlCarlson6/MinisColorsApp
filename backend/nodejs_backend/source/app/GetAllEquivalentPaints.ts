@@ -24,8 +24,8 @@ export class GetAllEquivalentPaints {
         return equivalentPaints;
     }
 
-    private GetUniqueColors(paints: Array<Paint>) {
-        const uniqueColors = paints.map(paint => paint.Color).filter((value, index, self) => {return self.findIndex(v => v.HexadecimalCode.Value == value.HexadecimalCode.Value) == index})
+    private GetUniqueColors(paints: Array<Paint>): Array<Color> {
+        const uniqueColors: Array<Color> = paints.map(paint => paint.Color).filter((value, index, self) => {return self.findIndex(v => v.HexadecimalCode.Value == value.HexadecimalCode.Value) == index})
         return uniqueColors
     }
 

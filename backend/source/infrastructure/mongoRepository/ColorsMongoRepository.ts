@@ -1,13 +1,13 @@
 import { injectable } from "inversify";
 import { Document } from "mongoose";
-import { Color } from "../core/entities/Color";
-import { ColorFactory } from "../core/services/ColorFactory";
-import { IColorsRepository } from "../core/services/IColorsRepository";
+import { Color } from "../../core/entities/Color";
+import { ColorFactory } from "../../core/services/ColorFactory";
+import { ColorsRepository } from "../../core/services/ColorsRepository";
 import { MongooseDbConnector } from "./common/MongooseDbConnector";
 import { PaintMongooseModel } from "./models/PaintMongooseModel";
 
 @injectable()
-export class ColorsMongoRepository implements IColorsRepository {
+export class ColorsMongoRepository implements ColorsRepository {
     private dbConnector: MongooseDbConnector = new MongooseDbConnector();
     private colorFactory: ColorFactory = new ColorFactory();
     

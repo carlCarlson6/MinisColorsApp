@@ -1,15 +1,15 @@
 import { inject, injectable } from "inversify";
 import { Color } from "../core/entities/Color";
 import { Paint } from "../core/entities/Paint";
-import { IPaintsRepository } from "../core/services/IPaintsRepository";
+import { PaintsRepository } from "../core/services/PaintsRepository";
 import { NearestColorFinder } from "../core/services/NearestColorFinder";
 
 @injectable()
 export class GetNearestPaintByColor {
     private finder: NearestColorFinder;
-    private repository: IPaintsRepository;
+    private repository: PaintsRepository;
 
-    constructor(@inject('NearestColorFinder') nearestColorFinder: NearestColorFinder, @inject('IPaintsRepository') paintsRepository: IPaintsRepository) {
+    constructor(@inject('NearestColorFinder') nearestColorFinder: NearestColorFinder, @inject('IPaintsRepository') paintsRepository: PaintsRepository) {
         this.finder = nearestColorFinder;
         this.repository = paintsRepository;
     }

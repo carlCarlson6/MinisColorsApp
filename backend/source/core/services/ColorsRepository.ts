@@ -1,6 +1,6 @@
 import { Color } from "../entities/Color";
 
-export interface IColorsRepository {
+export interface ColorsRepository {
     Create(color: Color): Promise<number>; 
     ReadAll(): Promise<Array<Color>>
     Read(hexCode: String): Promise<Color>

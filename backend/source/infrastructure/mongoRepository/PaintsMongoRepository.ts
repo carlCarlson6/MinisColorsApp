@@ -1,15 +1,15 @@
 import { injectable } from "inversify";
 import { Document } from "mongoose";
-import { Color } from "../core/entities/Color";
-import { Paint } from "../core/entities/Paint";
-import { IPaintsRepository } from "../core/services/IPaintsRepository";
-import { PaintMongooseModel } from "./models/PaintMongooseModel";
+import { Color } from "../../core/entities/Color";
+import { Paint } from "../../core/entities/Paint";
+import { PaintsRepository } from "../../core/services/PaintsRepository";
+import { PaintName } from "../../core/valueObjects/PaintName";
 import { MongooseDbConnector } from "./common/MongooseDbConnector";
 import { PaintsBuilder } from "./common/PaintsBuilder";
-import { PaintName } from "../core/valueObjects/PaintName";
+import { PaintMongooseModel } from "./models/PaintMongooseModel";
 
 @injectable()
-export class PaintsMongoRepository implements IPaintsRepository {
+export class PaintsMongoRepository implements PaintsRepository {
     private dbConnector: MongooseDbConnector = new MongooseDbConnector();
     private paintsBuilder: PaintsBuilder = new PaintsBuilder();
 

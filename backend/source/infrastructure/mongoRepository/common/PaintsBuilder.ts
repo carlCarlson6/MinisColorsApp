@@ -1,9 +1,9 @@
 import { Document } from "mongoose";
-import { Color } from "../../core/entities/Color";
-import { Paint } from "../../core/entities/Paint";
-import { ColorFactory } from "../../core/services/ColorFactory";
-import { CompanyName } from "../../core/valueObjects/CompanyName";
-import { PaintName } from "../../core/valueObjects/PaintName";
+import { Color } from "../../../core/entities/Color";
+import { Paint } from "../../../core/entities/Paint";
+import { ColorFactory } from "../../../core/services/ColorFactory";
+import { CompanyName } from "../../../core/valueObjects/CompanyName";
+import { PaintName } from "../../../core/valueObjects/PaintName";
 
 export class PaintsBuilder {
     private colorFactory: ColorFactory = new ColorFactory();

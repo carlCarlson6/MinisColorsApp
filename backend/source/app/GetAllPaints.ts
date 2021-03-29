@@ -1,13 +1,13 @@
 import { inject, injectable } from "inversify";
 import { Paint } from "../core/entities/Paint";
-import { IPaintsRepository } from "../core/services/IPaintsRepository";
+import { PaintsRepository } from "../core/services/PaintsRepository";
 
 @injectable()
 export class GetAllPaints {
 
-    private Repository: IPaintsRepository;
+    private Repository: PaintsRepository;
 
-    constructor(@inject('IPaintsRepository') paintsRepository: IPaintsRepository) {
+    constructor(@inject('IPaintsRepository') paintsRepository: PaintsRepository) {
         this.Repository = paintsRepository;
     }
 

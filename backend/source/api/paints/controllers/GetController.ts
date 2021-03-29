@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { inject, injectable } from "inversify";
-import { GetAllEquivalentPaints } from "../../../app/GetAllEquivalentPaints";
+import { GetAllEquivalentPaints } from "../../../app/getAllEquivalentPaints/GetAllEquivalentPaints";
 import { Paint } from "../../../core/entities/Paint";
 import { PaintName } from "../../../core/valueObjects/PaintName";
 import { PaintDto } from "../messages/PaintDto";

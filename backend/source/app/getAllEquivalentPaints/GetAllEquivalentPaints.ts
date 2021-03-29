@@ -1,14 +1,14 @@
 import { inject, injectable } from "inversify";
-import { Color } from "../core/entities/Color";
-import { Paint } from "../core/entities/Paint";
-import { IPaintsRepository } from "../core/services/IPaintsRepository";
-import { PaintName } from "../core/valueObjects/PaintName";
+import { Color } from "../../core/entities/Color";
+import { Paint } from "../../core/entities/Paint";
+import { PaintsRepository } from "../../core/services/PaintsRepository";
+import { PaintName } from "../../core/valueObjects/PaintName";
 
 @injectable()
 export class GetAllEquivalentPaints {
-    private repository: IPaintsRepository;
+    private repository: PaintsRepository;
 
-    constructor(@inject('IPaintsRepository') paintsRepository: IPaintsRepository) {
+    constructor(@inject('IPaintsRepository') paintsRepository: PaintsRepository) {
         this.repository = paintsRepository;
     }
 

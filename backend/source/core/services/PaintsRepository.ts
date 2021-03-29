@@ -2,7 +2,7 @@ import { Color } from "../entities/Color";
 import { Paint } from "../entities/Paint";
 import { PaintName } from "../valueObjects/PaintName";
 
-export interface IPaintsRepository {
+export interface PaintsRepository {
     Create(paint: Paint): Promise<number>; 
     ReadAll(): Promise<Array<Paint>>
     ReadByColor(color: Color): Promise<Array<Paint>>

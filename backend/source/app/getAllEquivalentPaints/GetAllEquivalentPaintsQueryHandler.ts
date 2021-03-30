@@ -1,5 +1,6 @@
 import { Paint } from "../../core/entities/Paint";
 import { PaintName } from "../../core/valueObjects/PaintName";
+import { PaintDto } from "../common/PaintDto";
 import { AllEquivalentPaints } from "./AllEquivalentPaints";
 import { GetAllEquivalentPaints } from "./GetAllEquivalentPaints";
 import { GetAllEquivalentPaintsQuery } from "./GetAllEquivalentPaintsQuery";
@@ -13,9 +14,11 @@ export class GetAllEquivalentPaintsQueryHandler {
 
     public async Handle(query: GetAllEquivalentPaintsQuery): Promise<AllEquivalentPaints> {
         const paintName: PaintName = new PaintName(query.PaintName);
+        
         const equivalentPaints: Array<Paint> = await this.useCase.Execute(paintName);
         
-        return new AllEquivalentPaints(equivalentPaints);
+        const dtos: Array<PaintDto> = equivalentPaints.map(paint => new PaintDto(paint));
+        return new AllEquivalentPaints(dtos);
     }
 
 }

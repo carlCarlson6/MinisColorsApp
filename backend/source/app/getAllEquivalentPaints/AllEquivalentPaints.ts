@@ -1,5 +1,8 @@
-import { Paint } from "../../core/entities/Paint";
+import { PaintDto } from "../common/PaintDto";
 
 export class AllEquivalentPaints {
-    constructor(public EquivalentPaints: Array<Paint>) {}
+    public get EquivalentPaints(): Array<PaintDto> {
+        return this.equivalentPaints;
+    }
+    constructor(private readonly equivalentPaints: Array<PaintDto>) {}
 }

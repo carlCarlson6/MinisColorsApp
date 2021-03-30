@@ -3,8 +3,8 @@ import { PaintName } from "../valueObjects/PaintName";
 import { Color } from "./Color";
 
 export class Paint {
-    public Company: String;
-    public Name: String;
+    public Company: string;
+    public Name: string;
     public Color: Color;
 
     constructor(companyName: CompanyName, paintName: PaintName, color: Color) {

@@ -1,4 +1,4 @@
-import { Server } from "./api/Server";
+import { Server } from "./infrastructure/api/Server";
 import dotenv from 'dotenv';
 
 const bootstrap = async () => {

@@ -1,29 +1,24 @@
 import { Request, Response } from "express";
 import { inject, injectable } from "inversify";
-import { GetNearestPaintByColor } from "../../../../app/GetNearestPaintByColor";
-import { Color } from "../../../../core/entities/Color";
-import { Paint } from "../../../../core/entities/Paint";
-import { ColorFactory } from "../../../../core/services/ColorFactory";
-import { PaintDto } from "../../../../app/common/PaintDto";
+import { ServiceBus } from "../../../../core/services/ServiceBus";
+import { GetNearestPaintsByColorQuery } from "../../../../app/getNearestPaint/GetNearestPaintsByColorQuery";
+import { NearestPaintsByColor } from "../../../../app/getNearestPaint/NearestPaintsByColor";
 
 @injectable()
 export class GetByNearestColorController {
-    private getNearest: GetNearestPaintByColor;
-    private factory: ColorFactory;
+    private readonly serviceBus: ServiceBus;
 
-    constructor(@inject('GetNearestPaintByColor') getNearestPaintByColor: GetNearestPaintByColor) {
-        this.getNearest = getNearestPaintByColor;
-        this.factory = new ColorFactory();
+    constructor(@inject('ServiceBus') serviceBus: ServiceBus) {
+        this.serviceBus = serviceBus;
     }
 
     public async GetByNearestColor(request: Request, response: Response): Promise<Response<any>> {
         const hexCode: string = request.params.hexCode;
-        const color: Color = this.factory.BuildFromHexadecial(hexCode);
+        const query: GetNearestPaintsByColorQuery = new GetNearestPaintsByColorQuery(hexCode); 
 
-        const paints: Array<Paint> = await this.getNearest.Execute(color);
+        const nearestPaints: NearestPaintsByColor = await this.serviceBus.Dispatch<GetNearestPaintsByColorQuery, NearestPaintsByColor>(query);
         
-        const paintsResponse: Array<PaintDto> = paints.map(paint => new PaintDto(paint)); 
-        return response.status(200).send(paintsResponse);
+        return response.status(200).send(nearestPaints);
     }
     
 } 

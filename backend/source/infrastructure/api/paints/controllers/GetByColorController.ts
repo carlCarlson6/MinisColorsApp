@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { inject, injectable } from "inversify";
-import { GetPaintsByColor } from "../../../../app/GetPaintsByColor";
+import { GetPaintsByColor } from "../../../../app/getPaintsByColor/GetPaintsByColor";
 import { Color } from "../../../../core/entities/Color";
 import { Paint } from "../../../../core/entities/Paint";
 import { ColorFactory } from "../../../../core/services/ColorFactory";

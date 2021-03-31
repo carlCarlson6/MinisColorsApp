@@ -1,8 +1,8 @@
 import { Container } from "inversify";
 import { GetAllEquivalentPaints } from "../../../app/getAllEquivalentPaints/GetAllEquivalentPaints";
 import { GetAllPaints } from "../../../app/getAllPaints/GetAllPaints";
-import { GetNearestPaintByColor } from "../../../app/GetNearestPaintByColor";
-import { GetPaintsByColor } from "../../../app/GetPaintsByColor";
+import { GetNearestPaintsByColor } from "../../../app/getNearestPaint/GetNearestPaintsByColor";
+import { GetPaintsByColor } from "../../../app/getPaintsByColor/GetPaintsByColor";
 import { ColorsRepository } from "../../../core/services/ColorsRepository";
 import { PaintsRepository } from "../../../core/services/PaintsRepository";
 import { NearestColorFinder } from "../../../core/services/NearestColorFinder";

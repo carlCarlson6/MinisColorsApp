@@ -1,18 +1,18 @@
 import { Container } from "inversify";
-import { GetAllEquivalentPaints } from "../../../app/getAllEquivalentPaints/GetAllEquivalentPaints";
-import { GetAllPaints } from "../../../app/getAllPaints/GetAllPaints";
-import { GetNearestPaintsByColor } from "../../../app/getNearestPaint/GetNearestPaintsByColor";
-import { GetPaintsByColor } from "../../../app/getPaintsByColor/GetPaintsByColor";
-import { ColorsRepository } from "../../../core/services/ColorsRepository";
-import { PaintsRepository } from "../../../core/services/PaintsRepository";
-import { NearestColorFinder } from "../../../core/services/NearestColorFinder";
-import { GetAllController } from "../paints/controllers/GetAllController";
-import { GetByColorController } from "../paints/controllers/GetByColorController";
-import { GetByNearestColorController } from "../paints/controllers/GetByNearestColorController";
-import { GetController } from "../paints/controllers/GetController";
+import { GetAllEquivalentPaints } from "../../app/getAllEquivalentPaints/GetAllEquivalentPaints";
+import { GetAllPaints } from "../../app/getAllPaints/GetAllPaints";
+import { GetNearestPaintsByColor } from "../../app/getNearestPaint/GetNearestPaintsByColor";
+import { GetPaintsByColor } from "../../app/getPaintsByColor/GetPaintsByColor";
+import { ColorsRepository } from "../../core/services/ColorsRepository";
+import { PaintsRepository } from "../../core/services/PaintsRepository";
+import { NearestColorFinder } from "../../core/services/NearestColorFinder";
+import { GetAllController } from "../api/paints/controllers/GetAllController";
+import { GetByColorController } from "../api/paints/controllers/GetByColorController";
+import { GetByNearestColorController } from "../api/paints/controllers/GetByNearestColorController";
+import { GetController } from "../api/paints/controllers/GetController";
 import { InjectionTypes } from "./InjectionTypes";
-import { ColorsMongoRepository } from "../../mongoRepository/ColorsMongoRepository";
-import { PaintsMongoRepository } from "../../mongoRepository/PaintsMongoRepository";
+import { ColorsMongoRepository } from "../mongoRepositories/ColorsMongoRepository";
+import { PaintsMongoRepository } from "../mongoRepositories/PaintsMongoRepository";
 
 const container: Container = new Container();
 

@@ -17,16 +17,18 @@ import { GetPaintsByColorQuery } from "../../app/getPaintsByColor/GetPaintsByCol
 import { PaintsByColor } from "../../app/getPaintsByColor/PaintsByColor";
 import { InjectionTypes } from "./InjectionTypes";
 
-export const injectServices = (container: Container) => {
-    registerHandlers(container);
+export const injectServices = (container: Container): Container => {
+    container = registerHandlers(container);
 
     container.bind<ColorsRepository>(InjectionTypes.ColorsRepository).to(ColorsMongoRepository);
     container.bind<PaintsRepository>(InjectionTypes.PaintsRepository).to(PaintsMongoRepository);
 
     container.bind<NearestColorFinder>(InjectionTypes.NearestColorFinder).to(NearestColorFinder);
+    
+    return container;
 }
 
-const registerHandlers = (container: Container) => {
+const registerHandlers = (container: Container): Container => {
     const inMemoryServiceBus = new InMemoryServiceBus();
     
     const getAllEquivalentPaintsQueryHandler: Handler<GetAllEquivalentPaintsQuery, AllEquivalentPaints> = container.get<Handler<GetAllEquivalentPaintsQuery, AllEquivalentPaints>>(InjectionTypes.GetAllEquivalentPaintsQueryHandler);
@@ -42,4 +44,6 @@ const registerHandlers = (container: Container) => {
     inMemoryServiceBus.Register(getPaintsByColorQueryHandler, InjectionTypes.GetPaintsByColorQueryHandler);
 
     container.bind<ServiceBus>(InjectionTypes.ServiceBus).toConstantValue(inMemoryServiceBus);
+
+    return container;
 }

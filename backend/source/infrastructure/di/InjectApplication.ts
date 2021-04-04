@@ -18,7 +18,7 @@ import { PaintsByColor } from "../../app/getPaintsByColor/PaintsByColor";
 import { Handler } from "../../core/services/Handler";
 import { InjectionTypes } from "./InjectionTypes";
 
-export const injectApplications = (container: Container) => {
+export const injectApplications = (container: Container): Container => {
     container.bind<GetAllEquivalentPaints>(InjectionTypes.GetAllEquivalentPaints).to(GetAllEquivalentPaints);
     container.bind<Handler<GetAllEquivalentPaintsQuery, AllEquivalentPaints>>(InjectionTypes.GetAllEquivalentPaintsQueryHandler).to(GetAllEquivalentPaintsQueryHandler);
     
@@ -30,4 +30,6 @@ export const injectApplications = (container: Container) => {
 
     container.bind<GetPaintsByColor>(InjectionTypes.GetPaintsByColor).to(GetPaintsByColor);
     container.bind<Handler<GetPaintsByColorQuery, PaintsByColor>>(InjectionTypes.GetPaintsByColorQueryHandler).to(GetPaintsByColorQueryHandler);
+
+    return container;
 }

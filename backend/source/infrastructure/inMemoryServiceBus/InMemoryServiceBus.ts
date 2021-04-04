@@ -1,5 +1,6 @@
 import { Handler } from "../../core/services/Handler";
 import { ServiceBus } from "../../core/services/ServiceBus";
+import { nameOf } from "../../utils/NameOf";
 import { InMemoryHandlers } from "./InMemoryHandlers";
 
 export class InMemoryServiceBus implements ServiceBus {
@@ -19,7 +20,4 @@ export class InMemoryServiceBus implements ServiceBus {
         this.handlers.Register(handlerName, handler);
     }
 
-}
-function nameOf(object: Object): string {
-    return object.constructor.name;
 }

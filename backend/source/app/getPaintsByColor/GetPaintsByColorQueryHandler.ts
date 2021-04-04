@@ -1,4 +1,4 @@
-import { inject } from "inversify";
+import { inject, injectable } from "inversify";
 import { Color } from "../../core/entities/Color";
 import { Paint } from "../../core/entities/Paint";
 import { ColorFactory } from "../../core/services/ColorFactory";
@@ -7,6 +7,7 @@ import { GetPaintsByColor } from "./GetPaintsByColor";
 import { GetPaintsByColorQuery } from "./GetPaintsByColorQuery";
 import { PaintsByColor } from "./PaintsByColor";
 
+@injectable()
 export class GetPaintsByColorQueryHandler {
     private readonly useCase: GetPaintsByColor;
     private readonly colorFactory: ColorFactory;

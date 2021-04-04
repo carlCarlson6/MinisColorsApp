@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 export class MongooseDbConnector {
-    private connectiorStr: string;
+    private connectiorStr;
 
     constructor() {
         this.connectiorStr = process.env.MONGODB as string;
@@ -17,6 +17,7 @@ export class MongooseDbConnector {
         } 
         catch(error) {
             console.log(error);
+            throw error;
         }
     }
 

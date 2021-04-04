@@ -1,4 +1,5 @@
 import { inject, injectable } from "inversify";
+import { InjectionTypes } from "../../infrastructure/di/InjectionTypes";
 import { Color } from "../entities/Color";
 import { ColorsRepository } from "./ColorsRepository";
 
@@ -6,7 +7,7 @@ import { ColorsRepository } from "./ColorsRepository";
 export class NearestColorFinder {
     private Repository: ColorsRepository;
 
-    constructor(@inject('IColorsRepository') repository: ColorsRepository) {
+    constructor(@inject(InjectionTypes.ColorsRepository) repository: ColorsRepository) {
         this.Repository = repository;
     }
 

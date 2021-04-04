@@ -1,4 +1,3 @@
-import { resourceUsage } from "process";
 import { Handler } from "../../core/services/Handler";
 import { ServiceBus } from "../../core/services/ServiceBus";
 import { InMemoryHandlers } from "./InMemoryHandlers";
@@ -10,8 +9,8 @@ export class InMemoryServiceBus implements ServiceBus {
         this.handlers = new InMemoryHandlers();
     }
 
-    public async Dispatch<T, S>(message: T&Function): Promise<S> {
-        const handler: Handler<T,S> = this.handlers.getHandler(message.name);
+    public async Dispatch<T, S>(message: T): Promise<S> {
+        const handler: Handler<T,S> = this.handlers.getHandler(nameOf(message));
         const handlerResponse: S = await handler.Handle(message);
         return handlerResponse;
     }
@@ -20,4 +19,7 @@ export class InMemoryServiceBus implements ServiceBus {
         this.handlers.Register(handlerName, handler);
     }
 
+}
+function nameOf(object: Object): string {
+    return object.constructor.name;
 }

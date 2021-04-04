@@ -1,3 +1,4 @@
+import { inject } from "inversify";
 import { Paint } from "../../core/entities/Paint";
 import { ColorFactory } from "../../core/services/ColorFactory";
 import { Handler } from "../../core/services/Handler";
@@ -10,7 +11,7 @@ export class GetNearestPaintsByColorQueryHandler implements Handler<GetNearestPa
     private readonly useCase: GetNearestPaintsByColor;
     private readonly colorFactory: ColorFactory;
 
-    constructor(getNearestPaintsByColor: GetNearestPaintsByColor) {
+    constructor(@inject("GetNearestPaintsByColor") getNearestPaintsByColor: GetNearestPaintsByColor) {
         this.useCase = getNearestPaintsByColor;
         this.colorFactory = this.colorFactory;
     }

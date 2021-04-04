@@ -1,3 +1,4 @@
+import { inject } from "inversify";
 import { Paint } from "../../core/entities/Paint";
 import { Handler } from "../../core/services/Handler";
 import { PaintDto } from "../common/PaintDto";
@@ -8,7 +9,7 @@ import { GetAllPaintsQuery } from "./GetAllPaintsQuery";
 export class GetAllPaintsQueryHandler implements Handler<GetAllPaintsQuery, AllPaints> {
     private readonly useCase: GetAllPaints;
 
-    constructor(useCase: GetAllPaints) {
+    constructor(@inject("GetAllPaints") useCase: GetAllPaints) {
         this.useCase = useCase;
     }
 

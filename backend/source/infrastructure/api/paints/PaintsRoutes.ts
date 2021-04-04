@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import DI from "../../di/Container";
+import DI from "../../di/ContainerDI";
 import { GetAllController } from "./controllers/GetAllController";
 import { GetByColorController } from "./controllers/GetByColorController";
 import { GetByNearestColorController } from "./controllers/GetByNearestColorController";

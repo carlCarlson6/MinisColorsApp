@@ -4,7 +4,6 @@ import { PaintsRepository } from "../../core/services/PaintsRepository";
 
 @injectable()
 export class GetAllPaints {
-
     private Repository: PaintsRepository;
 
     constructor(@inject('PaintsRepository') paintsRepository: PaintsRepository) {

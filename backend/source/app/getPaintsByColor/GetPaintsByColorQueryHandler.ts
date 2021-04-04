@@ -6,7 +6,7 @@ import { GetPaintsByColor } from "./GetPaintsByColor";
 import { GetPaintsByColorQuery } from "./GetPaintsByColorQuery";
 import { PaintsByColor } from "./PaintsByColor";
 
-export class GetPaintsByColorHandler {
+export class GetPaintsByColorQueryHandler {
     private readonly useCase: GetPaintsByColor;
     private readonly colorFactory: ColorFactory;
 

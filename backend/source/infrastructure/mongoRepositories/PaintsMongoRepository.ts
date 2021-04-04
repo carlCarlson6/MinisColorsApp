@@ -5,13 +5,13 @@ import { Paint } from "../../core/entities/Paint";
 import { PaintsRepository } from "../../core/services/PaintsRepository";
 import { PaintName } from "../../core/valueObjects/PaintName";
 import { MongooseDbConnector } from "./common/MongooseDbConnector";
-import { PaintsBuilder } from "./common/PaintsBuilder";
+import { MongoosePaintsBuilder } from "./common/MongoosePaintsBuilder";
 import { PaintMongooseModel } from "./models/PaintMongooseModel";
 
 @injectable()
 export class PaintsMongoRepository implements PaintsRepository {
     private dbConnector: MongooseDbConnector = new MongooseDbConnector();
-    private paintsBuilder: PaintsBuilder = new PaintsBuilder();
+    private paintsBuilder: MongoosePaintsBuilder = new PaintsBuilder();
 
     public async ReadAll(): Promise<Array<Paint>> {
         await this.dbConnector.Connect();

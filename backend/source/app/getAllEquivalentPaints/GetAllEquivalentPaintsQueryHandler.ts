@@ -1,14 +1,17 @@
+import { inject, injectable } from "inversify";
 import { Paint } from "../../core/entities/Paint";
+import { Handler } from "../../core/services/Handler";
 import { PaintName } from "../../core/valueObjects/PaintName";
 import { PaintDto } from "../common/PaintDto";
 import { AllEquivalentPaints } from "./AllEquivalentPaints";
 import { GetAllEquivalentPaints } from "./GetAllEquivalentPaints";
 import { GetAllEquivalentPaintsQuery } from "./GetAllEquivalentPaintsQuery";
 
-export class GetAllEquivalentPaintsQueryHandler {
+@injectable()
+export class GetAllEquivalentPaintsQueryHandler implements Handler<GetAllEquivalentPaintsQuery, AllEquivalentPaints> {
     private readonly useCase: GetAllEquivalentPaints;
 
-    constructor(getAllEquivalentPaints: GetAllEquivalentPaints) {
+    constructor(@inject("GetAllEquivalentPaints") getAllEquivalentPaints: GetAllEquivalentPaints) {
         this.useCase = getAllEquivalentPaints;
     }
 

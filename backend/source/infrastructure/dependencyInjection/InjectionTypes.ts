@@ -3,11 +3,20 @@ export enum InjectionTypes {
     GetByColorController = 'GetByColorController',
     GetByNearestColorController = 'GetByNearestColorController',
     GetController = 'GetController',
-    
+
     GetAllEquivalentPaints = 'GetAllEquivalentPaints',
+    GetAllEquivalentPaintsQueryHandler = 'GetAllEquivalentPaintsQueryHandler',
+
     GetAllPaints = 'GetAllPaints',
-    GetNearestPaintByColor = 'GetNearestPaintByColor',
+    GetAllPaintsQueryHandler = 'GetAllPaintsQueryHandler',
+
+    GetNearestPaintsByColor = 'GetNearestPaintsByColor',
+    GetNearestPaintsByColorQueryHandler = 'GetNearestPaintsByColorQueryHandler',
+
     GetPaintsByColor = 'GetPaintsByColor',
+    GetPaintsByColorQueryHandler = 'GetPaintsByColorQueryHandler',
+
+    ServiceBus = 'ServiceBus',
 
     IColorsRepository = 'IColorsRepository',
     IPaintsRepository = 'IPaintsRepository',

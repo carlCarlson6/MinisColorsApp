@@ -1,34 +1,12 @@
 import { Container } from "inversify";
-import { GetAllEquivalentPaints } from "../../app/getAllEquivalentPaints/GetAllEquivalentPaints";
-import { GetAllPaints } from "../../app/getAllPaints/GetAllPaints";
-import { GetNearestPaintsByColor } from "../../app/getNearestPaint/GetNearestPaintsByColor";
-import { GetPaintsByColor } from "../../app/getPaintsByColor/GetPaintsByColor";
-import { ColorsRepository } from "../../core/services/ColorsRepository";
-import { PaintsRepository } from "../../core/services/PaintsRepository";
-import { NearestColorFinder } from "../../core/services/NearestColorFinder";
-import { GetAllController } from "../api/paints/controllers/GetAllController";
-import { GetByColorController } from "../api/paints/controllers/GetByColorController";
-import { GetByNearestColorController } from "../api/paints/controllers/GetByNearestColorController";
-import { GetController } from "../api/paints/controllers/GetController";
-import { InjectionTypes } from "./InjectionTypes";
-import { ColorsMongoRepository } from "../mongoRepositories/ColorsMongoRepository";
-import { PaintsMongoRepository } from "../mongoRepositories/PaintsMongoRepository";
+import { injectApplications } from "./InjectApplication";
+import { injectControllers } from "./InjectControllers";
+import { injectServices } from "./InjectServices";
 
 const container: Container = new Container();
 
-container.bind<GetAllController>(InjectionTypes.GetAllController).to(GetAllController);
-container.bind<GetByColorController>(InjectionTypes.GetByColorController).to(GetByColorController);
-container.bind<GetByNearestColorController>(InjectionTypes.GetByNearestColorController).to(GetByNearestColorController);
-container.bind<GetController>(InjectionTypes.GetController).to(GetController);
-
-container.bind<GetAllEquivalentPaints>(InjectionTypes.GetAllEquivalentPaints).to(GetAllEquivalentPaints);
-container.bind<GetAllPaints>(InjectionTypes.GetAllPaints).to(GetAllPaints);
-container.bind<GetNearestPaintsByColor>(InjectionTypes.GetNearestPaintByColor).to(GetNearestPaintsByColor);
-container.bind<GetPaintsByColor>(InjectionTypes.GetPaintsByColor).to(GetPaintsByColor);
-
-container.bind<ColorsRepository>(InjectionTypes.IColorsRepository).to(ColorsMongoRepository);
-container.bind<PaintsRepository>(InjectionTypes.IPaintsRepository).to(PaintsMongoRepository);
-
-container.bind<NearestColorFinder>(InjectionTypes.NearestColorFinder).to(NearestColorFinder);
+injectControllers(container);
+injectApplications(container);
+injectServices(container);
 
 export default container;

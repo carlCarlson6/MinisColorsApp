@@ -5,7 +5,7 @@ import { ColorFactory } from "../../../core/services/ColorFactory";
 import { CompanyName } from "../../../core/valueObjects/CompanyName";
 import { PaintName } from "../../../core/valueObjects/PaintName";
 
-export class PaintsBuilder {
+export class MongoosePaintsBuilder {
     private colorFactory: ColorFactory = new ColorFactory();
 
     public BuildPaintsFromMongooseDocuments(documents: Array<Document>): Array<Paint> {

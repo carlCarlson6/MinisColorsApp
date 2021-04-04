@@ -8,7 +8,7 @@ import { PaintName } from "../../core/valueObjects/PaintName";
 export class GetAllEquivalentPaints {
     private repository: PaintsRepository;
 
-    constructor(@inject('IPaintsRepository') paintsRepository: PaintsRepository) {
+    constructor(@inject('PaintsRepository') paintsRepository: PaintsRepository) {
         this.repository = paintsRepository;
     }
 

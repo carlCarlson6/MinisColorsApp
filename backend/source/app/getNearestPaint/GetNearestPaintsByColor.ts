@@ -9,7 +9,7 @@ export class GetNearestPaintsByColor {
     private finder: NearestColorFinder;
     private repository: PaintsRepository;
 
-    constructor(@inject('NearestColorFinder') nearestColorFinder: NearestColorFinder, @inject('IPaintsRepository') paintsRepository: PaintsRepository) {
+    constructor(@inject('NearestColorFinder') nearestColorFinder: NearestColorFinder, @inject('PaintsRepository') paintsRepository: PaintsRepository) {
         this.finder = nearestColorFinder;
         this.repository = paintsRepository;
     }

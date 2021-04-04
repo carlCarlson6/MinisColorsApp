@@ -7,7 +7,7 @@ import { PaintsRepository } from "../../core/services/PaintsRepository";
 export class GetPaintsByColor {
     private Repository: PaintsRepository;
 
-    constructor(@inject('IPaintsRepository') paintsRepository: PaintsRepository) {
+    constructor(@inject('PaintsRepository') paintsRepository: PaintsRepository) {
         this.Repository = paintsRepository;
     }
 

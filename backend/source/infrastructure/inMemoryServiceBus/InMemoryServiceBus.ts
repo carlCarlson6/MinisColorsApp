@@ -10,12 +10,12 @@ export class InMemoryServiceBus implements ServiceBus {
     }
 
     public async Dispatch<T, S>(message: T&Function): Promise<S> {
-        const handler: Handler<T> = this.handlers.getHandler(message.name);
+        const handler: Handler<T,S> = this.handlers.getHandler(message.name);
         
         throw new Error("Method not implemented.");
     }
 
-    public Register<T>(handler: Handler<T>, handlerName: string): void {
+    public Register<T,S>(handler: Handler<T,S>, handlerName: string): void {
         this.handlers.Register(handlerName, handler);
     }
 

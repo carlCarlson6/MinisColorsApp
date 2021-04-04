@@ -11,7 +11,7 @@ import { PaintMongooseModel } from "./models/PaintMongooseModel";
 @injectable()
 export class PaintsMongoRepository implements PaintsRepository {
     private dbConnector: MongooseDbConnector = new MongooseDbConnector();
-    private paintsBuilder: MongoosePaintsBuilder = new PaintsBuilder();
+    private paintsBuilder: MongoosePaintsBuilder = new MongoosePaintsBuilder();
 
     public async ReadAll(): Promise<Array<Paint>> {
         await this.dbConnector.Connect();

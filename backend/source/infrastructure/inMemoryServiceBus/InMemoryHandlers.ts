@@ -2,19 +2,19 @@ import { Handler } from "../../core/services/Handler";
 import { RegisteredInMemoryHandler } from "./RigisteredInMemoryHandler";
 
 export class InMemoryHandlers {
-    private readonly registeredHandlers: Array<RegisteredInMemoryHandler<any>>;
+    private readonly registeredHandlers: Array<RegisteredInMemoryHandler<any,any>>;
 
     constructor() {
         this.registeredHandlers = [];
     }
 
-    public Register<T>(handlerName: string, handler: Handler<T>): void {
-        const registeredHandler = new RegisteredInMemoryHandler<T>(handlerName, handler);
+    public Register<T,S>(handlerName: string, handler: Handler<T,S>): void {
+        const registeredHandler = new RegisteredInMemoryHandler<T,S>(handlerName, handler);
         this.registeredHandlers.push(registeredHandler);
     }
 
-    public getHandler<T>(name: string): Handler<T> {
-        const registeredHandler: RegisteredInMemoryHandler<T> | undefined = this.registeredHandlers.find(r => r.Name === name);
+    public getHandler<T,S>(name: string): Handler<T,S> {
+        const registeredHandler: RegisteredInMemoryHandler<T,S> | undefined = this.registeredHandlers.find(r => r.Name === name);
         if (!registeredHandler) {
             throw new Error("handler " + name + " does not exist");
         }

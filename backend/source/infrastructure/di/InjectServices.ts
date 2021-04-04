@@ -1,5 +1,4 @@
 import { Container } from "inversify";
-import { GetAllEquivalentPaintsQueryHandler } from "../../app/getAllEquivalentPaints/GetAllEquivalentPaintsQueryHandler";
 import { ColorsRepository } from "../../core/services/ColorsRepository";
 import { NearestColorFinder } from "../../core/services/NearestColorFinder";
 import { PaintsRepository } from "../../core/services/PaintsRepository";
@@ -7,7 +6,6 @@ import { ServiceBus } from "../../core/services/ServiceBus";
 import { InMemoryServiceBus } from "../inMemoryServiceBus/InMemoryServiceBus";
 import { ColorsMongoRepository } from "../mongoRepositories/ColorsMongoRepository";
 import { PaintsMongoRepository } from "../mongoRepositories/PaintsMongoRepository";
-import { InjectionTypes } from "./InjectionTypes";
 import { Handler } from "../../core/services/Handler";
 import { GetAllEquivalentPaintsQuery } from "../../app/getAllEquivalentPaints/GetAllEquivalentPaintsQuery";
 import { AllEquivalentPaints } from "../../app/getAllEquivalentPaints/AllEquivalentPaints";
@@ -17,12 +15,13 @@ import { GetNearestPaintsByColorQuery } from "../../app/getNearestPaint/GetNeare
 import { NearestPaintsByColor } from "../../app/getNearestPaint/NearestPaintsByColor";
 import { GetPaintsByColorQuery } from "../../app/getPaintsByColor/GetPaintsByColorQuery";
 import { PaintsByColor } from "../../app/getPaintsByColor/PaintsByColor";
+import { InjectionTypes } from "./InjectionTypes";
 
 export const injectServices = (container: Container) => {
     registerHandlers(container);
 
-    container.bind<ColorsRepository>(InjectionTypes.IColorsRepository).to(ColorsMongoRepository);
-    container.bind<PaintsRepository>(InjectionTypes.IPaintsRepository).to(PaintsMongoRepository);
+    container.bind<ColorsRepository>(InjectionTypes.ColorsRepository).to(ColorsMongoRepository);
+    container.bind<PaintsRepository>(InjectionTypes.PaintsRepository).to(PaintsMongoRepository);
 
     container.bind<NearestColorFinder>(InjectionTypes.NearestColorFinder).to(NearestColorFinder);
 }

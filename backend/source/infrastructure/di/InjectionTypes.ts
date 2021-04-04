@@ -18,8 +18,8 @@ export enum InjectionTypes {
 
     ServiceBus = 'ServiceBus',
 
-    IColorsRepository = 'IColorsRepository',
-    IPaintsRepository = 'IPaintsRepository',
+    ColorsRepository = 'ColorsRepository',
+    PaintsRepository = 'PaintsRepository',
 
     NearestColorFinder = 'NearestColorFinder'
 }

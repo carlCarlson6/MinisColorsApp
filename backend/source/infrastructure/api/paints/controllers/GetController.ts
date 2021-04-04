@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { inject, injectable } from "inversify";
 import { GetAllEquivalentPaintsQuery } from "../../../../app/getAllEquivalentPaints/GetAllEquivalentPaintsQuery";
 import { ServiceBus } from "../../../../core/services/ServiceBus";
-import { PaintDto } from "../../../../app/common/PaintDto";
 import { AllEquivalentPaints } from "../../../../app/getAllEquivalentPaints/AllEquivalentPaints";
 
 @injectable()

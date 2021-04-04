@@ -1,29 +1,25 @@
 import { Request, Response } from "express";
 import { inject, injectable } from "inversify";
-import { GetPaintsByColor } from "../../../../app/getPaintsByColor/GetPaintsByColor";
-import { Color } from "../../../../core/entities/Color";
-import { Paint } from "../../../../core/entities/Paint";
-import { ColorFactory } from "../../../../core/services/ColorFactory";
+import { GetPaintsByColorQuery } from "../../../../app/getPaintsByColor/GetPaintsByColorQuery";
+import { PaintsByColor } from "../../../../app/getPaintsByColor/PaintsByColor";
+import { ServiceBus } from "../../../../core/services/ServiceBus";
 
 @injectable()
 export class GetByColorController {
-    private getPaintsByColor: GetPaintsByColor;
-    private factory: ColorFactory;
+    private readonly serviceBus: ServiceBus;
 
-    constructor(@inject('GetPaintsByColor') getPaintsByColor: GetPaintsByColor) {
-        this.getPaintsByColor = getPaintsByColor;
-        this.factory = new ColorFactory();
+    constructor(@inject('ServiceBus') serviceBus: ServiceBus) {
+        this.serviceBus = serviceBus;
     }
 
     public async GetByColor(request: Request, response: Response): Promise<Response<any>> {
         const hexCode: string = request.params.hexCode;
-        const color: Color = this.factory.BuildFromHexadecial(hexCode);
-        
-        const paints: Array<Paint> = await this.getPaintsByColor.Execute(color);
-        //const paintsResponse: Array<PaintDto> = paints.map(paint => ({ Company: paint.Company, Name: paint.Name, HexColorCode: paint.Color.HexadecimalCode.Value })) 
-        //response.status(200).send(paintsResponse);
-        //return response;
-        throw new Error('not implemented')
+        const query = new GetPaintsByColorQuery(hexCode);
+
+        const paintsByColor: PaintsByColor = await this.serviceBus.Dispatch<GetPaintsByColorQuery, PaintsByColor>(query);
+
+        response.status(200).send(paintsByColor.Paints);
+        return response;
     }
     
 } 

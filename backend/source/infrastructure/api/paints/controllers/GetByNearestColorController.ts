@@ -16,9 +16,14 @@ export class GetByNearestColorController {
         const hexCode: string = request.params.hexCode;
         const query: GetNearestPaintsByColorQuery = new GetNearestPaintsByColorQuery(hexCode); 
 
-        const nearestPaints: NearestPaintsByColor = await this.serviceBus.Dispatch<GetNearestPaintsByColorQuery, NearestPaintsByColor>(query);
+        try {
+            const nearestPaints: NearestPaintsByColor = await this.serviceBus.Dispatch<GetNearestPaintsByColorQuery, NearestPaintsByColor>(query);
         
-        return response.status(200).send(nearestPaints);
+            return response.status(200).send(nearestPaints);
+        }
+        catch(error) {
+            return response.status(500).send(error.message);
+        }
     }
     
 } 

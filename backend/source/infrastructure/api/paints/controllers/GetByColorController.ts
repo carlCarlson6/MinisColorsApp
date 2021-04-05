@@ -16,10 +16,15 @@ export class GetByColorController {
         const hexCode: string = request.params.hexCode;
         const query = new GetPaintsByColorQuery(hexCode);
 
-        const paintsByColor: PaintsByColor = await this.serviceBus.Dispatch<GetPaintsByColorQuery, PaintsByColor>(query);
+        try {
+            const paintsByColor: PaintsByColor = await this.serviceBus.Dispatch<GetPaintsByColorQuery, PaintsByColor>(query);
 
-        response.status(200).send(paintsByColor.Paints);
-        return response;
+            response.status(200).send(paintsByColor.Paints);
+            return response;
+        }
+        catch(error) {
+            return response.status(500).send(error.message);
+        }
     }
     
 } 

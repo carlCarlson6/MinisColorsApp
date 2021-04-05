@@ -22,8 +22,8 @@ export class GetAllController {
 
             return response.status(200).send(allPaints.AlllPaints);
         }
-        catch(e) {
-            return response.status(500).send(e.message);
+        catch(error) {
+            return response.status(500).send(error.message);
         }
     }
 

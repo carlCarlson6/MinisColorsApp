@@ -11,13 +11,13 @@ export class InMemoryServiceBus implements ServiceBus {
     }
 
     public async Dispatch<T, S>(message: T): Promise<S> {
-        const handler: Handler<T,S> = this.handlers.getHandler(nameOf(message));
+        const handler: Handler<T,S> = this.handlers.FindHandler(nameOf(message));
         const handlerResponse: S = await handler.Handle(message);
         return handlerResponse;
     }
 
     public Register<T,S>(handler: Handler<T,S>, handlerName: string): void {
-        this.handlers.Register(handlerName, handler);
+        this.handlers.Add(handlerName, handler);
     }
 
 }

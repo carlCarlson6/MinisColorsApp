@@ -1,3 +1,1 @@
-export class GetAllPaintsQuery {
-    
-}
+export class GetAllPaintsQuery { }

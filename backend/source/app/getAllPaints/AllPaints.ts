@@ -6,5 +6,5 @@ export class AllPaints {
         return this.paints;
     }
 
-    constructor(private readonly paints: Array<PaintDto>) {}
+    constructor(private readonly paints: Array<PaintDto>) { }
 }

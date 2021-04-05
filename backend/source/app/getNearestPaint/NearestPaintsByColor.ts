@@ -7,5 +7,4 @@ export class NearestPaintsByColor {
     }
 
     constructor(private readonly nearestPaints: Array<PaintDto>) { }
-
 }

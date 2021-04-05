@@ -3,13 +3,17 @@ import { Color } from "../../core/entities/Color";
 import { Paint } from "../../core/entities/Paint";
 import { PaintsRepository } from "../../core/services/PaintsRepository";
 import { NearestColorFinder } from "../../core/services/NearestColorFinder";
+import { InjectionTypes } from "../../infrastructure/di/InjectionTypes";
 
 @injectable()
 export class GetNearestPaintsByColor {
     private finder: NearestColorFinder;
     private repository: PaintsRepository;
 
-    constructor(@inject('NearestColorFinder') nearestColorFinder: NearestColorFinder, @inject('PaintsRepository') paintsRepository: PaintsRepository) {
+    constructor(
+        @inject(InjectionTypes.NearestColorFinder) nearestColorFinder: NearestColorFinder, 
+        @inject(InjectionTypes.PaintsRepository) paintsRepository: PaintsRepository
+    ) {
         this.finder = nearestColorFinder;
         this.repository = paintsRepository;
     }

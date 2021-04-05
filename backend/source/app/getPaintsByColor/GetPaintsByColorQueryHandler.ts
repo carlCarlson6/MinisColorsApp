@@ -2,6 +2,7 @@ import { inject, injectable } from "inversify";
 import { Color } from "../../core/entities/Color";
 import { Paint } from "../../core/entities/Paint";
 import { ColorFactory } from "../../core/services/ColorFactory";
+import { InjectionTypes } from "../../infrastructure/di/InjectionTypes";
 import { PaintDto } from "../common/PaintDto";
 import { GetPaintsByColor } from "./GetPaintsByColor";
 import { GetPaintsByColorQuery } from "./GetPaintsByColorQuery";
@@ -12,7 +13,7 @@ export class GetPaintsByColorQueryHandler {
     private readonly useCase: GetPaintsByColor;
     private readonly colorFactory: ColorFactory;
 
-    constructor(@inject("GetPaintsByColor") getPaintsByColor: GetPaintsByColor) {
+    constructor(@inject(InjectionTypes.GetPaintsByColor) getPaintsByColor: GetPaintsByColor) {
         this.useCase = getPaintsByColor;
         this.colorFactory = new ColorFactory();
     }

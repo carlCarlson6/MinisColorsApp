@@ -3,12 +3,13 @@ import { Color } from "../../core/entities/Color";
 import { Paint } from "../../core/entities/Paint";
 import { PaintsRepository } from "../../core/services/PaintsRepository";
 import { PaintName } from "../../core/valueObjects/PaintName";
+import { InjectionTypes } from "../../infrastructure/di/InjectionTypes";
 
 @injectable()
 export class GetAllEquivalentPaints {
     private repository: PaintsRepository;
 
-    constructor(@inject('PaintsRepository') paintsRepository: PaintsRepository) {
+    constructor(@inject(InjectionTypes.PaintsRepository) paintsRepository: PaintsRepository) {
         this.repository = paintsRepository;
     }
 

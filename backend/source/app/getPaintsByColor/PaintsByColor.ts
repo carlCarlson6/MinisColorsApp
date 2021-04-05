@@ -1,4 +1,3 @@
-import { Paint } from "../../core/entities/Paint";
 import { PaintDto } from "../common/PaintDto";
 
 export class PaintsByColor {

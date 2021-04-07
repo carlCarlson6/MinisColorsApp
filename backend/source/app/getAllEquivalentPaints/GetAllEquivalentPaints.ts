@@ -32,8 +32,8 @@ export class GetAllEquivalentPaints {
 
     private async GetAllPaintByColor(colors: Array<Color>): Promise<Array<Paint>> {
         let equivalentPaints: Array<Paint> = []; 
-        for (let i = 0; i < colors.length; i++) {
-            const color: Color = colors[i];
+        
+        for (const color of colors) {
             const colorPaints: Array<Paint> = await this.repository.ReadByColor(color);
             colorPaints.forEach(paint => equivalentPaints.push(paint));
         }

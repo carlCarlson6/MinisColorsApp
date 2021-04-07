@@ -1,5 +1,5 @@
 import { Handler } from "../../core/services/Handler";
-import { RegisteredInMemoryHandler } from "./RigisteredInMemoryHandler";
+import { RegisteredInMemoryHandler } from "./RegisteredInMemoryHandler";
 
 export class InMemoryHandlers {
     private readonly registeredHandlers: Array<RegisteredInMemoryHandler<any,any>>;
@@ -16,7 +16,7 @@ export class InMemoryHandlers {
     public FindHandler<T,S>(name: string): Handler<T,S> {
         const registeredHandler: RegisteredInMemoryHandler<T,S> | undefined = this.registeredHandlers.find(r => r.Name === name);
         if (!registeredHandler) {
-            throw new Error("handler " + name + " does not exist");
+            throw new Error("".concat("handler ", name, " does not exist"));
         }
         return registeredHandler.Handler;
     }

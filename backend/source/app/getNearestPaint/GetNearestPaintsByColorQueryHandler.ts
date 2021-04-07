@@ -15,7 +15,7 @@ export class GetNearestPaintsByColorQueryHandler implements Handler<GetNearestPa
 
     constructor(@inject(InjectionTypes.GetNearestPaintsByColor) getNearestPaintsByColor: GetNearestPaintsByColor) {
         this.useCase = getNearestPaintsByColor;
-        this.colorFactory = this.colorFactory;
+        this.colorFactory = new ColorFactory();
     }
 
     public async Handle(query: GetNearestPaintsByColorQuery): Promise<NearestPaintsByColor> {

@@ -18,9 +18,7 @@ export class GetController {
 
         try {
             const equivalentPaints: AllEquivalentPaints = await this.serviceBus.Dispatch<GetAllEquivalentPaintsQuery, AllEquivalentPaints>(query);        
-
-            response.status(200).send(equivalentPaints.EquivalentPaints);
-            return response;
+            return response.status(200).send(equivalentPaints.EquivalentPaints);
         } 
         catch(error) {
             return response.status(500).send(error.message);

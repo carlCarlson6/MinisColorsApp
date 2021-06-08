@@ -10,13 +10,15 @@ export class PaintsRoutes {
     public path: string = '/api/paints';
 
     private getController: GetController = DI.get<GetController>('GetController');
-    private getAllController: GetAllController = DI.get<GetAllController>('GetAllController');
-    private getByColorController: GetByColorController = DI.get<GetByColorController>('GetByColorController');
-    private getByNearestColor: GetByNearestColorController = DI.get<GetByNearestColorController>('GetByNearestColorController');
-
     private Get = (request: Request, response: Response) => this.getController.Get(request, response);
+
+    private getAllController: GetAllController = DI.get<GetAllController>('GetAllController');
     private GetAll = (request: Request, response: Response) => this.getAllController.GetAll(request, response);
+
+    private getByColorController: GetByColorController = DI.get<GetByColorController>('GetByColorController');
     private GetByColor = (request: Request, response: Response) => this.getByColorController.GetByColor(request, response);
+
+    private getByNearestColor: GetByNearestColorController = DI.get<GetByNearestColorController>('GetByNearestColorController');
     private GetByNearestColor = (request: Request, response: Response) => this.getByNearestColor.GetByNearestColor(request, response);
 
     constructor() {

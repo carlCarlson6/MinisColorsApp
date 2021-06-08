@@ -18,9 +18,7 @@ export class GetByColorController {
 
         try {
             const paintsByColor: PaintsByColor = await this.serviceBus.Dispatch<GetPaintsByColorQuery, PaintsByColor>(query);
-
-            response.status(200).send(paintsByColor.Paints);
-            return response;
+            return response.status(200).send(paintsByColor.Paints);
         }
         catch(error) {
             return response.status(500).send(error.message);

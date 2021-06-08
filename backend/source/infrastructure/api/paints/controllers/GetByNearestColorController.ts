@@ -18,7 +18,6 @@ export class GetByNearestColorController {
 
         try {
             const nearestPaints: NearestPaintsByColor = await this.serviceBus.Dispatch<GetNearestPaintsByColorQuery, NearestPaintsByColor>(query);
-        
             return response.status(200).send(nearestPaints);
         }
         catch(error) {

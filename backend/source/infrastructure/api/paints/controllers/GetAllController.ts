@@ -1,7 +1,5 @@
-import { exception } from "console";
 import { Request, Response } from "express";
 import { injectable, inject } from "inversify";
-import { Error } from "mongoose";
 import { AllPaints } from "../../../../app/getAllPaints/AllPaints";
 import { GetAllPaintsQuery } from "../../../../app/getAllPaints/GetAllPaintsQuery";
 import { ServiceBus } from "../../../../core/services/ServiceBus";
@@ -19,7 +17,6 @@ export class GetAllController {
 
         try {
             const allPaints: AllPaints = await this.serviceBus.Dispatch<GetAllPaintsQuery, AllPaints>(query);
-
             return response.status(200).send(allPaints.AlllPaints);
         }
         catch(error) {

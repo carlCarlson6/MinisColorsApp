@@ -25,7 +25,6 @@ export class Server {
     private AddRoutes() {
         const paintsRoutes: PaintsRoutes = new PaintsRoutes();
         this.app.use(paintsRoutes.path, paintsRoutes.router);
-    
     }
     
     public Start() {

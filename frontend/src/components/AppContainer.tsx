@@ -16,18 +16,17 @@ const AppContainer: React.FC = (): JSX.Element => {
             <ColorPicker />
 
             { 
-            controller.State.fetchingData 
-            ? 
-                <Spinner /> 
-            : 
-                (controller.State.lastRequestOk && controller.State.paints.length !== 0) 
+                controller.State.fetchingData 
                 ? 
-                    <SearchResults paints={controller.State.paints}/> 
+                    <Spinner /> 
                 : 
-                    null 
+                    (controller.State.lastRequestOk && controller.State.paints.length !== 0) 
+                    ? 
+                        <SearchResults paints={controller.State.paints}/> 
+                    : 
+                        null 
             }
             
-
         </div>
     );
 }

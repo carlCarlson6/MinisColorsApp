@@ -19,7 +19,7 @@ const SearchBar: React.FC = (): JSX.Element => {
             <button 
                 type="button" 
                 className="btn btn-outline-primary"
-                onClick={() => controller.PaintServices.SearchByName(searchInput)}
+                onClick={() => controller.PaintsSearchService.ByName(searchInput)}
             >search</button>
         </div>
     );

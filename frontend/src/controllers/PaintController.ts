@@ -1,7 +1,7 @@
 import { PaintState } from "../models/PaintState";
-import { PaintService } from "../services/PaintServcive";
+import { PaintsSearchService } from "../services/PaintsSearchService";
 
 export interface PaintController {
     State: PaintState;
-    PaintServices: PaintService;
+    PaintsSearchService: PaintsSearchService;
 }

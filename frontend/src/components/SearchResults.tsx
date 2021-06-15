@@ -1,5 +1,6 @@
 import React from 'react';
 import { Paint } from '../models/Paint';
+import SearchResult from './SearchResult';
 
 const SearchResults: React.FC<{ paints: Array<Paint> }> = ({ paints }): JSX.Element => {
     const orderedPaints: Array<Paint> = paints.sort((paintA, paintB) => (paintA.HexColorCode > paintB.HexColorCode) ? 1 : -1);
@@ -16,11 +17,7 @@ const SearchResults: React.FC<{ paints: Array<Paint> }> = ({ paints }): JSX.Elem
             <tbody>
                 {
                     orderedPaints.map(paint => {return (
-                        <tr>
-                            <th scope="row">{paint.HexColorCode}</th>
-                            <td>{paint.Company}</td>
-                            <td>{paint.Name}</td>
-                        </tr>
+                        <SearchResult paint={paint}/>
                     );})
                 }
             </tbody>

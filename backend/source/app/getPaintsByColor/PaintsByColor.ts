@@ -6,5 +6,8 @@ export class PaintsByColor {
         return this.paints;
     }
 
-    constructor(private readonly paints: Array<PaintDto>) { }
+    constructor(
+        private readonly paints: Array<PaintDto>
+    ) { }
+
 }

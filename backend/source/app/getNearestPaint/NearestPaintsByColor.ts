@@ -6,5 +6,8 @@ export class NearestPaintsByColor {
         return this.nearestPaints;
     }
 
-    constructor(private readonly nearestPaints: Array<PaintDto>) { }
+    constructor(
+        private readonly nearestPaints: Array<PaintDto>
+    ) { }
+
 }

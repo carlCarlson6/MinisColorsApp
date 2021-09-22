@@ -16,4 +16,4 @@ export class GetAllPaints {
         return paints;
     }
 
-} 
+}

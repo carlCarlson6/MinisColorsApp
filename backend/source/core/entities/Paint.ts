@@ -13,4 +13,4 @@ export class Paint {
         this.Color = color;
     }
 
-} 
+}

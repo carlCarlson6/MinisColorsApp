@@ -19,9 +19,10 @@ export class GetAllController {
             const allPaints: AllPaints = await this.serviceBus.Dispatch<GetAllPaintsQuery, AllPaints>(query);
             return response.status(200).send(allPaints.AlllPaints);
         }
-        catch(error) {
+        catch(e) {
+            const error = e as Error
             return response.status(500).send(error.message);
         }
     }
 
-} 
+}

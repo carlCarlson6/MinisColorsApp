@@ -20,9 +20,10 @@ export class GetByColorController {
             const paintsByColor: PaintsByColor = await this.serviceBus.Dispatch<GetPaintsByColorQuery, PaintsByColor>(query);
             return response.status(200).send(paintsByColor.Paints);
         }
-        catch(error) {
+        catch(e) {
+            const error = e as Error;
             return response.status(500).send(error.message);
         }
     }
     
-} 
+}

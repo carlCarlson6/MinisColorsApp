@@ -4,5 +4,8 @@ export class GetAllEquivalentPaintsQuery {
         return this.paintName;
     }
 
-    constructor(private readonly paintName: string) { }
+    constructor(
+        private readonly paintName: string
+    ) { }
+
 }

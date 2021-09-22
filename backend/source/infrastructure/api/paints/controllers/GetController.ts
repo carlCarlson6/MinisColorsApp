@@ -20,9 +20,10 @@ export class GetController {
             const equivalentPaints: AllEquivalentPaints = await this.serviceBus.Dispatch<GetAllEquivalentPaintsQuery, AllEquivalentPaints>(query);        
             return response.status(200).send(equivalentPaints.EquivalentPaints);
         } 
-        catch(error) {
+        catch(e) {
+            const error = e as Error;
             return response.status(500).send(error.message);
         }
     }
     
-} 
+}

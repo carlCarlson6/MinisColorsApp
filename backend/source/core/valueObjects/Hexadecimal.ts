@@ -2,7 +2,7 @@ import { Cielab } from "./Cielab";
 import { RGB } from "./RGB";
 
 export class Hexadecimal{
-    public Value: string;
+    public readonly Value: string;
 
     constructor(code: string) {
         this.Value = code;

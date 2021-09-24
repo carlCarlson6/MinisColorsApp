@@ -30,16 +30,16 @@ export const injectHandlers = (container: Container): Container => {
 const registerHandlers = (container: Container): Container => {
     const inMemoryServiceBus = new InMemoryServiceBus();
     
-    const getAllEquivalentPaintsQueryHandler: Handler<GetAllEquivalentPaintsQuery, AllEquivalentPaints> = container.get<Handler<GetAllEquivalentPaintsQuery, AllEquivalentPaints>>(InjectionTypes.GetAllEquivalentPaintsQueryHandler);
+    const getAllEquivalentPaintsQueryHandler = container.get<Handler<GetAllEquivalentPaintsQuery, AllEquivalentPaints>>(InjectionTypes.GetAllEquivalentPaintsQueryHandler);
     inMemoryServiceBus.Register(getAllEquivalentPaintsQueryHandler, InjectionTypes.GetAllEquivalentPaints);
 
-    const getAllPaintsQueryHandler: Handler<GetAllPaintsQuery, AllPaints> = container.get<Handler<GetAllPaintsQuery, AllPaints>>(InjectionTypes.GetAllPaintsQueryHandler);
+    const getAllPaintsQueryHandler = container.get<Handler<GetAllPaintsQuery, AllPaints>>(InjectionTypes.GetAllPaintsQueryHandler);
     inMemoryServiceBus.Register(getAllPaintsQueryHandler, InjectionTypes.GetAllPaintsQuery);
 
-    const getNearestPaintQueryHandler: Handler<GetNearestPaintsByColorQuery, NearestPaintsByColor> = container.get<Handler<GetNearestPaintsByColorQuery, NearestPaintsByColor>>(InjectionTypes.GetNearestPaintsByColorQueryHandler);
+    const getNearestPaintQueryHandler = container.get<Handler<GetNearestPaintsByColorQuery, NearestPaintsByColor>>(InjectionTypes.GetNearestPaintsByColorQueryHandler);
     inMemoryServiceBus.Register(getNearestPaintQueryHandler, InjectionTypes.GetNearestPaintsByColorQuery);
 
-    const getPaintsByColorQueryHandler: Handler<GetPaintsByColorQuery, PaintsByColor> = container.get<Handler<GetPaintsByColorQuery, PaintsByColor>>(InjectionTypes.GetPaintsByColorQueryHandler);
+    const getPaintsByColorQueryHandler = container.get<Handler<GetPaintsByColorQuery, PaintsByColor>>(InjectionTypes.GetPaintsByColorQueryHandler);
     inMemoryServiceBus.Register(getPaintsByColorQueryHandler, InjectionTypes.GetPaintsByColorQuery);
 
     container.bind<ServiceBus>(InjectionTypes.ServiceBus).toConstantValue(inMemoryServiceBus);

@@ -10,5 +10,8 @@ export class RegisteredInMemoryHandler<T,S> {
         return this.handler;
     }
 
-    constructor(private readonly name: string, private readonly handler: Handler<T,S>) {}
+    constructor(
+        private readonly name: string, 
+        private readonly handler: Handler<T,S>
+    ) {}
 }

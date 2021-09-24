@@ -1,3 +1,6 @@
+import { BusMessage } from "./BusMessage";
+import { BusResponse } from "./BusResponse";
+
 export interface ServiceBus {
-    Dispatch<T, S>(message: T): Promise<S>; 
+    Dispatch<T extends BusMessage, S extends BusResponse>(message: T): Promise<S>; 
 }

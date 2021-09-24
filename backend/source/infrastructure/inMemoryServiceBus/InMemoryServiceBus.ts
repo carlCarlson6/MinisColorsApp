@@ -1,3 +1,5 @@
+import { BusMessage } from "../../core/services/BusMessage";
+import { BusResponse } from "../../core/services/BusResponse";
 import { Handler } from "../../core/services/Handler";
 import { ServiceBus } from "../../core/services/ServiceBus";
 import { nameOf } from "../../utils/NameOf";
@@ -10,8 +12,8 @@ export class InMemoryServiceBus implements ServiceBus {
         this.handlers = new InMemoryHandlers();
     }
 
-    public async Dispatch<T, S>(message: T): Promise<S> {
-        const handler: Handler<T,S> = this.handlers.FindHandler(nameOf(message));
+    public async Dispatch<T extends BusMessage, S extends BusResponse>(message: T): Promise<S> {
+        const handler: Handler<T,S> = this.handlers.FindHandler(message.MessageName);
         const handlerResponse: S = await handler.Handle(message);
         return handlerResponse;
     }

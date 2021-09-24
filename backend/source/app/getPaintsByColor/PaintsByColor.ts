@@ -1,6 +1,7 @@
+import { BusResponse } from "../../core/services/BusResponse";
 import { PaintDto } from "../common/PaintDto";
 
-export class PaintsByColor {
+export class PaintsByColor implements BusResponse {
 
     public get Paints(): Array<PaintDto> {
         return this.paints;

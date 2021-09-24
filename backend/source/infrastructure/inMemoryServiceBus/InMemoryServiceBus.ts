@@ -18,7 +18,7 @@ export class InMemoryServiceBus implements ServiceBus {
         return handlerResponse;
     }
 
-    public Register<T,S>(handler: Handler<T,S>, handlerName: string): void {
+    public Register<T extends BusMessage, S extends BusResponse>(handler: Handler<T,S>, handlerName: string): void {
         this.handlers.Add(handlerName, handler);
     }
 

@@ -16,7 +16,7 @@ export class InMemoryHandlers {
     }
 
     public FindHandler<T extends BusMessage, S extends BusResponse>(name: string): Handler<T,S> {
-        const registeredHandler: RegisteredInMemoryHandler<T,S> | undefined = this.registeredHandlers.find(r => r.Name === name);
+        const registeredHandler = this.registeredHandlers.find(r => r.Name === name);
         if (!registeredHandler) {
             throw new Error("".concat("handler ", name, " does not exist"));
         }

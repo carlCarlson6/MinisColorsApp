@@ -40,11 +40,12 @@ describe(InMemoryServiceBus.name, () => {
         const getPaintByColorQuery = new GetPaintsByColorQuery("some-hexadecimalCode");
 
         await inMemoryServiceBus.Dispatch<GetAllEquivalentPaintsQuery, AllEquivalentPaints>(getAllEquivalentPaintsQuery);
+        await inMemoryServiceBus.Dispatch<GetAllEquivalentPaintsQuery, AllEquivalentPaints>(getAllEquivalentPaintsQuery);
         await inMemoryServiceBus.Dispatch<GetAllPaintsQuery, AllPaints>(getAllPaintsQuery);
         await inMemoryServiceBus.Dispatch<GetNearestPaintsByColorQuery, NearestPaintsByColor>(getNearestPaintsByColorQuery);
         await inMemoryServiceBus.Dispatch<GetPaintsByColorQuery, PaintsByColor>(getPaintByColorQuery);
 
-        getAllEquivalentPaintsQueryHandlerMock.verify(m => m.Handle(getAllEquivalentPaintsQuery), Times.Once());
+        getAllEquivalentPaintsQueryHandlerMock.verify(m => m.Handle(getAllEquivalentPaintsQuery), Times.Exactly(2));
         getAllPaintsQueryHandlerMock.verify(m => m.Handle(getAllPaintsQuery), Times.Once());
         getNearestPaintQueryHandlerMock.verify(m => m.Handle(getNearestPaintsByColorQuery), Times.Once());
         getPaintsByColorQueryHandlerMock.verify(m => m.Handle(getPaintByColorQuery), Times.Once());

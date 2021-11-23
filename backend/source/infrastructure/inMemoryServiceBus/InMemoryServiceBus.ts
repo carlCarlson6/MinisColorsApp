@@ -2,7 +2,6 @@ import { BusMessage } from "../../core/services/BusMessage";
 import { BusResponse } from "../../core/services/BusResponse";
 import { Handler } from "../../core/services/Handler";
 import { ServiceBus } from "../../core/services/ServiceBus";
-import { nameOf } from "../../utils/NameOf";
 import { InMemoryHandlers } from "./InMemoryHandlers";
 
 export class InMemoryServiceBus implements ServiceBus {

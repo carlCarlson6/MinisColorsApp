@@ -7,7 +7,7 @@ import { GetNearestPaintsByColorQuery } from "../../../source/app/getNearestPain
 import { NearestPaintsByColor } from "../../../source/app/getNearestPaint/NearestPaintsByColor";
 import { GetPaintsByColorQuery } from "../../../source/app/getPaintsByColor/GetPaintsByColorQuery";
 import { PaintsByColor } from "../../../source/app/getPaintsByColor/PaintsByColor";
-import { Handler } from "../../../source/core/services/Handler";
+import { Handler } from "../../../source/core/services/bus/Handler";
 import { InMemoryServiceBus } from "../../../source/infrastructure/inMemoryServiceBus/InMemoryServiceBus";
 
 

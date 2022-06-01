@@ -2,27 +2,21 @@ import { Cielab } from "./Cielab";
 import { RGB } from "./RGB";
 
 export class Hexadecimal{
-    public readonly Value: string;
-
-    constructor(code: string) {
-        this.Value = code;
-    }
+    constructor(
+        private readonly value: string
+    ) { }
 
     public ToRGB(): RGB {
-        const aRgbHex: RegExpMatchArray | null = this.Value.match(/.{1,2}/g);
+        const aRgbHex = this.value.match(/.{1,2}/g);
 
         if(!aRgbHex) {
-            throw new Error();
+            throw new Error(); // TODO - throw proper
         }
 
-        const red: number = parseInt(aRgbHex[0], 16);
-        const green: number = parseInt(aRgbHex[1], 16);
-        const blue: number = parseInt(aRgbHex[2], 16);
-        return new RGB(red, green, blue);
+        return new RGB(parseInt(aRgbHex[0], 16), parseInt(aRgbHex[1], 16), parseInt(aRgbHex[2], 16));
     }
 
-    public ToCielab(): Cielab {
-        return this.ToRGB().ToCielab();
-    }
+    public ToCielab(): Cielab { return this.ToRGB().ToCielab(); }
 
+    public ToString(): string { return this.value; }
 }

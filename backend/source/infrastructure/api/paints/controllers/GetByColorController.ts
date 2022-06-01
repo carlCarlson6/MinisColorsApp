@@ -2,18 +2,17 @@ import { Request, Response } from "express";
 import { inject, injectable } from "inversify";
 import { GetPaintsByColorQuery } from "../../../../app/getPaintsByColor/GetPaintsByColorQuery";
 import { PaintsByColor } from "../../../../app/getPaintsByColor/PaintsByColor";
-import { ServiceBus } from "../../../../core/services/ServiceBus";
+import { ServiceBus } from "../../../../core/services/bus/ServiceBus";
 
 @injectable()
 export class GetByColorController {
-    private readonly serviceBus: ServiceBus;
-
-    constructor(@inject('ServiceBus') serviceBus: ServiceBus) {
-        this.serviceBus = serviceBus;
-    }
+    constructor(
+        @inject('ServiceBus')
+        private readonly serviceBus: ServiceBus
+    ) { }
 
     public async GetByColor(request: Request, response: Response): Promise<Response<any>> {
-        const hexCode: string = request.params.hexCode;
+        const hexCode = request.params.hexCode;
         const query = new GetPaintsByColorQuery(hexCode);
 
         try {
@@ -25,5 +24,4 @@ export class GetByColorController {
             return response.status(500).send(error.message);
         }
     }
-    
 }

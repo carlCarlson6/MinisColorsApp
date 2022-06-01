@@ -1,15 +1,10 @@
-import { BusMessage } from "../../core/services/BusMessage";
+import { BusMessage } from "../../core/services/repositories/BusMessage";
+import { GetNearestPaintsByColor } from "./GetNearestPaintsByColor";
 
 export class GetNearestPaintsByColorQuery implements BusMessage {
-
-    public get HexadecimalCode(): string {
-        return this.hexadecimalCode;
-    }
-
-    public readonly MessageName: string = GetNearestPaintsByColorQuery.name;
+    public readonly MessageName: string = GetNearestPaintsByColor.name;
 
     constructor(
-        private readonly hexadecimalCode: string
+        readonly HexadecimalCode: string
     ) { }
-    
 }

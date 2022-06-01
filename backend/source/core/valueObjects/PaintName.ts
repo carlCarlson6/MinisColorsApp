@@ -1,7 +1,7 @@
 export class PaintName {
-    public readonly Value: string
+    constructor(
+        private readonly value: string
+    ) { }
 
-    constructor(value: string) {
-        this.Value = value;
-    }
+    public ToString(): string { return this.value };
 }

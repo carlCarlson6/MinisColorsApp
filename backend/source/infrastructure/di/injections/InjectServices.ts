@@ -1,7 +1,7 @@
 import { Container } from "inversify";
-import { ColorsRepository } from "../../../core/services/ColorsRepository";
+import { ColorsRepository } from "../../../core/services/repositories/ColorsRepository";
 import { NearestColorFinder } from "../../../core/services/NearestColorFinder";
-import { PaintsRepository } from "../../../core/services/PaintsRepository";
+import { PaintsRepository } from "../../../core/services/repositories/PaintsRepository";
 import { ColorsMongoRepository } from "../../mongoRepositories/ColorsMongoRepository";
 import { PaintsMongoRepository } from "../../mongoRepositories/PaintsMongoRepository";
 import { InjectionTypes } from "../InjectionTypes";

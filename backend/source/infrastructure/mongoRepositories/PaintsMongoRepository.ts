@@ -2,7 +2,7 @@ import { injectable } from "inversify";
 import { Document } from "mongoose";
 import { Color } from "../../core/entities/Color";
 import { Paint } from "../../core/entities/Paint";
-import { PaintsRepository } from "../../core/services/PaintsRepository";
+import { PaintsRepository } from "../../core/services/repositories/PaintsRepository";
 import { PaintName } from "../../core/valueObjects/PaintName";
 import { MongooseDbConnector } from "./common/MongooseDbConnector";
 import { MongoosePaintsBuilder } from "./common/MongoosePaintsBuilder";
@@ -13,32 +13,26 @@ export class PaintsMongoRepository implements PaintsRepository {
     private dbConnector: MongooseDbConnector = new MongooseDbConnector();
     private paintsBuilder: MongoosePaintsBuilder = new MongoosePaintsBuilder();
 
-    public async ReadAll(): Promise<Array<Paint>> {
+    public async ReadAll(): Promise<Paint[]> {
+        console.log("connecting");
         await this.dbConnector.Connect();
-        const documents: Array<Document> = await PaintMongooseModel.find();
+        const documents = await PaintMongooseModel.find();
         await this.dbConnector.Disconnect();
 
-        const allPaints: Array<Paint> = this.paintsBuilder.BuildPaintsFromMongooseDocuments(documents);
-        return allPaints;
+        return this.paintsBuilder.BuildPaintsFromMongooseDocuments(documents);
     }
     
-    public async ReadByColor(color: Color): Promise<Array<Paint>> {
+    public async ReadByColor(color: Color): Promise<Paint[]> {
         await this.dbConnector.Connect();
-        const documents: Array<Document> = await PaintMongooseModel.find({HexCode: color.HexadecimalCode.Value});
+        const documents = await PaintMongooseModel.find({HexCode: color.HexadecimalCode.ToString()});
         await this.dbConnector.Disconnect();
         
-        const paintsWithColor: Array<Paint> = this.paintsBuilder.BuildPaintsFromMongooseDocuments(documents);
-        return paintsWithColor;
+        return this.paintsBuilder.BuildPaintsFromMongooseDocuments(documents);
     }
     
-    public async ReadByName(name: PaintName): Promise<Array<Paint>> {
-        const allPaints: Array<Paint> = await this.ReadAll();
-        const paintsByName: Array<Paint> = allPaints.filter(paint => paint.Name.toLowerCase().includes(name.Value.toLowerCase()));
-        if(paintsByName.length == 0) {
-            return [];
-        }
-
-        return paintsByName;
+    public async ReadByName(name: PaintName): Promise<Paint[]> {
+        const allPaints = await this.ReadAll();
+        return allPaints.filter(paint => paint.Name.ToString().toLowerCase().includes(name.ToString().toLowerCase()));
     }
 
     public async Create(paint: Paint): Promise<number> {
@@ -50,5 +44,4 @@ export class PaintsMongoRepository implements PaintsRepository {
     public async Delete(paint: Paint): Promise<number> {
         throw new Error("Method not implemented.");
     }
-
 }

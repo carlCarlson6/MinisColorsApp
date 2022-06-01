@@ -1,17 +1,10 @@
-import { BusMessage } from "../../core/services/BusMessage";
+import { BusMessage } from "../../core/services/repositories/BusMessage";
+import { GetAllEquivalentPaints } from "./GetAllEquivalentPaints";
 
 export class GetAllEquivalentPaintsQuery implements BusMessage {
-
-    public get PaintName(): string {
-        return this.paintName;
-    }
-
-    public readonly MessageName: string;
+    public readonly MessageName = GetAllEquivalentPaints.name;
 
     constructor(
-        private readonly paintName: string
-    ) { 
-        this.MessageName = GetAllEquivalentPaintsQuery.name;
-    }
-
+        readonly PaintName: string
+    ) { }
 }

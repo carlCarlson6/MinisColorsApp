@@ -8,11 +8,8 @@ export class Server {
 
     constructor() {
         this.app = express();
-        this.Config();
-    }
-
-    private Config() {
         this.app.set('port', process.env.PORT || 4000);
+
         this.ApplyMiddleware();
         this.AddRoutes();
     }
@@ -23,7 +20,7 @@ export class Server {
     }
 
     private AddRoutes() {
-        const paintsRoutes: PaintsRoutes = new PaintsRoutes();
+        const paintsRoutes = new PaintsRoutes();
         this.app.use(paintsRoutes.path, paintsRoutes.router);
     }
     

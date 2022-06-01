@@ -2,7 +2,7 @@ import { injectable } from "inversify";
 import { Document } from "mongoose";
 import { Color } from "../../core/entities/Color";
 import { ColorFactory } from "../../core/services/ColorFactory";
-import { ColorsRepository } from "../../core/services/ColorsRepository";
+import { ColorsRepository } from "../../core/services/repositories/ColorsRepository";
 import { MongooseDbConnector } from "./common/MongooseDbConnector";
 import { PaintMongooseModel } from "./models/PaintMongooseModel";
 

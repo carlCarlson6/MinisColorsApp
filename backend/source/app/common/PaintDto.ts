@@ -10,15 +10,17 @@ export class PaintDto {
     public get HexColorCode(): string {
         return this.hexColorCode;
     }
+    constructor(
+        private readonly company: string,
+        private readonly name: string,
+        private readonly hexColorCode: string,
+    ) {}
 
-    private company: string;
-    private name: string;
-    private hexColorCode: string;
-    
-    constructor(paint: Paint) { 
-        this.company = paint.Company;
-        this.name = paint.Name;
-        this.hexColorCode = paint.Color.HexadecimalCode.Value;
+    public static FromPaint(paint: Paint): PaintDto {
+        return new PaintDto(paint.Company.ToString(), paint.Name.ToString(), paint.Color.HexadecimalCode.ToString());
     }
 
+    public static FromPaints(paints: Paint[]): PaintDto[] {
+        return paints.map(paint => this.FromPaint(paint));
+    }
 }

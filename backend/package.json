@@ -5,8 +5,9 @@
   "main": "./build/index.js",
   "scripts": {
     "start": "node .",
-    "dev": "ts-node-dev ./src/index.ts",
+    "dev": "ts-node-dev ./source/index.ts",
     "build": "tsc",
+    "build:watch": "tsc -w",
     "test": "jest --collectCoverage"
   },
   "author": "Carlos Acitores Deval",

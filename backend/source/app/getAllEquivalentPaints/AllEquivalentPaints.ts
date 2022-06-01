@@ -1,14 +1,14 @@
-import { BusResponse } from "../../core/services/BusResponse";
+import { Paint } from "../../core/entities/Paint";
+import { BusResponse } from "../../core/services/bus/BusResponse";
 import { PaintDto } from "../common/PaintDto";
 
 export class AllEquivalentPaints implements BusResponse {
-
-    public get EquivalentPaints(): Array<PaintDto> {
-        return this.equivalentPaints;
-    }
-
     constructor(
-        private readonly equivalentPaints: Array<PaintDto>
-    ) {}
-
+        readonly EquivalentPaints: PaintDto[]
+    ) { }
+    
+    public static FromPaints(paints: Paint[]) {
+        const dtos = PaintDto.FromPaints(paints);
+        return new AllEquivalentPaints(dtos);
+    }
 }

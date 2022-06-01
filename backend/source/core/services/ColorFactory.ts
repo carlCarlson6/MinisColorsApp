@@ -6,36 +6,17 @@ import { RGB } from "../valueObjects/RGB";
 export class ColorFactory {
     
     public BuildFromHexadecial(hexCode: string): Color {
-        const hex: Hexadecimal = new Hexadecimal(hexCode);
-        const color: Color = new Color();
-        
-        color.HexadecimalCode = hex;
-        color.RGBCode = hex.ToRGB();
-        color.CielabCode = hex.ToCielab();
-
-        return color;
+        const hex = new Hexadecimal(hexCode);
+        return new Color(hex, hex.ToRGB(), hex.ToCielab());
     }
 
     public BuildFromRGB(red: number, green: number, blue: number): Color {
-        const rgb: RGB = new RGB(red, green, blue);
-        const color: Color = new Color();
-        
-        color.HexadecimalCode = rgb.ToHex();
-        color.RGBCode = rgb;
-        color.CielabCode = rgb.ToCielab();
-
-        return color;
+        const rgb = new RGB(red, green, blue);
+        return new Color(rgb.ToHex(), rgb, rgb.ToCielab());
     }
 
     public BuildFromCielab(lightness: number, aValue: number, bValue: number): Color {
-        const cielab: Cielab = new Cielab(lightness, aValue, bValue);
-        const color: Color = new Color();
-        
-        color.HexadecimalCode = cielab.ToHex();
-        color.RGBCode = cielab.ToRGB();
-        color.CielabCode = cielab;
-
-        return color;
+        const cielab = new Cielab(lightness, aValue, bValue);
+        return new Color(cielab.ToHex(), cielab.ToRGB(), cielab);
     }
-
 }

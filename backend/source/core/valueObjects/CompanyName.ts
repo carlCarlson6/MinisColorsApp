@@ -1,7 +1,7 @@
 export class CompanyName {
-    public readonly Value: string
+    constructor(
+        private readonly value: string
+    ) { }
 
-    constructor(value: string) {
-        this.Value = value;
-    }
+    public ToString() { return this.value; }
 }

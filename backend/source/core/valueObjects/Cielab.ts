@@ -1,39 +1,29 @@
 import { Hexadecimal } from "./Hexadecimal";
 import { RGB } from "./RGB";
+import { XYZComponents } from "./XYZComponents";
 
 export class Cielab {
-    public readonly Lightness: number;
-    public readonly aAxisValue: number;
-    public readonly bAxisValue: number;
-
-    public constructor(l: number, a: number, b: number) {
-        this.Lightness = l;
-        this.aAxisValue = a;
-        this.bAxisValue = b;
-    }
+    public constructor(
+        readonly Lightness: number, 
+        readonly AAxisValue: number, 
+        readonly BAxisValue: number
+    ) { }
 
     public ToRGB(): RGB {
-        const [xComponent, yComponent, zComponent] = this.CalculateXYZComponentsFromLABComponents();
-        const [redComponent, greenComponent, blueComponent] = this.CalculateRGBComponentsFromXYZComponents(xComponent, yComponent, zComponent);
+        const xyzComponents = XYZComponents.FromCielab(this);
+        const [redComponent, greenComponent, blueComponent] = this.CalculateRGBComponentsFromXYZComponents(xyzComponents);
 
         return new RGB(redComponent, greenComponent, blueComponent)
     }
 
-    private CalculateXYZComponentsFromLABComponents(): [number, number, number] {
-        let yComponent: number = (this.Lightness + 16) / 116;
-        let xComponent: number = this.aAxisValue / 500 + yComponent;
-        let zComponent: number = this.bAxisValue / 200;
-        xComponent = 0.95047 * ((xComponent * xComponent * xComponent > 0.008856) ? xComponent * xComponent * xComponent : (xComponent - 16/116) / 7.787);
-        yComponent = 1.00000 * ((yComponent * yComponent * yComponent > 0.008856) ? yComponent * yComponent * yComponent : (yComponent - 16/116) / 7.787);
-        zComponent = 1.08883 * ((zComponent * zComponent * zComponent > 0.008856) ? zComponent * zComponent * zComponent : (zComponent - 16/116) / 7.787);
-
-        return [xComponent, yComponent, zComponent];
+    public ToHex(): Hexadecimal {
+        return this.ToRGB().ToHex();
     }
 
-    private CalculateRGBComponentsFromXYZComponents(xComponent: number, yComponent: number, zComponent: number): [number, number, number] {
-        let redComponent: number = xComponent *  3.2406 + yComponent * -1.5372 + zComponent * -0.4986;
-        let greenComponent: number = xComponent * -0.9689 + yComponent *  1.8758 + zComponent *  0.0415;
-        let blueComponent: number = xComponent *  0.0557 + yComponent * -0.2040 + zComponent *  1.0570;
+    private CalculateRGBComponentsFromXYZComponents({X, Y, Z}: XYZComponents): [number, number, number] {
+        let redComponent = X *  3.2406 + Y * -1.5372 + Z * -0.4986;
+        let greenComponent = X * -0.9689 + Y *  1.8758 + Y *  0.0415;
+        let blueComponent = X *  0.0557 + Y * -0.2040 + Z *  1.0570;
         redComponent = (redComponent > 0.0031308) ? (1.055 * Math.pow(redComponent, 1/2.4) - 0.055) : 12.92 * redComponent;
         greenComponent = (greenComponent > 0.0031308) ? (1.055 * Math.pow(greenComponent, 1/2.4) - 0.055) : 12.92 * greenComponent;
         blueComponent = (blueComponent > 0.0031308) ? (1.055 * Math.pow(blueComponent, 1/2.4) - 0.055) : 12.92 * blueComponent;
@@ -41,33 +31,28 @@ export class Cielab {
         return [redComponent, greenComponent, blueComponent];
     }
 
-    public ToHex(): Hexadecimal {
-        return this.ToRGB().ToHex();
-    }
-
     public CalculateCie94Distance(color: Cielab): number {
-        const deltaL: number = this.Lightness - color.Lightness;
-        const C1: number = Math.sqrt(Math.pow(this.aAxisValue, 2) + Math.pow(color.aAxisValue, 2));
-        const C2: number = Math.sqrt(Math.pow(this.bAxisValue, 2) + Math.pow(color.bAxisValue, 2));
-        const deltaC: number = C1 - C2;
-        const deltaA: number = this.aAxisValue - color.aAxisValue;
-        const deltaB: number = this.bAxisValue - color.bAxisValue;
-        const deltaH: number = Math.sqrt(Math.pow(deltaA, 2) + Math.pow(deltaB, 2) + Math.pow(deltaC, 2));
+        const deltaL = this.Lightness - color.Lightness;
+        const C1 = Math.sqrt(Math.pow(this.AAxisValue, 2) + Math.pow(color.AAxisValue, 2));
+        const C2 = Math.sqrt(Math.pow(this.BAxisValue, 2) + Math.pow(color.BAxisValue, 2));
+        const deltaC = C1 - C2;
+        const deltaA = this.AAxisValue - color.AAxisValue;
+        const deltaB = this.BAxisValue - color.BAxisValue;
+        const deltaH = Math.sqrt(Math.pow(deltaA, 2) + Math.pow(deltaB, 2) + Math.pow(deltaC, 2));
         
-        const kSubL: number = 1;
-        const kSubC: number = 1;
-        const kSubH: number = 1;
+        const kSubL = 1;
+        const kSubC = 1;
+        const kSubH = 1;
         const K1 = 0.045;
         const K2 = 0.015;
-        const sSubL: number = 1;
-        const sSubC: number = 1 + K1*C1;
-        const sSubH: number = 1 + K2*C1;
+        const sSubL = 1;
+        const sSubC = 1 + K1*C1;
+        const sSubH = 1 + K2*C1;
         
-        const deltaEDeltaLQuotient: number = deltaL/(kSubL*sSubL);
-        const deltaEDeltaCQuotient: number = deltaC/(kSubC*sSubC);
-        const deltaEDeltaHQuotient: number = deltaH/(kSubH*sSubH);
-        const deltaE: number = Math.sqrt(Math.pow(deltaEDeltaLQuotient, 2) + Math.pow(deltaEDeltaCQuotient, 2) + Math.pow(deltaEDeltaHQuotient, 2));
+        const deltaEDeltaLQuotient = deltaL/(kSubL*sSubL);
+        const deltaEDeltaCQuotient = deltaC/(kSubC*sSubC);
+        const deltaEDeltaHQuotient = deltaH/(kSubH*sSubH);
+        const deltaE = Math.sqrt(Math.pow(deltaEDeltaLQuotient, 2) + Math.pow(deltaEDeltaCQuotient, 2) + Math.pow(deltaEDeltaHQuotient, 2));
         return deltaE;
     }
-
 }

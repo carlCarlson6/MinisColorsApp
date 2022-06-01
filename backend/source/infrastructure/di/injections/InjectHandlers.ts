@@ -11,8 +11,8 @@ import { NearestPaintsByColor } from "../../../app/getNearestPaint/NearestPaints
 import { GetPaintsByColorQuery } from "../../../app/getPaintsByColor/GetPaintsByColorQuery";
 import { GetPaintsByColorQueryHandler } from "../../../app/getPaintsByColor/GetPaintsByColorQueryHandler";
 import { PaintsByColor } from "../../../app/getPaintsByColor/PaintsByColor";
-import { Handler } from "../../../core/services/Handler";
-import { ServiceBus } from "../../../core/services/ServiceBus";
+import { Handler } from "../../../core/services/bus/Handler";
+import { ServiceBus } from "../../../core/services/bus/ServiceBus";
 import { InMemoryServiceBus } from "../../inMemoryServiceBus/InMemoryServiceBus";
 import { InjectionTypes } from "../InjectionTypes";
 

@@ -1,15 +1,9 @@
-import { BusMessage } from "../../core/services/BusMessage";
+import { BusMessage } from "../../core/services/repositories/BusMessage";
 
 export class GetPaintsByColorQuery implements BusMessage {
-    
-    public get HexadecimalCode(): string {
-        return this.hexadecimalCode;
-    }
-
     public readonly MessageName: string = GetPaintsByColorQuery.name;
 
     constructor(
-        private readonly hexadecimalCode: string
+        readonly HexadecimalCode: string
     ) { }
-    
 }

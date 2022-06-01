@@ -1,29 +1,23 @@
 import { inject, injectable } from "inversify";
-import { Paint } from "../../core/entities/Paint";
 import { ColorFactory } from "../../core/services/ColorFactory";
-import { Handler } from "../../core/services/Handler";
+import { Handler } from "../../core/services/bus/Handler";
 import { InjectionTypes } from "../../infrastructure/di/InjectionTypes";
-import { PaintDto } from "../common/PaintDto";
 import { GetNearestPaintsByColor } from "./GetNearestPaintsByColor";
 import { GetNearestPaintsByColorQuery } from "./GetNearestPaintsByColorQuery";
 import { NearestPaintsByColor } from "./NearestPaintsByColor";
 
 @injectable()
 export class GetNearestPaintsByColorQueryHandler implements Handler<GetNearestPaintsByColorQuery, NearestPaintsByColor> {
-    private readonly useCase: GetNearestPaintsByColor;
-    private readonly colorFactory: ColorFactory;
+    private readonly colorFactory: ColorFactory = new ColorFactory();
 
-    constructor(@inject(InjectionTypes.GetNearestPaintsByColor) getNearestPaintsByColor: GetNearestPaintsByColor) {
-        this.useCase = getNearestPaintsByColor;
-        this.colorFactory = new ColorFactory();
-    }
+    constructor(
+        @inject(InjectionTypes.GetNearestPaintsByColor) 
+        private readonly useCase: GetNearestPaintsByColor
+    ) { }
 
     public async Handle(query: GetNearestPaintsByColorQuery): Promise<NearestPaintsByColor> {
         const colorToSearchBy = this.colorFactory.BuildFromHexadecial(query.HexadecimalCode);
-
-        const nearestPaints: Array<Paint> = await this.useCase.Execute(colorToSearchBy);
-        
-        const dtos: Array<PaintDto> = nearestPaints.map(paint => new PaintDto(paint));
-        return new NearestPaintsByColor(dtos);
+        const nearestPaints = await this.useCase.Execute(colorToSearchBy);
+        return NearestPaintsByColor.FromPaints(nearestPaints);
     }
 }

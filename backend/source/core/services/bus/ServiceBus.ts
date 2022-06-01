@@ -1,4 +1,4 @@
-import { BusMessage } from "./BusMessage";
+import { BusMessage } from "../repositories/BusMessage";
 import { BusResponse } from "./BusResponse";
 
 export interface ServiceBus {

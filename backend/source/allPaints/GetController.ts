@@ -1,13 +1,14 @@
 import { Request, Response } from "express";
 import { inject, injectable } from "inversify";
-import { GetAllEquivalentPaintsQuery } from "../../../../app/getAllEquivalentPaints/GetAllEquivalentPaintsQuery";
-import { ServiceBus } from "../../../../core/services/bus/ServiceBus";
-import { AllEquivalentPaints } from "../../../../app/getAllEquivalentPaints/AllEquivalentPaints";
+import { ServiceBus } from "../core/services/bus/ServiceBus";
+import { AllEquivalentPaints } from "../allEquivalentPaints/AllEquivalentPaints";
+import { GetAllEquivalentPaintsQuery } from "../allEquivalentPaints/GetAllEquivalentPaintsQuery";
+import { InjectionTypes } from "../infrastructure/di/InjectionTypes";
 
 @injectable()
 export class GetController {
     constructor(
-        @inject('ServiceBus')
+        @inject(InjectionTypes.ServiceBus)
         private readonly serviceBus: ServiceBus
     ) { }
 

@@ -1,8 +1,8 @@
 import { Container } from "inversify";
-import { GetAllController } from "../../api/paints/controllers/GetAllController";
-import { GetByColorController } from "../../api/paints/controllers/GetByColorController";
-import { GetByNearestColorController } from "../../api/paints/controllers/GetByNearestColorController";
-import { GetController } from "../../api/paints/controllers/GetController";
+import { GetAllController } from "../../../allEquivalentPaints/GetAllController";
+import { GetController } from "../../../allPaints/GetController";
+import { GetByNearestColorController } from "../../../nearestPaint/GetByNearestColorController";
+import { GetByColorController } from "../../../paintsByColor/GetByColorController";
 import { InjectionTypes } from "../InjectionTypes";
 
 export const injectControllers = (container: Container): Container  => {

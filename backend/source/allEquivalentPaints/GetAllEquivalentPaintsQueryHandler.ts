@@ -1,7 +1,7 @@
 import { inject, injectable } from "inversify";
-import { Handler } from "../../core/services/bus/Handler";
-import { PaintName } from "../../core/valueObjects/PaintName";
-import { InjectionTypes } from "../../infrastructure/di/InjectionTypes";
+import { Handler } from "../core/services/bus/Handler";
+import { PaintName } from "../core/valueObjects/PaintName";
+import { InjectionTypes } from "../infrastructure/di/InjectionTypes";
 import { AllEquivalentPaints } from "./AllEquivalentPaints";
 import { GetAllEquivalentPaints } from "./GetAllEquivalentPaints";
 import { GetAllEquivalentPaintsQuery } from "./GetAllEquivalentPaintsQuery";

@@ -1,21 +1,22 @@
 import { Request, Response } from "express";
 import { injectable, inject } from "inversify";
-import { AllPaints } from "../../../../app/getAllPaints/AllPaints";
-import { GetAllPaintsQuery } from "../../../../app/getAllPaints/GetAllPaintsQuery";
-import { ServiceBus } from "../../../../core/services/bus/ServiceBus";
+import { ServiceBus } from "../core/services/bus/ServiceBus";
+import { AllPaints } from "../allPaints/AllPaints";
+import { GetAllPaintsQuery } from "../allPaints/GetAllPaintsQuery";
+import { InjectionTypes } from "../infrastructure/di/InjectionTypes";
 
 @injectable()
 export class GetAllController {
     constructor(
-        @inject('ServiceBus') 
+        @inject(InjectionTypes.ServiceBus) 
         private readonly serviceBus: ServiceBus
     ) { }
     
     public async GetAll(request: Request, response: Response): Promise<Response<any>> {
-        const query: GetAllPaintsQuery = new GetAllPaintsQuery();
+        const query = new GetAllPaintsQuery();
 
         try {
-            const allPaints: AllPaints = await this.serviceBus.Dispatch<GetAllPaintsQuery, AllPaints>(query);
+            const allPaints = await this.serviceBus.Dispatch<GetAllPaintsQuery, AllPaints>(query);
             return response.status(200).send(allPaints.AlllPaints);
         }
         catch(e) {

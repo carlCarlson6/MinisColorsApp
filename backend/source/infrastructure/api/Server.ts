@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import express, {Express} from 'express';
-import { PaintsRoutes } from './paints/PaintsRoutes';
+import { PaintsRoutes } from './PaintsRoutes';
 import cors from 'cors';
 
 export class Server {
@@ -25,6 +25,6 @@ export class Server {
     }
     
     public Start() {
-        this.app.listen(this.app.get('port'), '0.0.0.0', () => console.log('the server is running on', this.app.get('port')));
+        this.app.listen(this.app.get('port'), '0.0.0.0', () => console.info('the server is running on', this.app.get('port')));
     }
 }

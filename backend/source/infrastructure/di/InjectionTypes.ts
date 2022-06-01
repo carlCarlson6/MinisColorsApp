@@ -6,19 +6,15 @@ export enum InjectionTypes {
 
     GetAllEquivalentPaints = 'GetAllEquivalentPaints',
     GetAllEquivalentPaintsQueryHandler = 'GetAllEquivalentPaintsQueryHandler',
-    GetAllEquivalentPaintsQuery = "GetAllEquivalentPaintsQuery",
 
     GetAllPaints = 'GetAllPaints',
     GetAllPaintsQueryHandler = 'GetAllPaintsQueryHandler',
-    GetAllPaintsQuery = "GetAllPaintsQuery",
 
     GetNearestPaintsByColor = 'GetNearestPaintsByColor',
     GetNearestPaintsByColorQueryHandler = 'GetNearestPaintsByColorQueryHandler',
-    GetNearestPaintsByColorQuery = 'GetNearestPaintsByColorQuery',
 
     GetPaintsByColor = 'GetPaintsByColor',
     GetPaintsByColorQueryHandler = 'GetPaintsByColorQueryHandler',
-    GetPaintsByColorQuery = 'GetPaintsByColorQuery',
 
     ServiceBus = 'ServiceBus',
 

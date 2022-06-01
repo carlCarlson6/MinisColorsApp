@@ -1,9 +1,9 @@
 import { inject, injectable } from "inversify";
-import { Color } from "../../core/entities/Color";
-import { Paint } from "../../core/entities/Paint";
-import { PaintsRepository } from "../../core/services/repositories/PaintsRepository";
-import { PaintName } from "../../core/valueObjects/PaintName";
-import { InjectionTypes } from "../../infrastructure/di/InjectionTypes";
+import { Color } from "../core/entities/Color";
+import { Paint } from "../core/entities/Paint";
+import { PaintsRepository } from "../core/services/repositories/PaintsRepository";
+import { PaintName } from "../core/valueObjects/PaintName";
+import { InjectionTypes } from "../infrastructure/di/InjectionTypes";
 
 @injectable()
 export class GetAllEquivalentPaints {

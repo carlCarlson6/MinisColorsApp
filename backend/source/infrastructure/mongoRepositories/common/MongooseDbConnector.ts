@@ -4,16 +4,16 @@ import { config as readEnvConfig } from "dotenv";
 export class MongooseDbConnector {
     public async Connect(): Promise<void> {
         readEnvConfig();
-        console.log(process.env.MONGODB!);
         try {
             await mongoose.connect(process.env.MONGODB!, {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
-                useFindAndModify: false
+                useFindAndModify: false,
             });
         } 
         catch(error) {
-            console.log(error);
+            console.error("error when connecting to db");
+            console.error(error);
             throw error;
         }
     }

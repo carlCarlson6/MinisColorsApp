@@ -1,4 +1,4 @@
-import { BusMessage } from "../../core/services/repositories/BusMessage";
+import { BusMessage } from "../core/services/repositories/BusMessage";
 import { GetNearestPaintsByColor } from "./GetNearestPaintsByColor";
 
 export class GetNearestPaintsByColorQuery implements BusMessage {

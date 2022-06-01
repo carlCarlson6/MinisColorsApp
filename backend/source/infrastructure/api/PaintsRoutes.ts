@@ -1,18 +1,18 @@
 import { Request, Response, Router } from "express";
-import DI from "../../di/ContainerDI";
-import { GetAllController } from "./controllers/GetAllController";
-import { GetByColorController } from "./controllers/GetByColorController";
-import { GetByNearestColorController } from "./controllers/GetByNearestColorController";
-import { GetController } from "./controllers/GetController";
+import { GetAllController } from "../../allEquivalentPaints/GetAllController";
+import { GetController } from "../../allPaints/GetController";
+import { GetByNearestColorController } from "../../nearestPaint/GetByNearestColorController";
+import { GetByColorController } from "../../paintsByColor/GetByColorController";
+import DI from "../di/ContainerDI";
 
 export class PaintsRoutes {
     public router = Router();
     public path: string = '/api/paints';
 
-    private getController: GetController = DI.get<GetController>('GetController');
-    private getAllController: GetAllController = DI.get<GetAllController>('GetAllController');
-    private getByColorController: GetByColorController = DI.get<GetByColorController>('GetByColorController');
-    private getByNearestColor: GetByNearestColorController = DI.get<GetByNearestColorController>('GetByNearestColorController');
+    private getController = DI.get<GetController>('GetController');
+    private getAllController = DI.get<GetAllController>('GetAllController');
+    private getByColorController = DI.get<GetByColorController>('GetByColorController');
+    private getByNearestColor = DI.get<GetByNearestColorController>('GetByNearestColorController');
     
     private Get = (request: Request, response: Response) => this.getController.Get(request, response);
     private GetAll = (request: Request, response: Response) => this.getAllController.GetAll(request, response);

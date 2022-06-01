@@ -1,6 +1,6 @@
 import { inject, injectable } from "inversify";
-import { Handler } from "../../core/services/bus/Handler";
-import { InjectionTypes } from "../../infrastructure/di/InjectionTypes";
+import { Handler } from "../core/services/bus/Handler";
+import { InjectionTypes } from "../infrastructure/di/InjectionTypes";
 import { AllPaints } from "./AllPaints";
 import { GetAllPaints } from "./GetAllPaints";
 import { GetAllPaintsQuery } from "./GetAllPaintsQuery";

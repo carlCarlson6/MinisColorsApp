@@ -1,5 +1,4 @@
 import { injectable } from "inversify";
-import { Document } from "mongoose";
 import { Color } from "../../core/entities/Color";
 import { ColorFactory } from "../../core/services/ColorFactory";
 import { ColorsRepository } from "../../core/services/repositories/ColorsRepository";
@@ -8,19 +7,18 @@ import { PaintMongooseModel } from "./models/PaintMongooseModel";
 
 @injectable()
 export class ColorsMongoRepository implements ColorsRepository {
-    private dbConnector: MongooseDbConnector = new MongooseDbConnector();
-    private colorFactory: ColorFactory = new ColorFactory();
+    private dbConnector = new MongooseDbConnector();
+    private colorFactory = new ColorFactory();
     
     public async ReadAll(): Promise<Color[]> {
         await this.dbConnector.Connect();
-        const documents: Array<Document> = await PaintMongooseModel.find();
+        const documents = await PaintMongooseModel.find();
         await this.dbConnector.Disconnect();
 
-        const hexCodes: Array<string> = documents.map(doc => doc.get('HexCode'));
-        const uniqueHexCodes: Array<string> = [...new Set(hexCodes)];
+        const hexCodes = documents.map(doc => doc.get('HexCode'));
+        const uniqueHexCodes = [...new Set(hexCodes)];
 
-        const colors: Array<Color> = uniqueHexCodes.map(hexCode => this.colorFactory.BuildFromHexadecial(hexCode));
-        return colors;
+        return uniqueHexCodes.map(hexCode => this.colorFactory.BuildFromHexadecial(hexCode));
     }
     
     async Create(color: Color): Promise<number> {

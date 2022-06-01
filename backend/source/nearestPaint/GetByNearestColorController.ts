@@ -1,13 +1,14 @@
 import { Request, Response } from "express";
 import { inject, injectable } from "inversify";
-import { ServiceBus } from "../../../../core/services/bus/ServiceBus";
-import { GetNearestPaintsByColorQuery } from "../../../../app/getNearestPaint/GetNearestPaintsByColorQuery";
-import { NearestPaintsByColor } from "../../../../app/getNearestPaint/NearestPaintsByColor";
+import { ServiceBus } from "../core/services/bus/ServiceBus";
+import { InjectionTypes } from "../infrastructure/di/InjectionTypes";
+import { GetNearestPaintsByColorQuery } from "./GetNearestPaintsByColorQuery";
+import { NearestPaintsByColor } from "./NearestPaintsByColor";
 
 @injectable()
 export class GetByNearestColorController {
     constructor(
-        @inject('ServiceBus')
+        @inject(InjectionTypes.ServiceBus)
         private readonly serviceBus: ServiceBus
     ) { }
 
@@ -16,8 +17,8 @@ export class GetByNearestColorController {
         const query = new GetNearestPaintsByColorQuery(hexCode); 
 
         try {
-            const nearestPaints: NearestPaintsByColor = await this.serviceBus.Dispatch<GetNearestPaintsByColorQuery, NearestPaintsByColor>(query);
-            return response.status(200).send(nearestPaints);
+            const nearestPaints = await this.serviceBus.Dispatch<GetNearestPaintsByColorQuery, NearestPaintsByColor>(query);
+            return response.status(200).send(nearestPaints.NearestPaints);
         }
         catch(e) {
             const error = e as Error;

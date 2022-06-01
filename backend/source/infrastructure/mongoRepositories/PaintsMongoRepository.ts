@@ -1,5 +1,4 @@
 import { injectable } from "inversify";
-import { Document } from "mongoose";
 import { Color } from "../../core/entities/Color";
 import { Paint } from "../../core/entities/Paint";
 import { PaintsRepository } from "../../core/services/repositories/PaintsRepository";
@@ -10,11 +9,10 @@ import { PaintMongooseModel } from "./models/PaintMongooseModel";
 
 @injectable()
 export class PaintsMongoRepository implements PaintsRepository {
-    private dbConnector: MongooseDbConnector = new MongooseDbConnector();
-    private paintsBuilder: MongoosePaintsBuilder = new MongoosePaintsBuilder();
+    private dbConnector = new MongooseDbConnector();
+    private paintsBuilder = new MongoosePaintsBuilder();
 
     public async ReadAll(): Promise<Paint[]> {
-        console.log("connecting");
         await this.dbConnector.Connect();
         const documents = await PaintMongooseModel.find();
         await this.dbConnector.Disconnect();

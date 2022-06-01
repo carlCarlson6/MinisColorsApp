@@ -1,8 +1,8 @@
 import { Container } from "inversify";
-import { GetAllEquivalentPaints } from "../../../app/getAllEquivalentPaints/GetAllEquivalentPaints";
-import { GetAllPaints } from "../../../app/getAllPaints/GetAllPaints";
-import { GetNearestPaintsByColor } from "../../../app/getNearestPaint/GetNearestPaintsByColor";
-import { GetPaintsByColor } from "../../../app/getPaintsByColor/GetPaintsByColor";
+import { GetAllEquivalentPaints } from "../../../allEquivalentPaints/GetAllEquivalentPaints";
+import { GetAllPaints } from "../../../allPaints/GetAllPaints";
+import { GetNearestPaintsByColor } from "../../../nearestPaint/GetNearestPaintsByColor";
+import { GetPaintsByColor } from "../../../paintsByColor/GetPaintsByColor";
 import { InjectionTypes } from "../InjectionTypes";
 
 export const injectApplications = (container: Container): Container => {

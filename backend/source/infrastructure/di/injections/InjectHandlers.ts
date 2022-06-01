@@ -1,18 +1,18 @@
 import { Container } from "inversify";
-import { AllEquivalentPaints } from "../../../app/getAllEquivalentPaints/AllEquivalentPaints";
-import { GetAllEquivalentPaintsQuery } from "../../../app/getAllEquivalentPaints/GetAllEquivalentPaintsQuery";
-import { GetAllEquivalentPaintsQueryHandler } from "../../../app/getAllEquivalentPaints/GetAllEquivalentPaintsQueryHandler";
-import { AllPaints } from "../../../app/getAllPaints/AllPaints";
-import { GetAllPaintsQuery } from "../../../app/getAllPaints/GetAllPaintsQuery";
-import { GetAllPaintsQueryHandler } from "../../../app/getAllPaints/GetAllPaintsQueryHandler";
-import { GetNearestPaintsByColorQuery } from "../../../app/getNearestPaint/GetNearestPaintsByColorQuery";
-import { GetNearestPaintsByColorQueryHandler } from "../../../app/getNearestPaint/GetNearestPaintsByColorQueryHandler";
-import { NearestPaintsByColor } from "../../../app/getNearestPaint/NearestPaintsByColor";
-import { GetPaintsByColorQuery } from "../../../app/getPaintsByColor/GetPaintsByColorQuery";
-import { GetPaintsByColorQueryHandler } from "../../../app/getPaintsByColor/GetPaintsByColorQueryHandler";
-import { PaintsByColor } from "../../../app/getPaintsByColor/PaintsByColor";
+import { AllEquivalentPaints } from "../../../allEquivalentPaints/AllEquivalentPaints";
+import { GetAllEquivalentPaintsQuery } from "../../../allEquivalentPaints/GetAllEquivalentPaintsQuery";
+import { GetAllEquivalentPaintsQueryHandler } from "../../../allEquivalentPaints/GetAllEquivalentPaintsQueryHandler";
+import { AllPaints } from "../../../allPaints/AllPaints";
+import { GetAllPaintsQuery } from "../../../allPaints/GetAllPaintsQuery";
+import { GetAllPaintsQueryHandler } from "../../../allPaints/GetAllPaintsQueryHandler";
 import { Handler } from "../../../core/services/bus/Handler";
 import { ServiceBus } from "../../../core/services/bus/ServiceBus";
+import { GetNearestPaintsByColorQuery } from "../../../nearestPaint/GetNearestPaintsByColorQuery";
+import { GetNearestPaintsByColorQueryHandler } from "../../../nearestPaint/GetNearestPaintsByColorQueryHandler";
+import { NearestPaintsByColor } from "../../../nearestPaint/NearestPaintsByColor";
+import { GetPaintsByColorQuery } from "../../../paintsByColor/GetPaintsByColorQuery";
+import { GetPaintsByColorQueryHandler } from "../../../paintsByColor/GetPaintsByColorQueryHandler";
+import { PaintsByColor } from "../../../paintsByColor/PaintsByColor";
 import { InMemoryServiceBus } from "../../inMemoryServiceBus/InMemoryServiceBus";
 import { InjectionTypes } from "../InjectionTypes";
 
@@ -34,13 +34,13 @@ const registerHandlers = (container: Container): Container => {
     inMemoryServiceBus.Register(getAllEquivalentPaintsQueryHandler, InjectionTypes.GetAllEquivalentPaints);
 
     const getAllPaintsQueryHandler = container.get<Handler<GetAllPaintsQuery, AllPaints>>(InjectionTypes.GetAllPaintsQueryHandler);
-    inMemoryServiceBus.Register(getAllPaintsQueryHandler, InjectionTypes.GetAllPaintsQuery);
+    inMemoryServiceBus.Register(getAllPaintsQueryHandler, InjectionTypes.GetAllPaints);
 
     const getNearestPaintQueryHandler = container.get<Handler<GetNearestPaintsByColorQuery, NearestPaintsByColor>>(InjectionTypes.GetNearestPaintsByColorQueryHandler);
-    inMemoryServiceBus.Register(getNearestPaintQueryHandler, InjectionTypes.GetNearestPaintsByColorQuery);
+    inMemoryServiceBus.Register(getNearestPaintQueryHandler, InjectionTypes.GetNearestPaintsByColor);
 
     const getPaintsByColorQueryHandler = container.get<Handler<GetPaintsByColorQuery, PaintsByColor>>(InjectionTypes.GetPaintsByColorQueryHandler);
-    inMemoryServiceBus.Register(getPaintsByColorQueryHandler, InjectionTypes.GetPaintsByColorQuery);
+    inMemoryServiceBus.Register(getPaintsByColorQueryHandler, InjectionTypes.GetPaintsByColor);
 
     container.bind<ServiceBus>(InjectionTypes.ServiceBus).toConstantValue(inMemoryServiceBus);
 

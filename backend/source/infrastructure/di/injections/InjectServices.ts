@@ -1,6 +1,6 @@
 import { Container } from "inversify";
-import { ColorsRepository } from "../../../core/services/repositories/ColorsRepository";
 import { NearestColorFinder } from "../../../core/services/NearestColorFinder";
+import { ColorsRepository } from "../../../core/services/repositories/ColorsRepository";
 import { PaintsRepository } from "../../../core/services/repositories/PaintsRepository";
 import { ColorsMongoRepository } from "../../mongoRepositories/ColorsMongoRepository";
 import { PaintsMongoRepository } from "../../mongoRepositories/PaintsMongoRepository";

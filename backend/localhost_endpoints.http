@@ -1,1 +1,11 @@
-GET http://localhost:4000/api/paints/test
+### get paints by name
+GET http://localhost:4000/api/paints/
+
+### get paints by name
+GET http://localhost:4000/api/paints/elf
+
+### get paint by hex code
+GET http://localhost:4000/api/paints/color/CdCEBE
+
+### get paint by nearest hex code
+GET http://localhost:4000/api/paints/color/69806e/nearest

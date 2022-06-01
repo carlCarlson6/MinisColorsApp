@@ -1,5 +1,5 @@
-import { Paint } from "../../core/entities/Paint";
-import { BusResponse } from "../../core/services/bus/BusResponse";
+import { Paint } from "../core/entities/Paint";
+import { BusResponse } from "../core/services/bus/BusResponse";
 import { PaintDto } from "../common/PaintDto";
 
 export class PaintsByColor implements BusResponse {

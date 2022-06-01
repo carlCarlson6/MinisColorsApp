@@ -1,7 +1,7 @@
 import { inject, injectable } from "inversify";
-import { Paint } from "../../core/entities/Paint";
-import { PaintsRepository } from "../../core/services/repositories/PaintsRepository";
-import { InjectionTypes } from "../../infrastructure/di/InjectionTypes";
+import { Paint } from "../core/entities/Paint";
+import { PaintsRepository } from "../core/services/repositories/PaintsRepository";
+import { InjectionTypes } from "../infrastructure/di/InjectionTypes";
 
 @injectable()
 export class GetAllPaints {

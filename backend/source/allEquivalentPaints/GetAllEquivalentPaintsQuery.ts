@@ -1,4 +1,4 @@
-import { BusMessage } from "../../core/services/repositories/BusMessage";
+import { BusMessage } from "../core/services/repositories/BusMessage";
 import { GetAllEquivalentPaints } from "./GetAllEquivalentPaints";
 
 export class GetAllEquivalentPaintsQuery implements BusMessage {

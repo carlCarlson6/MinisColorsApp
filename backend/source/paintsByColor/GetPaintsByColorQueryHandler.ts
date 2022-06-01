@@ -1,6 +1,6 @@
 import { inject, injectable } from "inversify";
-import { ColorFactory } from "../../core/services/ColorFactory";
-import { InjectionTypes } from "../../infrastructure/di/InjectionTypes";
+import { ColorFactory } from "../core/services/ColorFactory";
+import { InjectionTypes } from "../infrastructure/di/InjectionTypes";
 import { GetPaintsByColor } from "./GetPaintsByColor";
 import { GetPaintsByColorQuery } from "./GetPaintsByColorQuery";
 import { PaintsByColor } from "./PaintsByColor";

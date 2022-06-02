@@ -1,9 +1,9 @@
 import { Container } from "inversify";
-import { NearestColorFinder } from "../../../core/services/NearestColorFinder";
-import { ColorsRepository } from "../../../core/services/repositories/ColorsRepository";
-import { PaintsRepository } from "../../../core/services/repositories/PaintsRepository";
-import { ColorsMongoRepository } from "../../mongoRepositories/ColorsMongoRepository";
-import { PaintsMongoRepository } from "../../mongoRepositories/PaintsMongoRepository";
+import { ColorsRepository } from "../../../paints/services/ColorsRepository";
+import { ColorsMongoRepository } from "../../../paints/services/infrastructure/mongoRepositories/ColorsMongoRepository";
+import { PaintsMongoRepository } from "../../../paints/services/infrastructure/mongoRepositories/PaintsMongoRepository";
+import { NearestColorFinder } from "../../../paints/services/NearestColorFinder";
+import { PaintsRepository } from "../../../paints/services/PaintsRepository";
 import { InjectionTypes } from "../InjectionTypes";
 
 export const injectServices = (container: Container): Container => {

@@ -1,20 +1,20 @@
 import { Container } from "inversify";
-import { AllEquivalentPaints } from "../../../allEquivalentPaints/AllEquivalentPaints";
-import { GetAllEquivalentPaintsQuery } from "../../../allEquivalentPaints/GetAllEquivalentPaintsQuery";
-import { GetAllEquivalentPaintsQueryHandler } from "../../../allEquivalentPaints/GetAllEquivalentPaintsQueryHandler";
-import { AllPaints } from "../../../allPaints/AllPaints";
-import { GetAllPaintsQuery } from "../../../allPaints/GetAllPaintsQuery";
-import { GetAllPaintsQueryHandler } from "../../../allPaints/GetAllPaintsQueryHandler";
-import { Handler } from "../../../core/services/bus/Handler";
-import { ServiceBus } from "../../../core/services/bus/ServiceBus";
-import { GetNearestPaintsByColorQuery } from "../../../nearestPaint/GetNearestPaintsByColorQuery";
-import { GetNearestPaintsByColorQueryHandler } from "../../../nearestPaint/GetNearestPaintsByColorQueryHandler";
-import { NearestPaintsByColor } from "../../../nearestPaint/NearestPaintsByColor";
-import { GetPaintsByColorQuery } from "../../../paintsByColor/GetPaintsByColorQuery";
-import { GetPaintsByColorQueryHandler } from "../../../paintsByColor/GetPaintsByColorQueryHandler";
-import { PaintsByColor } from "../../../paintsByColor/PaintsByColor";
-import { InMemoryServiceBus } from "../../inMemoryServiceBus/InMemoryServiceBus";
+import { GetPaintsByColorQuery } from "../../../paints/paintsByColor/GetPaintsByColorQuery";
+import { GetPaintsByColorQueryHandler } from "../../../paints/paintsByColor/GetPaintsByColorQueryHandler";
+import { PaintsByColor } from "../../../paints/paintsByColor/PaintsByColor";
+import { InMemoryServiceBus } from "../../../bus/infrastructure/InMemoryServiceBus";
 import { InjectionTypes } from "../InjectionTypes";
+import { Handler } from "../../../bus/Handler";
+import { ServiceBus } from "../../../bus/ServiceBus";
+import { AllEquivalentPaints } from "../../../paints/allEquivalentPaints/AllEquivalentPaints";
+import { GetAllEquivalentPaintsQuery } from "../../../paints/allEquivalentPaints/GetAllEquivalentPaintsQuery";
+import { GetAllEquivalentPaintsQueryHandler } from "../../../paints/allEquivalentPaints/GetAllEquivalentPaintsQueryHandler";
+import { AllPaints } from "../../../paints/allPaints/AllPaints";
+import { GetAllPaintsQuery } from "../../../paints/allPaints/GetAllPaintsQuery";
+import { GetAllPaintsQueryHandler } from "../../../paints/allPaints/GetAllPaintsQueryHandler";
+import { GetNearestPaintsByColorQuery } from "../../../paints/nearestPaint/GetNearestPaintsByColorQuery";
+import { GetNearestPaintsByColorQueryHandler } from "../../../paints/nearestPaint/GetNearestPaintsByColorQueryHandler";
+import { NearestPaintsByColor } from "../../../paints/nearestPaint/NearestPaintsByColor";
 
 export const injectHandlers = (container: Container): Container => {
     container.bind<Handler<GetAllEquivalentPaintsQuery, AllEquivalentPaints>>(InjectionTypes.GetAllEquivalentPaintsQueryHandler).to(GetAllEquivalentPaintsQueryHandler);

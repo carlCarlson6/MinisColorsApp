@@ -1,14 +1,14 @@
 import { Mock, Times, It } from "moq.ts";
-import { AllEquivalentPaints } from "../../../source/allEquivalentPaints/AllEquivalentPaints";
-import { GetAllEquivalentPaintsQuery } from "../../../source/allEquivalentPaints/GetAllEquivalentPaintsQuery";
-import { AllPaints } from "../../../source/allPaints/AllPaints";
-import { GetAllPaintsQuery } from "../../../source/allPaints/GetAllPaintsQuery";
-import { Handler } from "../../../source/core/services/bus/Handler";
-import { InMemoryServiceBus } from "../../../source/infrastructure/inMemoryServiceBus/InMemoryServiceBus";
-import { GetNearestPaintsByColorQuery } from "../../../source/nearestPaint/GetNearestPaintsByColorQuery";
-import { NearestPaintsByColor } from "../../../source/nearestPaint/NearestPaintsByColor";
-import { GetPaintsByColorQuery } from "../../../source/paintsByColor/GetPaintsByColorQuery";
-import { PaintsByColor } from "../../../source/paintsByColor/PaintsByColor";
+import { InMemoryServiceBus } from "../../../source/bus/infrastructure/InMemoryServiceBus";
+import { AllEquivalentPaints } from "../../../source/paints/allEquivalentPaints/AllEquivalentPaints";
+import { GetAllEquivalentPaintsQuery } from "../../../source/paints/allEquivalentPaints/GetAllEquivalentPaintsQuery";
+import { AllPaints } from "../../../source/paints/allPaints/AllPaints";
+import { GetAllPaintsQuery } from "../../../source/paints/allPaints/GetAllPaintsQuery";
+import { GetNearestPaintsByColorQuery } from "../../../source/paints/nearestPaint/GetNearestPaintsByColorQuery";
+import { NearestPaintsByColor } from "../../../source/paints/nearestPaint/NearestPaintsByColor";
+import { GetPaintsByColorQuery } from "../../../source/paints/paintsByColor/GetPaintsByColorQuery";
+import { PaintsByColor } from "../../../source/paints/paintsByColor/PaintsByColor";
+import { Handler } from "../../../source/bus/Handler";
 
 
 describe(InMemoryServiceBus.name, () => {

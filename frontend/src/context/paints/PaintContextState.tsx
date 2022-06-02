@@ -2,7 +2,9 @@ import React from 'react';
 import { paintReducer } from "./PaintContextReducer";
 import PaintContext from './PaintContext';
 import { Paint } from '../../models/Paint';
-import SearchPaintByName from '../../services/SearchPaintByName';
+import SearchPaintsByName from './services/SearchPaintsByName';
+import GetAllPaints from './services/GetAllPaints';
+import SearchPaintsByColor from './services/SearchPaintsByColor';
 
 export interface PaintState {
     paints: Paint[];
@@ -21,7 +23,9 @@ const PaintContextState = (props: any) => {
         <PaintContext.Provider
             value={{
                 State: state,
-                SearchPaintByName: SearchPaintByName(dispatch)
+                GetAllPaints: GetAllPaints(dispatch),
+                SearchPaintsByName: SearchPaintsByName(dispatch),
+                SearchPaintsByColor: SearchPaintsByColor(dispatch)
             }}
         >
             {props.children}

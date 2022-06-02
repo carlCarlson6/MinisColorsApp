@@ -3,7 +3,7 @@ import PaintContext from '../../context/paints/PaintContext';
 
 const SearchBar: React.FC = (): JSX.Element => {
     const [searchInput, searchInputSetter] = React.useState<string>('');
-    const { SearchPaintByName } = React.useContext(PaintContext);
+    const { SearchPaintsByName } = React.useContext(PaintContext);
     
     return (
         <>
@@ -19,7 +19,7 @@ const SearchBar: React.FC = (): JSX.Element => {
                 <button 
                     type="button" 
                     className="btn btn-outline-primary"
-                    onClick={() => SearchPaintByName(searchInput)}
+                    onClick={() => SearchPaintsByName(searchInput)}
                 >search</button>
             </div>
         </>

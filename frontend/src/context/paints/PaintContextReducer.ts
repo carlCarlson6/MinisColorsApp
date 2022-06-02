@@ -5,13 +5,13 @@ import { PaintTypes } from "./PaintTypes";
 
 export const paintReducer = (state: PaintState, action: Action<Paint[]>): PaintState => {
     switch(action.type) {
-        case PaintTypes.StartRequestPaintByName:
+        case PaintTypes.StartRequestPaints:
             return { ...state, fetchingData: true };
 
-        case PaintTypes.OkRequestPaintByName:
+        case PaintTypes.OkRequestPaints:
             return { ...state, fetchingData: false, lastRequestOk: true, paints: action.payload };
 
-        case PaintTypes.KoRequestPaintByName:
+        case PaintTypes.KoRequestPaints:
             return { ...state, fetchingData: false, lastRequestOk: false }
 
         default: return state;

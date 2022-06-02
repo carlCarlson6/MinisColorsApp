@@ -1,13 +1,12 @@
-import React from 'react';
-import { SketchPicker } from 'react-color';
+import React, { useState } from 'react';
+import { HexColorPicker } from "react-colorful";
 
 const ColorPicker: React.FC = (): JSX.Element => {
-    
-    return (
-        <div>
-            <SketchPicker />
-        </div>
-    );
+    const [color, setColor] = useState("#aabbcc");
+    return <>
+        <>{color}</>
+        <HexColorPicker color={color} onChange={setColor} />
+    </>;
 }
 
 export default ColorPicker;

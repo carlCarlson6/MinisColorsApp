@@ -1,8 +1,7 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
-import './styles/styles.css';
+import './assets/styles/styles.css';
 import dotenv from 'dotenv';
 
 dotenv.config();

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Paint } from '../models/Paint';
+import { Paint } from '../../models/Paint';
 import SearchResult from './SearchResult';
 
-const SearchResults: React.FC<{ paints: Array<Paint> }> = ({ paints }): JSX.Element => {
-    const orderedPaints: Array<Paint> = paints.sort((paintA, paintB) => (paintA.HexColorCode > paintB.HexColorCode) ? 1 : -1);
+const SearchResults: React.FC<{ paints: Paint[] }> = ({ paints }): JSX.Element => {
+    const orderedPaints = paints.sort((paintA, paintB) => (paintA.HexColorCode > paintB.HexColorCode) ? 1 : -1);
 
     return (
         <table className="table">
@@ -16,7 +16,7 @@ const SearchResults: React.FC<{ paints: Array<Paint> }> = ({ paints }): JSX.Elem
             </thead>
             <tbody>
                 {
-                    orderedPaints.map(paint => {return (
+                    orderedPaints.map(paint => {(
                         <SearchResult paint={paint}/>
                     );})
                 }

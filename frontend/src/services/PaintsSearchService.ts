@@ -1,21 +1,19 @@
 import { Dispatch } from "react";
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { Paint } from "../models/Paint";
-import { Action } from "../models/Action";
-import { paintTypes } from "../context/paints/PaintTypes";
+import { Action } from "../context/Action";
+import { PaintTypes } from "../context/paints/PaintTypes";
 
 export class PaintsSearchService {
-    private dispatcher: Dispatch<Action>;
-    private httpClient: AxiosInstance;
+    private httpClient = axios.create({baseURL: process.env.REACT_APP_ASD as string});
     private axiosRequestConfig: AxiosRequestConfig = { headers: {'Access-Control-Allow-Origin': '*'}};
     
-    constructor(dispatch: Dispatch<Action>, backendUrl: string) {
-        this.dispatcher = dispatch;
-        this.httpClient = axios.create({baseURL: backendUrl});
-    }
+    constructor(
+        private readonly dispatcher: Dispatch<Action<Paint[]>>
+    ) { }
 
     public async ByName(paintName: string): Promise<void> {
-        this.dispatcher({ payload: [], type: paintTypes.StartRequestPaintByName })
+        this.dispatcher({ payload: [], type: PaintTypes.StartRequestPaintByName })
         try {
             const response: AxiosResponse<Array<Paint>> = await this.httpClient.get<Array<Paint>>('/paints/'+paintName, this.axiosRequestConfig);
             if(!response) {
@@ -23,15 +21,15 @@ export class PaintsSearchService {
             }
 
             const paints: Array<Paint> = response.data;
-            this.dispatcher({ payload: paints, type: paintTypes.OkRequestPaintByName });
+            this.dispatcher({ payload: paints, type: PaintTypes.OkRequestPaintByName });
         }
         catch(error) {
-            this.dispatcher({ payload: [], type: paintTypes.KoRequestPaintByName })
+            this.dispatcher({ payload: [], type: PaintTypes.KoRequestPaintByName })
         }
     }
 
     public async ByColor(paintColor: string): Promise<void> {
-        this.dispatcher({ payload: [], type: paintTypes.StartRequestPaintByColor })
+        this.dispatcher({ payload: [], type: PaintTypes.StartRequestPaintByColor })
         try {
             const response: AxiosResponse<Array<Paint>> = await this.httpClient.get<Array<Paint>>('/paints/color/'+paintColor, this.axiosRequestConfig);
             if(!response) {
@@ -39,10 +37,10 @@ export class PaintsSearchService {
             }
 
             const paints: Array<Paint> = response.data;
-            this.dispatcher({ payload: paints, type: paintTypes.OkRequestPaintByColor });
+            this.dispatcher({ payload: paints, type: PaintTypes.OkRequestPaintByColor });
         }
         catch(error) {
-            this.dispatcher({ payload: [], type: paintTypes.KoRequestPaintByColor })
+            this.dispatcher({ payload: [], type: PaintTypes.KoRequestPaintByColor })
         }
     }
 }

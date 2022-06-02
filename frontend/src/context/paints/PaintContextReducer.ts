@@ -1,17 +1,17 @@
-import { Action } from "../../models/Action";
-import { PaintState } from "../../models/PaintState";
-import { paintTypes } from "./PaintTypes";
+import { Paint } from "../../models/Paint";
+import { Action } from "../Action";
+import { PaintState } from "./PaintContextState";
+import { PaintTypes } from "./PaintTypes";
 
-export const paintReducer = (state: PaintState, action: Action): PaintState => {
+export const paintReducer = (state: PaintState, action: Action<Paint[]>): PaintState => {
     switch(action.type) {
-
-        case paintTypes.StartRequestPaintByName:
+        case PaintTypes.StartRequestPaintByName:
             return { ...state, fetchingData: true };
 
-        case paintTypes.OkRequestPaintByName:
+        case PaintTypes.OkRequestPaintByName:
             return { ...state, fetchingData: false, lastRequestOk: true, paints: action.payload };
 
-        case paintTypes.KoRequestPaintByName:
+        case PaintTypes.KoRequestPaintByName:
             return { ...state, fetchingData: false, lastRequestOk: false }
 
         default: return state;

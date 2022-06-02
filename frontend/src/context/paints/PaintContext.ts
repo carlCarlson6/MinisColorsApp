@@ -1,6 +1,11 @@
 import React from 'react';
-import { PaintController } from '../../controllers/PaintController';
+import { PaintState } from './PaintContextState';
 
-const PaintContext = React.createContext<PaintController>({} as PaintController);
+type PaintContextProviderValue = { 
+    State: PaintState, 
+    SearchPaintByName: (paintName: string) => Promise<void> 
+};
+
+const PaintContext = React.createContext<PaintContextProviderValue>({} as PaintContextProviderValue);
 
 export default PaintContext;

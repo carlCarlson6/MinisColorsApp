@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+
+  miniscolorsapp.web:
+    image: ${DOCCKER_REGISTRY-}miniscolorsapp-web
+    build:
+      context: ../frontend
+      dockerfile: ../frontend/Dockerfile
+
+  miniscolorsapp.api:
+    image: ${DOCCKER_REGISTRY-}miniscolorsapp-app
+    build:
+      context: ../backend
+      dockerfile: ../backend/Dockerfile
+
+  miniscolorsapp.db:
+    image: mongo
+
+volumes: 
+  mongo_data:

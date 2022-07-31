@@ -6,4 +6,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const Index = () => <App/>
+
+ReactDOM.render(<Index />, document.getElementById('root'));

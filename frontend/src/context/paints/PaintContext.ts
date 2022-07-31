@@ -1,5 +1,6 @@
 import React from 'react';
 import { PaintState } from './PaintContextState';
+import SearchPaintsByName from './services/SearchPaintsByName';
 
 type PaintContextProviderValue = { 
     State: PaintState,

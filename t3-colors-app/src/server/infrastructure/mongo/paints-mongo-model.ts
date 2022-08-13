@@ -1,0 +1,15 @@
+export interface PaintsMongoModel {
+    NewCitadel:        string|undefined,
+    OldCitadel:        string|undefined,
+    VallejoGameColor:  string|undefined,
+    VallejoModelColor: string|undefined,
+    INSTAR:            string|undefined,
+    INSTARVintage:     string|undefined,
+    Rackham:           string|undefined,
+    ReaperMaster:      string|undefined,
+    PrivateerPressP3:  string|undefined,
+    CoatDarms:         string|undefined,
+    ArmyPainter:       string|undefined,
+    Scale75:           string|undefined,
+    HexCode:           string,
+}

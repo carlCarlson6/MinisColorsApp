@@ -3,6 +3,8 @@ import { Color } from "../colorSystem/Color";
 import { Hexadecimal } from "../colorSystem/Hexadecimal";
 import { RGB } from "../colorSystem/RGB";
 
+
+
 export class ColorFactory {
     
     public BuildFromHexadecial(hexCode: string): Color {

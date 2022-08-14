@@ -1,6 +1,6 @@
 import { useSearchPaintsStore } from "../../stores";
 import { trpc } from "../../trpc";
-import AllEquivalentPaintsTable from "./AllEquivalentPaintsTable";
+import PaintsTable from "./PaintsTable";
 
 const AllEquivalentPaints = () => {
     const paintName = useSearchPaintsStore(state => state.allEquivalentPaintsSearchTerm);
@@ -10,7 +10,7 @@ const AllEquivalentPaints = () => {
         {
             !data || isLoading ?
                 <p>loading</p> :
-                <AllEquivalentPaintsTable paints={!data ? [] : data}/>
+                <PaintsTable paints={!data ? [] : data}/>
         }
         
     </>);

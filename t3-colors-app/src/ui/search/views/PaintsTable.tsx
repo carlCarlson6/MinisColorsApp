@@ -1,6 +1,6 @@
-import { Paint, PaintDto } from "../../../server/colors/paint";
+import { PaintDto } from "../../../server/colors/paint";
 
-const AllEquivalentPaintsTable: React.FC<{paints: PaintDto[]}> = ({paints}) => {
+const PaintsTable: React.FC<{paints: PaintDto[]}> = ({paints}) => {
     console.log(paints);
     return (
     <>
@@ -25,4 +25,4 @@ const AllEquivalentPaintsTable: React.FC<{paints: PaintDto[]}> = ({paints}) => {
     </>);
 }
 
-export default AllEquivalentPaintsTable;
+export default PaintsTable;

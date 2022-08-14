@@ -21,5 +21,5 @@ const toModels = (paintModel: PaintsMongoModel) => [
 
 export const mapToDomain = (paintModels: PaintsMongoModel[]) => paintModels
     .flatMap(paintModel => toModels(paintModel)
-    .filter(model => (model.paintName !== undefined || model.paintName !== "")))
+    .filter(model => (model.paintName !== undefined && model.paintName !== "")))
     .map(model => new Paint(model.company, model.paintName!, Color.buildFromHexadecimal(model.hexCode)));

@@ -7,3 +7,11 @@ export class Paint {
         readonly color: Color,
     ) { }
 }
+
+export class PaintDto {
+    constructor(
+        readonly Company: string,
+        readonly Name: string,
+        readonly color: string,
+    ) { }
+}

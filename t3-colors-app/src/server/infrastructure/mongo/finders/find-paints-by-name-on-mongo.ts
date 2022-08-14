@@ -5,5 +5,14 @@ import { mapToDomain } from "./map-to-domain";
 export const findByNameOnMongo = (getPaintsCollection: GetPaintsCollection): FindPaintsByName => async (paintName: string) => {
     const paintsCollection = await getPaintsCollection();
     const paintModels = await paintsCollection.find({}).toArray();
-    return mapToDomain(paintModels).filter(paint => paint.Name!.toLowerCase().includes(paintName.trim().toLowerCase()));
+    const paints = mapToDomain(paintModels).filter(paint => {
+        if (!paint.Name) console.log("fuck", paint.Name);
+
+        return paint.Name!
+            .toLowerCase()
+            .includes(paintName
+                .trim()
+                .toLowerCase());
+    });
+    return paints;
 };

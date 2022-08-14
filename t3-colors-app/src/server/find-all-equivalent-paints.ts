@@ -1,5 +1,5 @@
 import { Color } from "./colors/color";
-import { Paint } from "./colors/paint";
+import { Paint, PaintDto } from "./colors/paint";
 
 const toUniqueColors = (paints: Paint[]): Color[] => paints
     .map(paint => paint.color)
@@ -16,13 +16,11 @@ const getAllPaintsByColor = (findByColor: FindPaintsByColor) => async (colors: C
 export type FindPaintsByName = (name: string) => Promise<Paint[]>;
 export type FindPaintsByColor = (color: Color) => Promise<Paint[]>;
 
-export const findAllEquilvalentPaints = (finders: {findByName: FindPaintsByName, findByColor: FindPaintsByColor}) => async (paintName: string): Promise<Paint[]> => {
-    console.log(paintName);
+export const findAllEquilvalentPaints = (finders: {findByName: FindPaintsByName, findByColor: FindPaintsByColor}) => async (paintName: string): Promise<PaintDto[]> => {
     const paints = await finders.findByName(paintName);
     if(paints.length == 0) return [];
 
     const uniqueColors = toUniqueColors(paints);
     const allPaintsByColor = await getAllPaintsByColor(finders.findByColor)(uniqueColors);
-    console.log(allPaintsByColor);
-    return allPaintsByColor;
+    return allPaintsByColor.map(p => new PaintDto(p.Company, p.Name, p.color.HexadecimalCode.ToString()));
 }

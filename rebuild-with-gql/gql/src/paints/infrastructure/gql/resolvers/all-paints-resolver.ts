@@ -1,7 +1,7 @@
 import { Query, Resolver } from "type-graphql";
 import { Inject, Service } from "typedi";
 import { AllPaints } from "../../../all-paints";
-import { PaintDto } from "../../../dtos/paint-dto";
+import { PaintDto } from "../dtos/paint-dto";
 
 @Service()
 @Resolver()

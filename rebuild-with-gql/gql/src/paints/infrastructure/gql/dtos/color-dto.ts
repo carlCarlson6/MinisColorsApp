@@ -1,5 +1,5 @@
 import { Field, ObjectType } from "type-graphql";
-import { Color } from "../core/colors/color";
+import { Color } from "../../../core/colors/color";
 import { CielabDto } from "./cielab-dto";
 import { RgbDto } from "./rgb-dto";
 

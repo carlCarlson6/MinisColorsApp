@@ -1,6 +1,6 @@
 import { Arg, Query, Resolver } from "type-graphql";
 import { Inject, Service } from "typedi";
-import { PaintDto } from "../../../dtos/paint-dto";
+import { PaintDto } from "../dtos/paint-dto";
 import { FindByName } from "../../../find-by-name";
 
 @Service()

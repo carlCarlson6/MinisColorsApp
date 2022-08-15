@@ -1,6 +1,6 @@
 import { Field, ObjectType } from "type-graphql";
 import { ColorDto } from "./color-dto";
-import { Paint } from "../core/paint";
+import { Paint } from "../../../core/paint";
 
 
 @ObjectType("Paint")

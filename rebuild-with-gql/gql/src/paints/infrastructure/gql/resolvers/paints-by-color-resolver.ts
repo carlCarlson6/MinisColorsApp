@@ -1,10 +1,11 @@
-import { Arg, Query, Resolver } from "type-graphql";
+import { Arg, Query, Resolver, ResolverInterface } from "type-graphql";
 import { Inject, Service } from "typedi";
 import { ColorFactory } from "../../../core/colors/color-factory";
-import { CielabDto } from "../../../dtos/cielab-dto";
-import { PaintDto } from "../../../dtos/paint-dto";
-import { RgbDto } from "../../../dtos/rgb-dto";
+import { CielabDto } from "../dtos/cielab-dto";
+import { PaintDto } from "../dtos/paint-dto";
+import { RgbDto } from "../dtos/rgb-dto";
 import { FindByNearestColor } from "../../../find-by-nearest-color";
+import { Paint } from "../../../core/paint";
 
 @Service()
 @Resolver()
@@ -34,3 +35,4 @@ export class PaintsByColorResolver {
         return paints.map(p => new PaintDto(p));
     }
 }
+

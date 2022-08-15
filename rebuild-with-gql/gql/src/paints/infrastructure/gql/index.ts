@@ -3,13 +3,13 @@ import { Container } from "typedi";
 import { ApolloServer } from "apollo-server";
 import { resolvers } from "./resolvers";
 import { buildUseCases } from "../bootstrap-use-cases";
-import { ColorDto } from "../../dtos/color-dto";
 
 export const bootstrap = async () => {
-    const { all, byName } = await buildUseCases();
+    const { all, byName, byNearestColor } = await buildUseCases();
 
     Container.set({ id: "all-paints", factory: () => all });
     Container.set({ id: "paints-by-name", factory: () => byName });
+    Container.set({ id: "paints-by-nearest", factory: () => byNearestColor });
 
     const schema = await buildSchema({
         resolvers,

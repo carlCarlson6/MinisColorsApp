@@ -11,9 +11,9 @@ export class ColorDto {
 
     static fromDomain(input: Color) {
         const color = new ColorDto();
-        color.hexadecimal = input.HexadecimalCode.value;
-        color.rgb = { red: input.RGBCode.Red, blue: input.RGBCode.Blue, green: input.RGBCode.Green };
-        color.cielab = { lightness: input.CielabCode.Lightness, a: input.CielabCode.AAxisValue, b: input.CielabCode.BAxisValue };
+        color.hexadecimal = input.hexadecimal.value;
+        color.rgb = { red: input.rgb.Red, blue: input.rgb.Blue, green: input.rgb.Green };
+        color.cielab = { lightness: input.cielab.Lightness, a: input.cielab.AAxisValue, b: input.cielab.BAxisValue };
         return color;
     }
 }

@@ -1,5 +1,6 @@
-import { Field, ObjectType } from "type-graphql";
+import { Field, InputType, InterfaceType, ObjectType } from "type-graphql";
 
+@InputType("RGBInput")
 @ObjectType("RGB")
 export class RgbDto {
     @Field() red: number;

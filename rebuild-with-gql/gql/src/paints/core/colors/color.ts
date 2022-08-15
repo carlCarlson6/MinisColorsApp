@@ -4,17 +4,17 @@ import { RGB } from "./rgb";
 
 export class Color {
     constructor(
-        readonly HexadecimalCode: Hexadecimal,
-        readonly RGBCode: RGB,
-        readonly CielabCode: Cielab,
+        readonly hexadecimal: Hexadecimal,
+        readonly rgb: RGB,
+        readonly cielab: Cielab,
     ) { }
 
     public distance(color: Color): number {
-        return this.CielabCode.calculateCie94Distance(color.CielabCode);
+        return this.cielab.calculateCie94Distance(color.cielab);
     }
 
     public equals(color: Color) {
-        return this.HexadecimalCode.value == color.HexadecimalCode.value;
+        return this.hexadecimal.value == color.hexadecimal.value;
     }
 
     public static buildFromHexadecimal(hexCode: string) {

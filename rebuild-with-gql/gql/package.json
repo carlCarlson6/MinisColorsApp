@@ -6,7 +6,8 @@
     "build": "tsc",
     "build:dev": "tsc --watch",
     "start": "node .",
-    "start:dev": "nodemon ."
+    "start:dev": "nodemon .",
+    "start:dev:ts": "ts-node ./src/index.ts"
   },
   "dependencies": {
     "@types/node": "^18.7.3",

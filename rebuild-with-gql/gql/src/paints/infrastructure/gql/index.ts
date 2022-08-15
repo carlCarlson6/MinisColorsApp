@@ -1,22 +1,22 @@
 import { buildSchema } from "type-graphql";
 import { Container } from "typedi";
 import { ApolloServer } from "apollo-server";
-import { resolvers } from "./resolver";
-import { getPaintsCollection } from "../mongo/mongo-db-connector";
+import { resolvers } from "./resolvers";
+import { buildUseCases } from "../bootstrap-use-cases";
+import { ColorDto } from "../../dtos/color-dto";
 
 export const bootstrap = async () => {
-    const paintsCollection = await getPaintsCollection();
-    
-    Container.set({ id: "paints-collection", factory: () => paintsCollection });
+    const { all, byName } = await buildUseCases();
+
+    Container.set({ id: "all-paints", factory: () => all });
+    Container.set({ id: "paints-by-name", factory: () => byName });
 
     const schema = await buildSchema({
         resolvers,
         container: Container,
     });
 
-    const server = new ApolloServer({
-        schema: schema
-    });
+    const server = new ApolloServer({ schema });
 
     const { url } = await server.listen(process.env.PORT || 4000);
     console.log(`Server is running, GraphQL Playground available at ${url}`);

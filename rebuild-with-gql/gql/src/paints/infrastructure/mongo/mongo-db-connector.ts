@@ -1,7 +1,8 @@
 import { Collection, MongoClient } from "mongodb";
-import { PaintsMongoModel } from "./paints-mongo-model";
+import { AllPaints } from "../../all-paints";
+import { PaintsCollection, PaintsMongoModel } from "./paints-mongo-model";
 
-export type GetPaintsCollection = () => Promise<Collection<PaintsMongoModel>>;
+export type GetPaintsCollection = () => Promise<PaintsCollection>;
 
 export const getPaintsCollection: GetPaintsCollection = async () => {
     const client = new MongoClient(process.env.MONGODB!);

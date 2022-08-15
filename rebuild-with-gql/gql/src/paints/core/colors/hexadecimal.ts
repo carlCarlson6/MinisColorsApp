@@ -3,7 +3,7 @@ import { RGB } from "./rgb";
 
 export class Hexadecimal{
     constructor(
-        private readonly value: string
+        readonly value: string
     ) { }
 
     public ToRGB(): RGB {
@@ -13,5 +13,4 @@ export class Hexadecimal{
     }
 
     public ToCielab(): Cielab { return this.ToRGB().ToCielab(); }
-    public ToString(): string { return this.value; }
 }

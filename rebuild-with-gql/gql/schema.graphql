@@ -1,0 +1,28 @@
+type Query {
+  paints: [Paint!]!
+  byName(name: String!): [Paint!]!
+}
+
+type Paint {
+  company: String!
+  name: String!
+  color: Color!
+}
+
+type Color {
+  hexadecimal: String!
+  rgb: RGB!
+  cielab: Cielab!
+}
+
+type RGB {
+  red: Float!
+  green: Float!
+  blue: Float!
+}
+
+type Cielab {
+  lightness: Float!
+  a: Float!
+  b: Float!
+}

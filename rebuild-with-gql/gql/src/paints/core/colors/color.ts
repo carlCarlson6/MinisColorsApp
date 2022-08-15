@@ -14,7 +14,7 @@ export class Color {
     }
 
     public equals(color: Color) {
-        return this.HexadecimalCode.ToString() == color.HexadecimalCode.ToString();
+        return this.HexadecimalCode.value == color.HexadecimalCode.value;
     }
 
     public static buildFromHexadecimal(hexCode: string) {

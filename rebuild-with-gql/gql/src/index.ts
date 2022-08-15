@@ -3,6 +3,6 @@ import "reflect-metadata";
 import { config as readEnvConfig } from "dotenv";
 readEnvConfig();
 
-import { bootstrap } from "./app/infrastructure/gql";
+import { bootstrap } from "./paints/infrastructure/gql";
 
 bootstrap();

@@ -1,8 +1,8 @@
-import { Color } from "../../../colors/color";
-import { Companies } from "../../../companies";
-import { Paint } from "../../../paint";
+import { Color } from "../../core/colors/color";
+import { Companies } from "../../core/companies";
+import { Paint } from "../../core/paint";
 
-import { PaintsMongoModel } from "../paints-mongo-model";
+import { PaintsMongoModel } from "./paints-mongo-model";
 
 const toModel = (company: string, paintName: string|undefined, hexCode: string) => ({ company, paintName, hexCode });
 const toModels = (paintModel: PaintsMongoModel) => [

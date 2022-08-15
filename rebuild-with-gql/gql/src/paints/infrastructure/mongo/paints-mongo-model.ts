@@ -1,3 +1,5 @@
+import { Collection } from "mongodb";
+
 export interface PaintsMongoModel {
     NewCitadel:        string|undefined,
     OldCitadel:        string|undefined,
@@ -13,3 +15,5 @@ export interface PaintsMongoModel {
     Scale75:           string|undefined,
     HexCode:           string,
 }
+
+export type PaintsCollection = Collection<PaintsMongoModel>;

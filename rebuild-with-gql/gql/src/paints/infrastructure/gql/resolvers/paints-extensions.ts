@@ -1,4 +1,4 @@
-import { FieldResolver, Resolver, ResolverInterface, Root } from "type-graphql";
+import { FieldResolver, Resolver, Root } from "type-graphql";
 import { Inject, Service } from "typedi";
 import { ColorFactory } from "../../../core/colors/color-factory";
 import { PaintDto } from "../dtos/paint-dto";

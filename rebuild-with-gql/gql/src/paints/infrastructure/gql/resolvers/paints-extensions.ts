@@ -5,7 +5,7 @@ import { PaintDto } from "../dtos/paint-dto";
 import { FindByNearestColor } from "../../../find-by-nearest-color";
 
 @Service()
-@Resolver(of => PaintDto)
+@Resolver(() => PaintDto)
 export class PaintsExtensions {
     @Inject("paints-by-nearest")
     private readonly byNearesColor: FindByNearestColor;

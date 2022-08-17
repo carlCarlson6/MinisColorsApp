@@ -1,4 +1,6 @@
-import { Field, InputType, InterfaceType, ObjectType } from "type-graphql";
+import { Field, InputType, ObjectType } from "type-graphql";
+
+// TODO add validation of the dto
 
 @InputType("RGBInput")
 @ObjectType("RGB")

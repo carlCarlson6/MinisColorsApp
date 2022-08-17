@@ -1,8 +1,7 @@
-import { allPaints } from "./all-paints";
+import { AllPaints } from "./all-paints";
 import { Color } from "./core/colors/color";
 import { Paint } from "./core/paint";
-import { byColor } from "./find-by-color";
-import { PaintsCollection } from "./infrastructure/mongo/paints-mongo-model";
+import { FindByColor } from "./find-by-color";
 
 export type FindByNearestColor = (color: Color) => Promise<Paint[]>;
 
@@ -18,13 +17,11 @@ const orderColorsByDistance = (colors: Color[]) => (refColor: Color) => colors
     .map(colorDistance => colorDistance.color);
 
 
-export const byNearestColor = (collection: PaintsCollection): FindByNearestColor => async (color: Color) => {
-    const findByColor = byColor(collection);
-
+export const byNearestColor = ({findByColor, allPaints}: {findByColor: FindByColor, allPaints: AllPaints}): FindByNearestColor => async (color: Color) => {
     const paintModelsByColor = await findByColor(color);
     if (paintModelsByColor.length !== 0) return paintModelsByColor;
 
-    const paints = await allPaints(collection)();
+    const paints = await allPaints();
     const colors = orderColorsByDistance(filterUniqueColors(paints.map(p => p.color)))(color);
     const nearestColor = colors[0];
     if (!nearestColor) [];

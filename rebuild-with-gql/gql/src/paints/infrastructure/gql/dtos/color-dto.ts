@@ -5,7 +5,7 @@ import { RgbDto } from "./rgb-dto";
 
 @ObjectType("Color")
 export class ColorDto {
-    @Field() hexadecimal: string;
+    @Field() hexadecimal: string; // TODO add validation of the value
     @Field(() => RgbDto) rgb: RgbDto;
     @Field() cielab: CielabDto;
 

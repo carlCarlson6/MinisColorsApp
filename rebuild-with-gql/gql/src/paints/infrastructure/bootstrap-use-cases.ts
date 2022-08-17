@@ -15,5 +15,8 @@ export const bootstrapUseCases = (paintsCollection: PaintsCollection): UseCases 
     all: allPaints(paintsCollection),
     byName: byName(paintsCollection),
     byColor: byColor(paintsCollection),
-    byNearestColor: byNearestColor(paintsCollection)
+    byNearestColor: byNearestColor({
+        findByColor: byColor(paintsCollection),
+        allPaints: allPaints(paintsCollection),
+    })
 })

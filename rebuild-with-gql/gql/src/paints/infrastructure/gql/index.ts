@@ -4,6 +4,7 @@ import { ApolloServer } from "apollo-server";
 import { resolvers } from "./resolvers";
 import { buildUseCases } from "../bootstrap-use-cases";
 import path from "path";
+import { middlewares } from "./middlewares";
 
 export const bootstrap = async () => {
     const { all, byName, byNearestColor } = await buildUseCases();
@@ -15,6 +16,7 @@ export const bootstrap = async () => {
     const schema = await buildSchema({
         resolvers,
         container: Container,
+        globalMiddlewares: [...middlewares],
         emitSchemaFile: true
     });
 

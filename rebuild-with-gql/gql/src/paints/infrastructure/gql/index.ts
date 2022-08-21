@@ -3,10 +3,10 @@ import { Container } from "typedi";
 import { ApolloServer } from "apollo-server";
 import { resolvers } from "./resolvers";
 import { buildUseCases } from "../bootstrap-use-cases";
-import path from "path";
 import { middlewares } from "./middlewares";
+import { errorFormatter } from "./error-formatter";
 
-export const bootstrap = async () => {
+export const bootstrapGQL = async () => {
     const { all, byName, byNearestColor } = await buildUseCases();
 
     Container.set({ id: "all-paints", factory: () => all });
@@ -17,10 +17,13 @@ export const bootstrap = async () => {
         resolvers,
         container: Container,
         globalMiddlewares: [...middlewares],
-        emitSchemaFile: true
+        emitSchemaFile: true,
     });
 
-    const server = new ApolloServer({ schema });
+    const server = new ApolloServer({ 
+        schema,
+        formatError: errorFormatter
+    });
 
     const { url } = await server.listen(process.env.PORT || 4000);
     console.log(`Server is running, GraphQL Playground available at ${url}`);

@@ -6,6 +6,6 @@ import { Field, InputType, ObjectType } from "type-graphql";
 @ObjectType("Cielab")
 export class CielabDto {
     @Field() lightness: number;
-    @Field() a: number;
-    @Field() b: number;
+    @Field() aValue: number;
+    @Field() bValue: number;
 }

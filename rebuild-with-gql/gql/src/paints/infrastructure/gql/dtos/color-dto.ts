@@ -13,7 +13,7 @@ export class ColorDto {
         const color = new ColorDto();
         color.hexadecimal = input.hexadecimal.value;
         color.rgb = { red: input.rgb.Red, blue: input.rgb.Blue, green: input.rgb.Green };
-        color.cielab = { lightness: input.cielab.Lightness, a: input.cielab.AAxisValue, b: input.cielab.BAxisValue };
+        color.cielab = { lightness: input.cielab.Lightness, aValue: input.cielab.AAxisValue, bValue: input.cielab.BAxisValue };
         return color;
     }
 }

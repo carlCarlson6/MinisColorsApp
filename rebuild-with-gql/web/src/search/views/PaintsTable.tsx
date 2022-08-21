@@ -13,7 +13,7 @@ const PaintsTable: React.FC<{paints: Paints}> = ({paints}) => {
                         <th>Hex Color</th>
                     </tr>
                 </thead>
-                <tbody>{paints.map(paint => <tr>
+                <tbody>{paints.map(paint => <tr key={paint.name}>
                     <td>{paint.company}</td>
                     <td>{paint.name}</td>
                     <td>{paint.color.hexadecimal}</td>

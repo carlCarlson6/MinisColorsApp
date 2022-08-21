@@ -4,14 +4,14 @@
 # -----------------------------------------------
 
 type Cielab {
-  a: Float!
-  b: Float!
+  aValue: Float!
+  bValue: Float!
   lightness: Float!
 }
 
 input CielabInput {
-  a: Float!
-  b: Float!
+  aValue: Float!
+  bValue: Float!
   lightness: Float!
 }
 

@@ -1,5 +1,4 @@
-import { Collection, MongoClient } from "mongodb";
-import { AllPaints } from "../../all-paints";
+import { MongoClient } from "mongodb";
 import { PaintsCollection, PaintsMongoModel } from "./paints-mongo-model";
 
 export type GetPaintsCollection = () => Promise<PaintsCollection>;

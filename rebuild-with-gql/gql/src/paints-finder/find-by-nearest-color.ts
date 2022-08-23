@@ -16,7 +16,6 @@ const orderColorsByDistance = (colors: Color[]) => (refColor: Color) => colors
         colorDistanceA.distance - colorDistanceB.distance)
     .map(colorDistance => colorDistance.color);
 
-
 export const byNearestColor = ({findByColor, allPaints}: {findByColor: FindByColor, allPaints: AllPaints}): FindByNearestColor => async (color: Color) => {
     const paintModelsByColor = await findByColor(color);
     if (paintModelsByColor.length !== 0) return paintModelsByColor;

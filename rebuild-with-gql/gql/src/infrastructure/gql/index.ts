@@ -1,10 +1,10 @@
 import { buildSchema } from "type-graphql";
 import { Container } from "typedi";
 import { ApolloServer } from "apollo-server";
-import { resolvers } from "./resolvers";
-import { buildUseCases } from "../bootstrap-use-cases";
-import { middlewares } from "./middlewares";
+import { resolvers } from "../../paints-finder/infrastructure/gql/resolvers";
+import { buildUseCases } from "../../paints-finder/infrastructure/bootstrap-use-cases";
 import { errorFormatter } from "./error-formatter";
+import { middlewares } from "./middlewares";
 
 export const bootstrapGQL = async () => {
     const { all, byName, byNearestColor } = await buildUseCases();

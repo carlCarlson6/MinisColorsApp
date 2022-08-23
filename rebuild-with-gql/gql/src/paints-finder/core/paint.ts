@@ -7,4 +7,3 @@ export class Paint {
         readonly color: Color,
     ) { }
 }
-

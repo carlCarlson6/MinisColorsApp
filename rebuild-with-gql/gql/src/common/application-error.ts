@@ -2,13 +2,14 @@ import { GraphQLError } from "graphql";
 import { v4 as uuIdV4 } from "uuid";
 
 export class ApplicationError extends Error {
+    private readonly id: string;
+
     constructor(
-        readonly id: string,
         readonly message: string,
         readonly code: string,
     ) {
         super(message);
-        id = uuIdV4();
+        this.id = uuIdV4();
     }
 
     public ToGqlError() {

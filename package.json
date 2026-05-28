@@ -3,10 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "node scripts/generate-paints.js",
-    "dev": "vite dev",
-    "prebuild": "node scripts/generate-paints.js",
-    "build": "vite build",
+    "generate-paints": "node scripts/generate-paints.js",
+    "predev": "npm run generate-paints",
+    "dev": "npm run generate-paints && vite dev",
+    "prebuild": "npm run generate-paints",
+    "build": "npm run generate-paints && vite build",
     "start": "node .output/server/index.mjs"
   },
   "dependencies": {

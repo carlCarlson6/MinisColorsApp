@@ -2,7 +2,7 @@
 
 **Date:** May 29, 2026
 **Scope:** Add store search links (Goblin Trader + Amazon) to every main result card on both tabs.
-**Status:** READY FOR BUILD
+**Status:** COMPLETED
 
 ---
 

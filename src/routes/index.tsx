@@ -103,7 +103,7 @@ function HomeComponent() {
       </div>
 
       {activeTab === 'color' ? (
-        <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
+        <div className="mx-auto flex max-w-4xl flex-col gap-8">
           {/* Color Picker */}
           <section className="mx-auto w-full max-w-md rounded-2xl border border-border bg-surface p-6 shadow-sm">
             <div className="flex flex-col items-center gap-6">

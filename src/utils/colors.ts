@@ -1,10 +1,18 @@
 import { parse, converter, differenceCiede2000 } from 'culori'
 
+export interface NeighborRecord {
+  brand: string
+  name: string
+  hex: string
+  deltaE: number
+}
+
 export interface PaintRecord {
   brand: string
   name: string
   hex: string
   lab: [number, number, number]
+  neighbors: NeighborRecord[]
 }
 
 export interface MatchResult {

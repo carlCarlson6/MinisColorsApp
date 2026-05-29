@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "generate-paints": "node scripts/generate-paints.js",
+    "generate-paints": "tsx src/scripts/generate-paints.ts",
     "predev": "npm run generate-paints",
     "dev": "npm run generate-paints && vite dev",
     "prebuild": "npm run generate-paints",
@@ -29,6 +29,7 @@
     "@vitejs/plugin-react": "^4.4.0",
     "nitro": "3.0.260522-beta",
     "tailwindcss": "^4.0.0",
+    "tsx": "^4.22.0",
     "typescript": "^5.7.0",
     "vite": "^7.0.0",
     "vite-tsconfig-paths": "^5.1.0"

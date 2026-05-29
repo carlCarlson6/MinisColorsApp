@@ -174,7 +174,7 @@ function HomeComponent() {
                             {match.name}
                           </p>
                           <p className="text-[10px] text-text-muted">
-                            ΔE {match.deltaE.toFixed(2)}
+                            {match.hex}
                           </p>
                         </div>
                       </div>

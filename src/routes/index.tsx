@@ -22,6 +22,14 @@ const searchByName = createServerFn({ method: 'GET' })
     return searchPaintsByName(data.q, paints, 20)
   })
 
+function encodeStoreUrl(paintName: string, store: 'goblin' | 'amazon'): string {
+  const encoded = encodeURIComponent(paintName)
+  if (store === 'goblin') {
+    return `https://www.goblintrader.es/es/buscar?controller=search&s=${encoded}`
+  }
+  return `https://www.amazon.es/s?k=${encoded}`
+}
+
 export const Route = createFileRoute('/')({
   component: HomeComponent,
 })
@@ -150,23 +158,44 @@ function HomeComponent() {
                   {matches.map((match) => (
                     <div
                       key={match.brand + match.name}
-                      className="flex items-center gap-3 rounded-xl border border-border bg-surface p-3 shadow-sm transition hover:shadow-md"
+                      className="flex flex-col rounded-xl border border-border bg-surface p-3 shadow-sm transition hover:shadow-md"
                     >
-                      <div
-                        className="h-12 w-12 shrink-0 rounded-lg shadow-inner"
-                        style={{ backgroundColor: match.hex }}
-                        aria-hidden="true"
-                      />
-                      <div className="min-w-0">
-                        <p className="text-[10px] font-semibold uppercase tracking-wide text-text-muted">
-                          {match.brand}
-                        </p>
-                        <p className="truncate text-xs font-medium text-text">
-                          {match.name}
-                        </p>
-                        <p className="text-[10px] text-text-muted">
-                          ΔE {match.deltaE.toFixed(2)}
-                        </p>
+                      <div className="flex items-center gap-3">
+                        <div
+                          className="h-12 w-12 shrink-0 rounded-lg shadow-inner"
+                          style={{ backgroundColor: match.hex }}
+                          aria-hidden="true"
+                        />
+                        <div className="min-w-0">
+                          <p className="text-[10px] font-semibold uppercase tracking-wide text-text-muted">
+                            {match.brand}
+                          </p>
+                          <p className="truncate text-xs font-medium text-text">
+                            {match.name}
+                          </p>
+                          <p className="text-[10px] text-text-muted">
+                            ΔE {match.deltaE.toFixed(2)}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="mt-3 border-t border-border pt-2">
+                        <a
+                          href={encodeStoreUrl(match.name, 'goblin')}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[10px] text-text-muted hover:text-primary"
+                        >
+                          Goblin Trader
+                        </a>
+                        <span className="mx-2 text-[10px] text-text-muted">·</span>
+                        <a
+                          href={encodeStoreUrl(match.name, 'amazon')}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[10px] text-text-muted hover:text-primary"
+                        >
+                          Amazon
+                        </a>
                       </div>
                     </div>
                   ))}
@@ -237,6 +266,26 @@ function HomeComponent() {
                             {paint.hex}
                           </p>
                         </div>
+                      </div>
+
+                      <div className="mt-3 border-t border-border pt-2">
+                        <a
+                          href={encodeStoreUrl(paint.name, 'goblin')}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[10px] text-text-muted hover:text-primary"
+                        >
+                          Goblin Trader
+                        </a>
+                        <span className="mx-2 text-[10px] text-text-muted">·</span>
+                        <a
+                          href={encodeStoreUrl(paint.name, 'amazon')}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[10px] text-text-muted hover:text-primary"
+                        >
+                          Amazon
+                        </a>
                       </div>
 
                       {/* Inline neighbors */}

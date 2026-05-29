@@ -102,11 +102,12 @@ async function main(): Promise<void> {
       const bLab = { mode: 'lab65' as const, l: b.lab[0], a: b.lab[1], b: b.lab[2] }
       const deltaE = diffCiede2000(aLab, bLab)
 
-      if (!best1 || deltaE < best1.deltaE) {
+      const roundedDeltaE = Math.round(deltaE * 100) / 100
+      if (!best1 || roundedDeltaE < best1.deltaE) {
         best2 = best1
-        best1 = { brand: b.brand, name: b.name, hex: b.hex, deltaE }
-      } else if (!best2 || deltaE < best2.deltaE) {
-        best2 = { brand: b.brand, name: b.name, hex: b.hex, deltaE }
+        best1 = { brand: b.brand, name: b.name, hex: b.hex, deltaE: roundedDeltaE }
+      } else if (!best2 || roundedDeltaE < best2.deltaE) {
+        best2 = { brand: b.brand, name: b.name, hex: b.hex, deltaE: roundedDeltaE }
       }
     }
 

@@ -92,7 +92,8 @@ The paint database (`colores.csv`) includes colors from:
 │   ├── ssr.tsx                  # SSR entry
 │   └── router.tsx               # Router setup
 ├── plans/
-│   └── plan-2026-05-28.md       # Implementation plan
+│   ├── plan-2026-05-28-mvp-implementation.md       # MVP plan
+│   └── plan-2026-05-29-paint-name-finder.md        # Paint name finder plan
 ├── colores.csv                  # Paint color database
 ├── app.config.ts                # TanStack Start config
 ├── package.json

@@ -2196,7 +2196,7 @@ export const PAINTS: PaintRecord[] = [
         "brand": "NewCitadel",
         "name": "Teclis Blue",
         "hex": "#8BB9DD",
-        "deltaE": 5.879981577689015
+        "deltaE": 5.88
       }
     ]
   },
@@ -2220,7 +2220,7 @@ export const PAINTS: PaintRecord[] = [
         "brand": "NewCitadel",
         "name": "Teclis Blue",
         "hex": "#8BB9DD",
-        "deltaE": 5.879981577689015
+        "deltaE": 5.88
       }
     ]
   },
@@ -4092,7 +4092,7 @@ export const PAINTS: PaintRecord[] = [
         "brand": "NewCitadel",
         "name": "Fulgrim Pink (Edge)",
         "hex": "#F5AECC",
-        "deltaE": 14.774899410869281
+        "deltaE": 14.77
       }
     ]
   },
@@ -4116,7 +4116,7 @@ export const PAINTS: PaintRecord[] = [
         "brand": "NewCitadel",
         "name": "Fulgrim Pink (Edge)",
         "hex": "#F5AECC",
-        "deltaE": 14.774899410869281
+        "deltaE": 14.77
       }
     ]
   },
@@ -4278,13 +4278,13 @@ export const PAINTS: PaintRecord[] = [
         "brand": "NewCitadel",
         "name": "Dorn yellow 2",
         "hex": "#FFF700",
-        "deltaE": 8.78330137711594
+        "deltaE": 8.78
       },
       {
         "brand": "OldCitadel",
         "name": "Bad Moon Yellow",
         "hex": "#FFF700",
-        "deltaE": 8.78330137711594
+        "deltaE": 8.78
       }
     ]
   },
@@ -5862,13 +5862,13 @@ export const PAINTS: PaintRecord[] = [
         "brand": "NewCitadel",
         "name": "Emperor's Children",
         "hex": "#EF9CB5",
-        "deltaE": 5.076078042630577
+        "deltaE": 5.08
       },
       {
         "brand": "OldCitadel",
         "name": "Tentacle Pink",
         "hex": "#EF9CB5",
-        "deltaE": 5.076078042630577
+        "deltaE": 5.08
       }
     ]
   },
@@ -5886,13 +5886,13 @@ export const PAINTS: PaintRecord[] = [
         "brand": "NewCitadel",
         "name": "Sybarite Green",
         "hex": "#82C59C",
-        "deltaE": 4.678633937957512
+        "deltaE": 4.68
       },
       {
         "brand": "OldCitadel",
         "name": "Vile Green",
         "hex": "#82C59C",
-        "deltaE": 4.678633937957512
+        "deltaE": 4.68
       }
     ]
   },
@@ -7500,7 +7500,7 @@ export const PAINTS: PaintRecord[] = [
         "brand": "NewCitadel",
         "name": "Flayed One Flesh (Edge)",
         "hex": "#CDC586",
-        "deltaE": 3.0758705926640566
+        "deltaE": 3.08
       }
     ]
   },
@@ -7524,7 +7524,7 @@ export const PAINTS: PaintRecord[] = [
         "brand": "NewCitadel",
         "name": "Flayed One Flesh (Edge)",
         "hex": "#CDC586",
-        "deltaE": 3.0758705926640566
+        "deltaE": 3.08
       }
     ]
   },
@@ -8292,7 +8292,7 @@ export const PAINTS: PaintRecord[] = [
         "brand": "NewCitadel",
         "name": "Ratskin Flesh",
         "hex": "#F78C5A",
-        "deltaE": 8.315446705100804
+        "deltaE": 8.32
       }
     ]
   },
@@ -8316,7 +8316,7 @@ export const PAINTS: PaintRecord[] = [
         "brand": "NewCitadel",
         "name": "Ratskin Flesh",
         "hex": "#F78C5A",
-        "deltaE": 8.315446705100804
+        "deltaE": 8.32
       }
     ]
   },
@@ -9846,13 +9846,13 @@ export const PAINTS: PaintRecord[] = [
         "brand": "NewCitadel",
         "name": "Administratum Grey",
         "hex": "#B5B5B5",
-        "deltaE": 9.734757349757828
+        "deltaE": 9.73
       },
       {
         "brand": "OldCitadel",
         "name": "Fortress Grey",
         "hex": "#B5B5B5",
-        "deltaE": 9.734757349757828
+        "deltaE": 9.73
       }
     ]
   },
@@ -11934,13 +11934,13 @@ export const PAINTS: PaintRecord[] = [
         "brand": "NewCitadel",
         "name": "Deathworld Forest",
         "hex": "#5D6732",
-        "deltaE": 10.49664283929472
+        "deltaE": 10.5
       },
       {
         "brand": "OldCitadel",
         "name": "Gretchin Green",
         "hex": "#5D6732",
-        "deltaE": 10.49664283929472
+        "deltaE": 10.5
       }
     ]
   },
@@ -16710,13 +16710,13 @@ export const PAINTS: PaintRecord[] = [
         "brand": "NewCitadel",
         "name": "Kreig Khaki (Edge)",
         "hex": "#BFBD82",
-        "deltaE": 3.0758705926640566
+        "deltaE": 3.08
       },
       {
         "brand": "ArmyPainter",
         "name": "Necrotic Flesh (WP1108)",
         "hex": "#BFBD82",
-        "deltaE": 3.0758705926640566
+        "deltaE": 3.08
       }
     ]
   },
@@ -16740,7 +16740,7 @@ export const PAINTS: PaintRecord[] = [
         "brand": "NewCitadel",
         "name": "Kabalite Green",
         "hex": "#069B7D",
-        "deltaE": 8.635100450256498
+        "deltaE": 8.64
       }
     ]
   },
@@ -16764,7 +16764,7 @@ export const PAINTS: PaintRecord[] = [
         "brand": "NewCitadel",
         "name": "Kabalite Green",
         "hex": "#069B7D",
-        "deltaE": 8.635100450256498
+        "deltaE": 8.64
       }
     ]
   },
@@ -16830,13 +16830,13 @@ export const PAINTS: PaintRecord[] = [
         "brand": "NewCitadel",
         "name": "Stormvermin Fur",
         "hex": "#4D4A4A",
-        "deltaE": 9.086106442603256
+        "deltaE": 9.09
       },
       {
         "brand": "OldCitadel",
         "name": "Charadon Granite",
         "hex": "#4D4A4A",
-        "deltaE": 9.086106442603256
+        "deltaE": 9.09
       }
     ]
   },

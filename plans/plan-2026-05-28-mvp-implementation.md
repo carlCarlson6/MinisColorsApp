@@ -109,7 +109,7 @@ Sorted array of matches:
 ```
 /
 ├── plans/
-│   └── plan-2026-05-28.md          # This file
+│   └── plan-2026-05-28-mvp-implementation.md  # This file
 ├── app/
 │   ├── routes/
 │   │   ├── __root.tsx              # Root layout + Tailwind CSS import

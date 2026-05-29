@@ -20,7 +20,7 @@ This is the single source of truth. Parse it server-side at startup and cache in
 
 ## Architecture
 
-- **Framework**: TanStack Start (scaffolded in `src/` — see `plans/plan-2026-05-28.md`).
+- **Framework**: TanStack Start (scaffolded in `src/` — see `plans/plan-2026-05-28-mvp-implementation.md`).
 - **Deployment**: Vercel preset (`nitro({ preset: 'vercel' })` in `vite.config.ts`).
 - **Color matching**: CIEDE2000 Delta E via `culori`. Pre-compute Lab values at parse time. Return the single closest match per brand, sorted by Delta E.
 

@@ -111,8 +111,8 @@ Add a mode switch at the top of the page:
 ```
 /
 ├── plans/
-│   ├── plan-2026-05-28.md              # MVP plan
-│   └── plan-2026-05-29.md              # This file
+│   ├── plan-2026-05-28-mvp-implementation.md  # MVP plan
+│   └── plan-2026-05-29-paint-name-finder.md # This file
 ├── src/
 │   ├── routes/
 │   │   ├── __root.tsx                  # Root layout (unchanged)
